@@ -1,3 +1,11 @@
+Transversals
+Estructura mínima de carpetes per als projectes transversals
+És obligatori seguir aquesta estructura. No obstant això, podeu ampliar-la segons les necessitats del vostre projecte.
+
+Instruccions inicials
+Aquest fitxer ha de contenir la informació corresponent al vostre projecte.
+Abans de començar, heu de substituir aquest text explicatiu per la informació específica del vostre projecte. Utilitzeu el format Markdown per mantenir una presentació clara i professional.
+
 * Nom dels integrants: Eduard Vilaseca Vilà, Purvish Patel, Aiva i Andrew Turner Mateo.
 * Nom del projecte: AlumNet
 * Petita descripció: Gestió de mentoria d'alumnes. Borsa per ajudar, mentoritzar, classes particulars d'alumnes nous al centre.
