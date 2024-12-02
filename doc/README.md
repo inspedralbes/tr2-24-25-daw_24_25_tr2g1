@@ -17,7 +17,7 @@
 ### **Integrants de l'equip**
 - Eduard Vilaseca Vilà  
 - Purvish Patel  
-- Aiva  
+- Aivan Antonio
 - Andrew Turner Mateo  
 
 ### **Nom del projecte**  
