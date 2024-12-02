@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuari');
             $table->string('especialitat');
             $table->foreign('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');
+            $table->timestamps();
+
 
         });
     }

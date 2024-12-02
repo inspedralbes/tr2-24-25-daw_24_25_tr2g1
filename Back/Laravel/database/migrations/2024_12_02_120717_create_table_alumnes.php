@@ -16,7 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuari');
             $table->string('curs');
             $table->string('classe');
-            $table->foreign('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');           
+            $table->foreign('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');     
+            $table->timestamps();
+      
         });
     }
 

@@ -16,13 +16,15 @@ return new class extends Migration
             $table->string('nom', 100);
             $table->string('cognom1', 100);
             $table->string('cognom2', 100);
-            $table->enum('rol', ['alumne', 'mentor', 'professor']);
             $table->string('email')->unique();
             $table->string('password', 60);
+            $table->enum('rol', ['alumne', 'mentor', 'professor']);
+            $table->date('data_naixement')->nullable();
             $table->string('telefon', 9)->nullable();
             $table->text('biografia')->nullable();
-            $table->date('data_naixement');
             $table->enum('major', ['si', 'no']);
+            $table->timestamps();
+
         });
     }
 

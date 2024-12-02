@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('departament');
             $table->foreign('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 
