@@ -27,7 +27,6 @@ return new class extends Migration
             $table->text('biografia')->nullable();
             $table->enum('major', ['si', 'no']);
             $table->timestamps();
-
         });
     }
 
