@@ -25,3 +25,6 @@
 # Para generar una clave de aplicación
 
     php artisan key:generate
+
+# Para insertar datos en la base de datos
+    php artisan import:users
