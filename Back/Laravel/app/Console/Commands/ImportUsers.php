@@ -43,16 +43,16 @@ class ImportUsers extends Command
 
         //Inserta categorias solo si no existen
         $categories = [
-            ['id_categoria' => '1', 'nom_categoria' => 'Informatica'],
-            ['id_categoria' => '2', 'nom_categoria' => 'Matematica'],
-            ['id_categoria' => '3', 'nom_categoria' => 'Fisica'],
-            ['id_categoria' => '4', 'nom_categoria' => 'Quimica'],
-            ['id_categoria' => '5', 'nom_categoria' => 'Biologia'],
-            ['id_categoria' => '6', 'nom_categoria' => 'Historia'],
-            ['id_categoria' => '7', 'nom_categoria' => 'Geografia'],
-            ['id_categoria' => '8', 'nom_categoria' => 'Economia'],
-            ['id_categoria' => '9', 'nom_categoria' => 'Sociologia'],
-            ['id_categoria' => '10', 'nom_categoria' => 'Lengua Espanyola'],
+            ['id_categoria' => '1', 'nom_categoria' => 'Xarxes i Comunicacions'],
+            ['id_categoria' => '2', 'nom_categoria' => 'Sistemes Operatius'],
+            ['id_categoria' => '3', 'nom_categoria' => 'Seguretat Informàtica'],
+            ['id_categoria' => '4', 'nom_categoria' => 'Maquinari i Perifèrics'],
+            ['id_categoria' => '5', 'nom_categoria' => 'Bases de Dades'],
+            ['id_categoria' => '6', 'nom_categoria' => 'Programació Bàsica'],
+            ['id_categoria' => '7', 'nom_categoria' => 'Disseny Web'],
+            ['id_categoria' => '8', 'nom_categoria' => 'Entorns de Desenvolupament'],
+            ['id_categoria' => '9', 'nom_categoria' => 'Virtualització i Sistemes Cloud'],
+            ['id_categoria' => '10', 'nom_categoria' => 'Atenció a l’Usuari'],
         ];
 
         foreach ($categories as $category) {
