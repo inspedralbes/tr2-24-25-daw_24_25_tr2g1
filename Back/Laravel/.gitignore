@@ -1,23 +1,42 @@
-/.phpunit.cache
-/node_modules
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
-/vendor
+# Dependencias de Composer
+/vendor/
+
+# Dependencias de Node.js
+/node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Archivos de entorno
 .env
-.env.backup
-.env.production
-.phpactor.json
+
+# Cachés y archivos temporales
+.phpunit.cache
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
-auth.json
-npm-debug.log
-yarn-error.log
+.phpactor.json
+/storage/*.key
+/storage/pail
+
+# Archivos de herramientas de desarrollo
+/.phpunit.cache
 /.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
+/.idea/
+/.nova/
+/.vscode/
+/.zed/
+
+# Build de frontend
+/public/build
+/public/hot
+/public/storage
+
+# Ignorar configuraciones específicas de editores de texto o IDEs
+*.sublime-project
+*.sublime-workspace
+*.DS_Store
+*.log
+Thumbs.db
+
+# Otros
+*.backup
