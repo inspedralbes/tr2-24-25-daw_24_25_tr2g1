@@ -56,7 +56,7 @@ class ImportUsers extends Command
         ];
 
         foreach ($categories as $category) {
-            DB::table('table_categories')->updateOrInsert(
+            DB::table('categories')->updateOrInsert(
                 ['id_categoria' => $category['id_categoria']],
                 ['id_categoria' => $category['id_categoria'], 'nom_categoria' => $category['nom_categoria']]
             );
