@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('titulo');
             $table->text('contenido');
             $table->string('imagen')->nullable();
-            $table->text('descripcion')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->enum('estado', ['Pendiente', 'Aprobada', 'Rechazada'])->default('Pendiente');
             $table->integer('views_count')->default(0);
