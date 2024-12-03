@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use function Laravel\Prompts\table;
+
 return new class extends Migration
 {
     /**
@@ -21,6 +23,7 @@ return new class extends Migration
             $table->enum('rol', ['alumne', 'mentor', 'professor']);
             $table->date('data_naixement')->nullable();
             $table->string('telefon', 9)->nullable();
+            $table->string('foto_profile')->nullable();
             $table->text('biografia')->nullable();
             $table->enum('major', ['si', 'no']);
             $table->timestamps();

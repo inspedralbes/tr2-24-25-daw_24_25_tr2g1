@@ -18,9 +18,8 @@ class AuthController extends Controller
             'rol' => 'required|in:alumne,mentor,professor',
         ]);
         
-        //encripta la contrasenya
+        //encripta la contrasenya (OPCIONAL) 
         //$validated['password'] = bcrypt($validated['password']); 
-
         $usuari = Usuari::create($validated);
 
         return response()->json(['id' => $usuari->id], 201);
