@@ -11,7 +11,7 @@ const router = useRouter()
 
 const goToForum = () => {
   console.log('Navegando al foro...');
-  router.push('/forum')  // Verifica si este es el camino correcto
+  router.push('/forum')  
 }
 
 </script>
