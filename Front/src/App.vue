@@ -18,11 +18,11 @@ const goToJobs = () => {
 }
 
 const goToPostJob = () => {
-  router.push('/post-job')
+  router.push('/publish')
 }
 
 const goToAbout = () => {
-  router.push('/about')
+  router.push('/aboutUs')
 }
 
 const goToContact = () => {
