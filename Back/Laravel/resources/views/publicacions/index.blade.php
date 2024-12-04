@@ -10,13 +10,12 @@
         <table class="table table-bordered table-striped table-hover text-center">
             <thead class="table-dark">
                 <tr>
-                    <th>Id_publiació</th>
+                    <th>ID_publicació</th>
                     <th>Títol</th>
                     <th>Contingut</th>
                     <th>Id_usuari</th>
                     <th>Estat</th>
                     <th>Contador de visites</th>
-                    <th>Data de la publiació</th>
                     <th>Hora d'inici</th>
                     <th>Hora final</th>
                     <th>Dia</th>
