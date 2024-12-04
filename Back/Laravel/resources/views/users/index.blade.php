@@ -8,8 +8,8 @@
 @section('content')
     <div class="container">
 
-        <h1 class="my-4 text-center">Lista d'usuaris</h1>
-        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Crear un nuevo usuari</a>
+        <h1 class="my-4 text-center">Llista d'usuaris</h1>
+        <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Crear un nou usuari</a>
 
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
@@ -19,7 +19,7 @@
                     <th>Cognom1</th>
                     <th>Cognom2</th>
                     <th>Email</th>
-                    <th>Role</th>
+                    <th>Rol</th>
                     <th>data_naixement</th>
                     <th>telefon</th>
                     <th>foto_profile</th>
