@@ -163,3 +163,42 @@ footer p:hover {
                -15px -15px 30px #ffffff;
     /* Per fer push en git */
 }
+
+.contact-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .contact-info {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .contact-item {
+    margin: 0.5rem 0;
+  }
+  
+  .contact-label {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .contact-link {
+    color: #0095ff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .contact-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
