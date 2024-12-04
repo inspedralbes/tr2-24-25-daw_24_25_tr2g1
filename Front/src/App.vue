@@ -18,7 +18,14 @@ import { RouterLink, RouterView } from 'vue-router'
       <p>Descobreix una plataforma on gestionar dades acadèmiques i trobar classes particulars amb altres alumnes.</p>
     </div>
   </div>
-  <RouterView />
+  <div class="container">
+    <RouterView />
+  </div>
+  <div>
+    <footer>
+      <p>© 2023 AlumNet. Tots els drets reservats.</p>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
