@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
 
@@ -20,17 +21,17 @@ class AuthController extends Controller
             'data_naixement' => 'required|date',
             'telefon' => 'required|string|max:9',
             'biografia' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validación de la imagen
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Procesamiento de la imagen
         if ($request->hasFile('image')) {
             // Generamos un nombre único para la imagen
-            $imageName = time().'.'.$request->image->extension();
+            $imageName = time() . '.' . $request->image->extension();
             // Guardamos la imagen en el directorio 'public/images'
             $request->image->storeAs('public/images', $imageName);
         } else {
-            $imageName = null; // Si no se sube imagen, dejamos el valor en null
+            $imageName = null;
         }
 
         // Crear el usuario en la base de datos
@@ -39,15 +40,14 @@ class AuthController extends Controller
             'cognom1' => $validated['cognom1'],
             'cognom2' => $validated['cognom2'],
             'email' => $validated['email'],
-            'password' => bcrypt($validated['password']), // Encriptar la contraseña
+            'password' => bcrypt($validated['password']),
             'rol' => $validated['rol'],
             'data_naixement' => $validated['data_naixement'],
             'telefon' => $validated['telefon'],
-            'foto_profile' => $imageName, // Guardar el nombre de la imagen
+            'foto_profile' => $imageName,
             'biografia' => $validated['biografia'],
         ]);
 
-        // Redirigir a la lista de usuarios con un mensaje de éxito
         return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
     }
 
@@ -65,6 +65,14 @@ class AuthController extends Controller
         return view('users.show', compact('usuari'));
     }
 
+
+    //Metoso para mostrar el formulario de edicion de un usuario
+    public function edit($id)
+    {
+        $usuari = Usuari::findOrFail($id);
+        return view('users.edit', compact('usuari'));
+    }
+
     // CRUD de actualizar usuaris
     public function update(Request $request, $id)
     {
@@ -73,24 +81,34 @@ class AuthController extends Controller
             'cognom1' => 'required|string|max:100',
             'cognom2' => 'required|string|max:100',
             'email' => 'required|email|unique:usuaris,email,' . $id,
-            'password' => 'sometimes|required|string|min:6',
+            'password' => 'nullable|string|min:6|confirmed',
             'rol' => 'required|in:alumne,mentor,professor',
             'data_naixement' => 'sometimes|date',
             'telefon' => 'sometimes|string|max:9',
-            'foto_profile' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'biografia' => 'nullable|string',
         ]);
 
         $usuari = Usuari::findOrFail($id);
 
-        if ($request->has('password')) {
-            $validated['password'] = bcrypt($validated['password']);
+        // Encriptar contraseña si se proporciona
+        if ($request->filled('password')) {
+            $validated['password'] = bcrypt($request->password);
+        } else {
+            unset($validated['password']);
         }
 
-        // Actualización del usuario
+        // Procesar la imagen si se sube
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->storeAs('public/images', $imageName);
+            $validated['foto_profile'] = $imageName;
+        }
+
+        // Actualizar usuario
         $usuari->update($validated);
 
-        return response()->json(['message' => 'Usuari actualitzat correctament.']);
+        return redirect()->route('users.index')->with('success', 'Usuari actualitzat correctament!');
     }
 
     // CRUD de eliminar usuaris
@@ -99,12 +117,12 @@ class AuthController extends Controller
         $usuari = Usuari::findOrFail($id);
         $usuari->delete();
 
-        return response()->json(['message' => 'Usuari eliminat correctament']);
+        return redirect()->route('users.index')->with('success', 'Usuari eliminat correctament!');
     }
 
     // Mostrar formulario para crear un nuevo usuario
     public function create()
     {
-        return view('users.create');  // Asegúrate de que la vista 'create' exista en resources/views/users
+        return view('users.create');
     }
 }

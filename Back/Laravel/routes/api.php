@@ -28,6 +28,6 @@ Route::post('/register', [AuthController::class, 'register']);
 // ruta para CRUD
 Route::get('/usuaris', [AuthController::class, 'index']);
 Route::get('/usuaris/{id}', [AuthController::class, 'show']);
-Route::put('/usuaris/{id}', [AuthController::class, 'update']);
-Route::delete('/usuaris/{id}', [AuthController::class, 'destroy']);
-Route::delete('/usuaris/{id}', [AuthController::class, 'destroy']);
+// Route::get('/users/{id}/edit', [AuthController::class, 'edit'])->name('users.edit');
+Route::put('/usuaris/{id}', [AuthController::class, 'update'])->name('user-edit');
+Route::delete('/usuaris/{id}', [AuthController::class, 'destroy'])->name('user-destroy');

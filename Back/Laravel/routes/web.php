@@ -12,6 +12,7 @@ Route::get('/', function () {
 
 //crud's
 Route::resource('users', AuthController::class);
+
 Route::resource('publicacions', PublicacioController::class);
 
 
