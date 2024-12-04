@@ -4,6 +4,7 @@ import ForumPage from '..//views/ForumPage.vue'
 import DetallesPage from '../views/DetallesPage.vue'
 import AuthPage from '../views/AuthPage.vue'
 import PublisOffer from '../views/PublishOffer.vue'
+import aboutUs from '../views/aboutUs.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/publish',
     name: 'publish',
     component: PublisOffer 
+  },
+  {
+    path: '/aboutUs',
+    name: 'aboutUs',
+    component: aboutUs 
   }
 ]
 
