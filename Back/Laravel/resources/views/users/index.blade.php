@@ -27,25 +27,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    @foreach ($usuaris as $usuari)
                         <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->nom }}</td>
-                            <td>{{ $user->cognom1 }}</td>
-                            <td>{{ $user->cognom2 }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->rol }}</td>
-                            <td>{{ $user->data_naixement }}</td>
-                            <td>{{ $user->telefon }}</td>
+                            <td>{{ $usuari->id }}</td>
+                            <td>{{ $usuari->nom }}</td>
+                            <td>{{ $usuari->cognom1 }}</td>
+                            <td>{{ $usuari->cognom2 }}</td>
+                            <td>{{ $usuari->email }}</td>
+                            <td>{{ $usuari->rol }}</td>
+                            <td>{{ $usuari->data_naixement }}</td>
+                            <td>{{ $usuari->telefon }}</td>
                             <td> 
-                                <img src="{{ asset('/img/' . $users->image) }}" alt="{{ $users->title }}"
+                                <img src="{{ asset('/img/' . $usaris->image) }}" alt="{{ $usuaris->title }}"
                                     class="img-thumbnail" width="50">
                             </td>
                             <td>{{ $user->biografia }}</td>
 
                             <td>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Editar</a>
-                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                <a href="{{ route('usuaris.edit', $usuaris->id) }}" class="btn btn-primary">Editar</a>
+                                <form action="{{ route('usuaris.destroy', $usuaris->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Eliminar</button>
