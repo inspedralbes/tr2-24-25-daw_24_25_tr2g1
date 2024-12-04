@@ -15,7 +15,6 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goToForum = () => {
-  console.log('Navegando al foro...');
   router.push('/forum')  
 }
 
@@ -28,7 +27,7 @@ const goToJobs = () => {
 }
 
 const goToPostJob = () => {
-  router.push('/post-job')
+  router.push('/publish')
 }
 
 const goToAbout = () => {

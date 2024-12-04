@@ -3,6 +3,7 @@ import LandingPage from '../views/LandingPage.vue'  // Ruta principal
 import ForumPage from '..//views/ForumPage.vue'
 import DetallesPage from '../views/DetallesPage.vue'
 import AuthPage from '../views/AuthPage.vue'
+import PublisOffer from '../views/PublishOffer.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/auth',
     name: 'auth',
     component: AuthPage
+  },
+  {
+    path: '/publish',
+    name: 'publish',
+    component: PublisOffer 
   }
 ]
 
