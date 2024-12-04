@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LandingPage from '../views/LandingPage.vue'  // Ruta principal
 import ForumPage from '..//views/ForumPage.vue'
 import DetallesPage from '../views/DetallesPage.vue'
 import AuthPage from '../views/AuthPage.vue'
@@ -10,11 +9,6 @@ import aboutUs from '../views/aboutUs.vue'
 import Contact from '../views/Contact.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'landing',  // pagina principal
-    component: LandingPage
-  },
   {
     path: '/forum',
     name: 'forum',
