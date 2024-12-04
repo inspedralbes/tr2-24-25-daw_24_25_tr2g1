@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LandingPage from '../views/LandingPage.vue'  // Ruta principal
 import ForumPage from '..//views/ForumPage.vue'
 import DetallesPage from '../views/DetallesPage.vue'
 import AuthPage from '../views/AuthPage.vue'
@@ -7,11 +6,6 @@ import MentorsPage from '../views/MentorsPage.vue'
 import SearchOffer from '../views/SearchOffer.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'landing',  // pagina principal
-    component: LandingPage
-  },
   {
     path: '/forum',
     name: 'forum',

@@ -92,7 +92,13 @@ a:hover {
     margin: 15px auto;
 }
 
-.landing-container button {
+.landing-nav {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.landing-nav button {
     margin: 10px;
     width: 200px;
     height: 50px;
@@ -108,7 +114,7 @@ a:hover {
     text-transform: uppercase;
 }
 
-.landing-container button:hover {
+.landing-nav button:hover {
     background-color: #0095ff;
 }
 
@@ -162,4 +168,11 @@ footer p:hover {
     box-shadow: 15px 15px 30px #bebebe,
                -15px -15px 30px #ffffff;
     /* Per fer push en git */
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
 }
