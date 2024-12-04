@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ForumPage from '..//views/ForumPage.vue'
-import DetallesPage from '../views/DetallesPage.vue'
-import AuthPage from '../views/AuthPage.vue'
-import MentorsPage from '../views/MentorsPage.vue'
-import SearchOffer from '../views/SearchOffer.vue'
-import PublisOffer from '../views/PublishOffer.vue'
-import aboutUs from '../views/aboutUs.vue'
-import Contact from '../views/Contact.vue'
+import ForumPage from '../views/ForumView.vue'
+import DetallesPage from '../views/DetallesVIew.vue'
+import AuthPage from '../views/AuthView.vue'
+import MentorsPage from '../views/MentorsView.vue'
+import SearchOffer from '../views/SearchOfferView.vue'
+import PublisOffer from '../views/PublishOfferView.vue'
+import aboutUs from '../views/AboutUsView.vue'
+import Contact from '../views/ContactView.vue'
 
 const routes = [
   {
