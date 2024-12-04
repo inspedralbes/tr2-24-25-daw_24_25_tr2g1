@@ -22,24 +22,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($products as $product)
+                @foreach ($publicacions as $publicacio)
                 <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->title }}</td>
-                    <td>{{ $product->description }}</td>
-                    <td>{{ $product->price }}</td>
+                    <td>{{ $publicacio->id_publicacio }}</td>
+                    <td>{{ $publicacio->titol }}</td>
+                    <td>{{ $publicacio->contingut }}</td>
+                    <td>{{ $publicacio->estat }}</td>
+                    <td>{{ $publicacio->views_count }}</td>
+                    <td>{{ $publicacio->horainici }}</td>
+                    <td>{{ $publicacio->horafi }}</td>
+                    <td>{{ $publicacio->dia }}</td>
                     <td>
-                        <img src="{{ asset('/img/' . $product->image) }}" alt="{{ $product->title }}" class="img-thumbnail" width="50">
-                    </td>
-                    <td>{{ $product->category_id }}</td>
-                    <td>{{ $product->size_id }}</td>
-                    <td>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-info">Ver Detalles</a>
-                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('publicacions.edit', $publicacions->id_publicacio) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('publicacions.show', $publicacions->id_publicacio) }}" class="btn btn-info">Veure Detalls</a>
+                        <form action="{{ route('publicacions.destroy', $publicacions->id_publicacio) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar el producto?')">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás segur d\'eliminar la publicació?')">Sí, eliminar</button>
                         </form>
                     </td>
                 </tr>
