@@ -1,10 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 </script>
 
 <template>
   <nav id="navDesktop">
-    <div class="logo">AlumNet</div>
+    <div class="logo" @click="router.push('/')">AlumNet</div>
     <div>
         <ul class="navElements">
             <!-- <li><RouterLink to="/experience">Classes</RouterLink></li> -->
