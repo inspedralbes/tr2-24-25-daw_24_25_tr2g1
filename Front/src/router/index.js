@@ -6,6 +6,7 @@ import AuthPage from '../views/AuthPage.vue'
 import MentorsPage from '../views/MentorsPage.vue'
 import SearchOffer from '../views/SearchOffer.vue'
 import PublisOffer from '../views/PublishOffer.vue'
+import aboutUs from '../views/aboutUs.vue'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/publish',
     name: 'publish',
     component: PublisOffer 
+  },
+  {
+    path: '/aboutUs',
+    name: 'aboutUs',
+    component: aboutUs 
   }
 ]
 
