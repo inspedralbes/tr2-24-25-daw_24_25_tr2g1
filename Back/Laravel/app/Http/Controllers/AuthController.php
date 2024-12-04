@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'nom' => 'required|string|max:100',
@@ -29,14 +29,16 @@ class AuthController extends Controller
     public function index()
     {
         $usuaris = Usuari::all();
-        return response()->json($usuaris);
+        //return response()->json($usuaris);
+        return view('users.index', compact('usuaris'));
     }
 
     // CRUD de mostrar usuari por su id
     public function show($id)
     {
         $usuari = Usuari::findOrFail($id);
-        return response()->json(($usuari));
+        //return response()->json(($usuari));
+        return view('users.show', compact('usuari'));
     }
 
     // CRUD de actualitzar usuaris
@@ -49,8 +51,8 @@ class AuthController extends Controller
             'email' => 'required|email|unique:usuaris,email,' . $id,
             'password' => 'sometimes|required|string|min:6',
             'rol' => 'required|in:alumne,mentor,professor',
-            'data_naixement' => 'required|date',
-            'telefon' => 'required|string|max:9',
+            'data_naixement' => 'sometimes|date',
+            'telefon' => 'sometimes|string|max:9',
             'foto_profile' => 'nullable|string',
             'biografia' => 'nullable|string',
         ]);
@@ -71,10 +73,13 @@ class AuthController extends Controller
     public function destroy($id)
     {
         $usuari = Usuari::findOrFail($id);
-        $usuari->destroy();
+        $usuari->delete();
 
         return response()->json(['message' => 'Usuari eliminat correctament']);
     }
 
-
+    public function create()
+    {
+        return view('users.create');  // Asegúrate de que la vista 'create' exista en resources/views/users
+    }
 }

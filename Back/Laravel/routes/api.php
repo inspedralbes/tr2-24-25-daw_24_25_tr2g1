@@ -8,8 +8,6 @@ use App\Http\Controllers\AlumneController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ProfessorController;
 
-//ruta registre usuari
-Route::post('/register', [AuthController::class, 'register']);
 
 //ruta guardar segons el rol
 Route::post('/alumnes', [AlumneController::class, 'storeAlumne']);
@@ -25,6 +23,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+//ruta registre usuari
+Route::post('/register', [AuthController::class, 'register']);
 // ruta para CRUD
 Route::get('/usuaris', [AuthController::class, 'index']);
 Route::get('/usuaris/{id}', [AuthController::class, 'show']);
