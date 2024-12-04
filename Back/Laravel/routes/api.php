@@ -30,5 +30,4 @@ Route::get('/usuaris', [AuthController::class, 'index']);
 Route::get('/usuaris/{id}', [AuthController::class, 'show']);
 Route::put('/usuaris/{id}', [AuthController::class, 'update']);
 Route::delete('/usuaris/{id}', [AuthController::class, 'destroy']);
-
 Route::delete('/usuaris/{id}', [AuthController::class, 'destroy']);
