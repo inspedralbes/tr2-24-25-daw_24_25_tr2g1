@@ -10,10 +10,17 @@ class PublicacioController extends Controller
     // Mostrar la llista de publicacions
     public function index()
     {
-        $publicacions = Publicacio::all();
-        return view('publicacions.index', compact('publicacions'));
+        try {
+            // Obtener todas las publicaciones
+            $publicacions = Publicacio::all();
+            
+            // Devolver las publicaciones en formato JSON
+            return response()->json($publicacions, 200);
+        } catch (\Exception $e) {
+            // Manejar errores y devolver respuesta
+            return response()->json(['error' => 'Error al obtener las publicaciones'], 500);
+        }
     }
-
     // Mostrar el formulari per crear una nova publicació
     public function create()
     {

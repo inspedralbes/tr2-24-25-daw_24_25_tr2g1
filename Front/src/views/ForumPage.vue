@@ -1,10 +1,15 @@
 <template>
   <div class="forum-container">
-    <input v-model="searchQuery" type="text" placeholder="Buscar anuncios" class="search-input"/>
+    <input v-model="searchQuery" type="text" placeholder="Buscar anuncis" class="search-input"/>
     <div class="ads-list">
+      <!-- Mostrar un mensaje si no hay publicaciones -->
+      <p v-if="filteredAds.length === 0">No hi ha cap publicació.</p>
+
+      <!-- Mostrar publicaciones -->
       <div v-for="ad in filteredAds" :key="ad.id" class="ad-item">
-        <h3 class="ad-title">{{ ad.title }}</h3>
-        <p class="ad-description">{{ ad.description }}</p>
+        <h3 class="ad-title">{{ publicacions.titol }}</h3>
+        <p class="ad-description">{{ publicacions.contingut }}</p>
+        <p class="ad-description">{{ publicacions.estat }}</p>
         <button @click="viewAdDetails(ad.id)">Ver más</button>
       </div>
     </div>
@@ -12,25 +17,38 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';  
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted } from 'vue';  
+import { useRouter } from 'vue-router';
+import { getPublicacions } from '@/CommunicationManager';
 
-const router = useRouter()
-const searchQuery = ref('')
+// Referencias reactivas
+const ads = ref([]);
+const searchQuery = ref('');
+const router = useRouter();
 
-//ejemplo 
-const ads = ref([
-  { id: 1, title: 'Clase de Matemáticas', description: 'Clases particulares de matemáticas.' },
-  { id: 2, title: 'Clase de Inglés', description: 'Clases particulares de inglés para todos los niveles.' },
-  { id: 3, title: 'Clase de Inglés', description: 'Clases particulares de inglés para todos los niveles.' },
-  { id: 4, title: 'Clase de Inglés', description: 'Clases particulares de inglés para todos los niveles.' },
-])
-
+// Función para filtrar anuncios según la búsqueda
 const filteredAds = computed(() => {
-  return ads.value.filter(ad => ad.title.toLowerCase().includes(searchQuery.value.toLowerCase()))
-})
+  return ads.value.filter(ad =>
+    ad.titol.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
 
+// Cargar las publicaciones desde la API al montar el componente
+const loadPublications = async () => {
+  try {
+    ads.value = await getPublicacions();
+  } catch (error) {
+    console.error('Error al cargar publicaciones:', error);
+  }
+};
+
+// Llama a la función de carga cuando el componente se monte
+onMounted(() => {
+  loadPublications();
+});
+
+// Navegar al detalle de un anuncio
 const viewAdDetails = (id) => {
-  router.push(`/ad/${id}`)
-}
+  router.push(`/ad/${id}`);
+};
 </script>
