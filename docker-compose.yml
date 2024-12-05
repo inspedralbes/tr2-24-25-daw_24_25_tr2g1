@@ -11,7 +11,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dbase_nom
+      MYSQL_DATABASE: alumnet
     ports:
       - 1000:3306
     volumes:
@@ -19,7 +19,7 @@ services:
       # La carpeta de l'esquerra HA D'EXISTIR
       - ./mysql_data:/var/lib/mysql
       # Per crear algunes taules al primer inici
-      # - ./back/XXX.sql:/docker-entrypoint-initdb.d/dades.sql
+      - ./Back/alumnet.sql:/docker-entrypoint-initdb.d/dades.sql
 
   adminer:
     image: adminer
@@ -41,7 +41,7 @@ services:
     depends_on:
       - db
 #Quan es crea, es poden executar ordres
-    command: bash -c "composer install && php artisan key:generate && php artisan migrate && php artisan serve --host=0.0.0.0" 
+    command: bash -c "composer install && php artisan key:generate && php artisan migrate:fresh --seed && php artisan serve --host=0.0.0.0" 
 
   vue:
     build: 
@@ -56,15 +56,15 @@ services:
       VUE_APP_API_URL: http://laravel:8000
     command: bash -c "npm install && npm run dev"
 
-  node:
-    build: 
-      context: ./Back/Node
-    ports:
-      - 3000:3000
-    volumes:
-      - ./Back/Node:/node-app
-      # crear una carpeta local para el node.js
-    depends_on:
-      - db
-    working_dir: /node-app
-    # command: bash -c "npm install && node (nom del fitxer node)"
+  # node:
+  #   build: 
+  #     context: ./Back/Node
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./Back/Node:/node-app
+  #     # crear una carpeta local para el node.js
+  #   depends_on:
+  #     - db
+  #   working_dir: /node-app
+  #   # command: bash -c "npm install && node (nom del fitxer node)"
