@@ -11,11 +11,11 @@ class Publicacio extends Model
     protected $fillable = [
         'titol',
         'contingut',
-        'imatge',
         'estat',
         'id_usuari',
-        'views_count',
-        'publlicacio_data',
+        // 'imatge',
+        // 'views_count',
+        // 'publlicacio_data',
     ];
 
     public function publicacio()
