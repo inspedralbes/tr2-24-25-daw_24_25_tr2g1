@@ -16,10 +16,10 @@
                 <h1 class="text-center">AlumNet</h1>
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.index') }}">Usuaris</a>
+                        <a class="nav-link" href="{{ route('users.index') }}">Accedir al CRUD d'usuaris</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('publicacions.index') }}">Publicacions</a>
+                        <a class="nav-link" href="{{ route('publicacions.index') }}">Accedir al CRUD de publicacions</a>
                     </li>
                 </ul>
             </nav>
