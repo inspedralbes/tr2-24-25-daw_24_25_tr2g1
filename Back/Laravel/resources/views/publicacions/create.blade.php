@@ -26,10 +26,7 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="views_count" class="form-label">Comptador de visites</label>
-            <input type="number" class="form-control" name="views_count" id="views_count"></label>
-        </div>
+        
 
         <div class="mb-3">
             <label for="horainici" class="form-label">Hora d'inici</label>

@@ -27,7 +27,7 @@ class PublicacioController extends Controller
             'usuari_id' => 'required|exists:usuaris,id',
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            'imatge' => 'nullable|string',
+            // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
             'data_publicacio' => 'required|date',
         ]);
@@ -58,7 +58,7 @@ class PublicacioController extends Controller
             'usuari_id' => 'required|exists:usuaris,id',
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            'imatge' => 'nullable|string',
+            // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
             'data_publicacio' => 'required|date',
         ]);

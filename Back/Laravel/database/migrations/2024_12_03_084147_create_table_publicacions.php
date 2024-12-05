@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_publicacio');
             $table->string('titol', 100);
             $table->text('contingut');
-            $table->string('imatge')->nullable();
+            // $table->string('imatge')->nullable();
             $table->foreignId('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');
             $table->enum('estat', ['activa', 'inactiva']);
             $table->integer('views_count')->default(0);

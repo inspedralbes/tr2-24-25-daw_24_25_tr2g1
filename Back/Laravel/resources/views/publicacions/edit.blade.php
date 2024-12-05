@@ -18,11 +18,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="price" class="form-label">Comptador de visites</label>
-            <input type="number" class="form-control" name="views_count" id="views_count" value="{{ old('views_count', $publicacio->views_count) }}" step="0.01" required>
-        </div>
-
-        <div class="mb-3">
             <label for="image" class="form-label">Hora d'inici</label>
             <input type="text" class="form-control" name="horainici" id="horainici" value="{{ old('horainici', $product->horainici) }}" required>
         </div>
