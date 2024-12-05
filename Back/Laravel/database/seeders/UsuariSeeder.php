@@ -16,10 +16,8 @@ class UsuariSeeder extends Seeder
     {
         $archivo_json = base_path('./resources/json/user.json');
 
-        if (!file_exists($archivo_json)) {
-            $this->command->error('El archivo JSON no existe');
-            return;
-        }
+         // Clear existing data
+         DB::table('publicacions')->truncate();
 
         // Leer el archivo JSON
         $json_data = file_get_contents($archivo_json);

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('estat', ['activa', 'inactiva']);
             $table->integer('views_count')->default(0);
             $table->timestamp('publlicacio_data')->nullable();
+            $table->timestamps();
         });
     }
 
