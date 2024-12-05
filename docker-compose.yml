@@ -1,0 +1,70 @@
+services:
+  # Base de dades MySQL (db)
+  # anomeneu-la com vulgueu, però recordeu que ha de coincidir amb el nom
+  # que poseu a la configuració de la connexió de l'aplicació (i el depends_on de l'adminer)
+  # Crearà una carpeta "./mysql_data" on guardarà les dades de la base de dades
+  # Si esborreu la carpeta, la BBDD estarà buida i podreu començar des de 0 
+  # També crearà una BBBDD "botiga" pq. la imatge de mysql executa els fitxers
+  # que hi hagi a la carpeta "docker-entrypoint-initdb.d" al primer inici
+  db:
+    image: mysql:8.2.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbase_nom
+    ports:
+      - 1000:3306
+    volumes:
+      # Per guardar les dades de forma persistent
+      # La carpeta de l'esquerra HA D'EXISTIR
+      - ./mysql_data:/var/lib/mysql
+      # Per crear algunes taules al primer inici
+      # - ./back/XXX.sql:/docker-entrypoint-initdb.d/dades.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "9090:8080"
+
+  laravel:
+    #S'ha de fer un dockerfile amb PHP i Composer i les utilitats de docker per php per aixecar un servidor Laravel
+    build: ./Back/Laravel
+    ports:
+      - 8000:8000
+    volumes:
+#Quina carpeta LOCAL s'ha de mapejar / veure DINS del contenidor?
+      - ./Back/Laravel:/var/www/
+    working_dir: /var/www/
+    depends_on:
+      - db
+#Quan es crea, es poden executar ordres
+    command: bash -c "composer install && php artisan key:generate && php artisan migrate && php artisan serve --host=0.0.0.0" 
+
+  vue:
+    build: 
+      context: ./Front
+    ports:
+      - 5173:5173
+    volumes:
+      - ./Front:/app
+    depends_on:
+      - laravel
+    environment:
+      VUE_APP_API_URL: http://laravel:8000
+    command: bash -c "npm install && npm run dev"
+
+  node:
+    build: 
+      context: ./Back/Node
+    ports:
+      - 3000:3000
+    volumes:
+      - ./Back/Node:/node-app
+      # crear una carpeta local para el node.js
+    depends_on:
+      - db
+    working_dir: /node-app
+    # command: bash -c "npm install && node (nom del fitxer node)"
