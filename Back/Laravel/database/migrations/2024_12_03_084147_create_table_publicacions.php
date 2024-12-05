@@ -18,8 +18,7 @@ return new class extends Migration
             // $table->string('imatge')->nullable();
             $table->foreignId('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');
             $table->enum('estat', ['activa', 'inactiva']);
-            $table->integer('views_count')->default(0);
-            $table->timestamp('publlicacio_data')->nullable();
+            //$table->timestamp('publicacio_data')->nullable();
             $table->timestamps();
         });
     }

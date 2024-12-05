@@ -42,9 +42,7 @@ class PublicacionsSeeder extends Seeder
                     'contingut' => $publicacio['contingut'],
                     // 'imatge' => $publicacio['imatge'],
                     'id_usuari' => $publicacio['id_usuari'],
-                    'estat' => $publicacio['estat'],
-                    'views_count' => $publicacio['views_count'],
-                    'publlicacio_data' => $publicacio['publlicacio_data']
+                    'estat' => $publicacio['estat']
                 ]);
             } catch (\Exception $e) {
                 $this->command->error('Error al crear publicació: ' . $e->getMessage());

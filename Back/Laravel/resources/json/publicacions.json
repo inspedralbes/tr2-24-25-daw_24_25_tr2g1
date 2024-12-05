@@ -4,161 +4,122 @@
             "titol": "Classes de reforç per a Matemàtiques",
             "contingut": "Ofereixo classes particulars de reforç en Matemàtiques per a alumnes de grau mitjà. Sessions personalitzades per superar dificultats.",
             "id_usuari": 1,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-01 10:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Anglès per a alumnes de grau mitjà",
             "contingut": "Professor amb experiència ofereix classes d'anglès per millorar la comprensió oral i escrita.",
             "id_usuari": 2,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-02 15:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Reforç en Ciències Naturals",
             "contingut": "Classes particulars de Ciències Naturals per a alumnes que necessiten reforçar conceptes clau del temari.",
             "id_usuari": 3,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-03 18:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Classes de Llengua Catalana",
             "contingut": "Millora la teva comprensió i expressió en català amb aquestes classes especialitzades.",
             "id_usuari": 4,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-04 09:30:00"
+            "estat": "activa"
         },
         {
             "titol": "Introducció a la Programació",
             "contingut": "Aprèn els conceptes bàsics de programació amb classes pràctiques per a alumnes de grau mitjà.",
             "id_usuari": 5,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-05 14:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Preparació per a exàmens",
             "contingut": "T'ajudem a preparar-te per als exàmens amb tècniques d'estudi i reforç específic.",
             "id_usuari": 6,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-06 16:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Suport en Física i Química",
             "contingut": "Classes adaptades per comprendre i aplicar conceptes de Física i Química.",
             "id_usuari": 7,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-07 11:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Aprèn a fer treballs en equip",
             "contingut": "Sessions per millorar habilitats en treball en equip i projectes col·laboratius.",
             "id_usuari": 8,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-08 13:30:00"
+            "estat": "activa"
         },
         {
             "titol": "Classes pràctiques de Tecnologia",
             "contingut": "Explora conceptes de tecnologia amb classes pràctiques i adaptades.",
             "id_usuari": 9,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-09 10:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Habilitats comunicatives",
             "contingut": "Millora les teves habilitats per parlar en públic amb aquestes sessions personalitzades.",
             "id_usuari": 10,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-10 17:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Classes de reforç en Història",
             "contingut": "Professor qualificat ofereix classes de reforç en Història per a grau mitjà.",
             "id_usuari": 11,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-11 15:30:00"
+            "estat": "activa"
         },
         {
             "titol": "Reforç per a projectes escolars",
             "contingut": "Ajuda en l'organització i desenvolupament de projectes acadèmics.",
             "id_usuari": 12,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-12 10:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Tècniques de memòria i estudi",
             "contingut": "Aprèn tècniques efectives per retenir informació i estudiar millor.",
             "id_usuari": 13,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-13 12:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Suport en Economia",
             "contingut": "Classes d'economia per entendre conceptes bàsics i avançats.",
             "id_usuari": 14,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-14 16:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Classes de reforç en Dibuix Tècnic",
             "contingut": "Millora les teves habilitats en dibuix tècnic amb un professor especialitzat.",
             "id_usuari": 15,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-15 14:30:00"
+            "estat": "activa"
         },
         {
             "titol": "Orientació acadèmica",
             "contingut": "Ajuda per escollir les opcions acadèmiques més adequades segons les teves habilitats.",
             "id_usuari": 16,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-16 09:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Classes d'Informàtica",
             "contingut": "Aprèn a utilitzar programes essencials per a la vida acadèmica i laboral.",
             "id_usuari": 17,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-17 11:30:00"
-        },
+            "estat": "activa"
+       },
         {
             "titol": "Classes per millorar la lectura",
             "contingut": "Ajuda personalitzada per millorar la velocitat i comprensió lectora.",
             "id_usuari": 18,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-18 10:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Reforç per a Geografia",
             "contingut": "Classes dinàmiques per comprendre i aplicar conceptes de Geografia.",
             "id_usuari": 19,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-19 08:00:00"
+            "estat": "activa"
         },
         {
             "titol": "Introducció al Màrqueting Digital",
             "contingut": "Coneix les bases del màrqueting digital amb classes adaptades.",
             "id_usuari": 20,
-            "estat": "activa",
-            "views_count": 0,
-            "publlicacio_data": "2024-12-20 19:00:00"
+            "estat": "activa"
+
         }
     ]
 }
