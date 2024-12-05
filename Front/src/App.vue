@@ -1,38 +1,48 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { useRouter } from 'vue-router'
+import { ref } from 'vue';
 
+let isNavBarClicked = ref(false);
 const router = useRouter();
+
 
 const goToForum = () => {
   console.log('Navegando al foro...');
-  router.push('/forum')  
+  router.push('/forum');
+  isNavBarClicked.value = true;
 }
 
+
 const goToProfiles = () => {
-  router.push('/profiles')
+  router.push('/profiles');
+  isNavBarClicked.value = true;
 }
 
 const goToJobs = () => {
-  router.push('/jobs')
+  router.push('/jobs');
+  isNavBarClicked.value = true;
 }
 
 const goToPostJob = () => {
-  router.push('/publish')
+  router.push('/publish');
+  isNavBarClicked.value = true;
 }
 
 const goToAbout = () => {
-  router.push('/aboutUs')
+  router.push('/aboutUs');
+  isNavBarClicked.value = true;
 }
 
 const goToContact = () => {
-  router.push('/contact')
+  router.push('/contact');
+  isNavBarClicked.value = true;
 }
 </script>
 
 <template>
   <nav id="navDesktop">
-    <div class="logo" @click="router.push('/')">AlumNet</div>
+    <div class="logo" @click="router.push('/'), isNavBarClicked = false">AlumNet</div>
     <div>
         <ul class="navElements">
             <!-- <li><RouterLink to="/experience">Classes</RouterLink></li> -->
@@ -40,7 +50,7 @@ const goToContact = () => {
         </ul>
     </div>
   </nav>
-  <div class="description">
+  <div class="description" v-if="!isNavBarClicked">
     <p> ORGANITZA EL TEU APRENENTATGE I CONNECTA AMB COMPANYS D’ESTUDIS! </p>
     <div class="scroll-container">
       <p>Descobreix una plataforma on gestionar dades acadèmiques i trobar classes particulars amb altres alumnes.</p>

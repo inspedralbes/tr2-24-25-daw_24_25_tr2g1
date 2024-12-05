@@ -43,7 +43,7 @@ a:hover {
 
 .description {
     text-align: center;
-    margin: 2rem 2rem auto;
+    margin: 2rem;
     color: #101010;
     font-family: 'Arial', sans-serif;
 }
@@ -95,7 +95,7 @@ a:hover {
 .landing-nav {
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 2rem;
 }
 
 .landing-nav button {
