@@ -23,6 +23,9 @@ class Usuari extends Authenticatable
         'data_naixement',
         'major',
         'rol',
+        'foto_profile',
+        'created_at',
+        'updated_at',
     ];
 
     // Camps ocults per a arrays, útil per protegir dades sensibles
