@@ -14,11 +14,8 @@
                     <th>Títol</th>
                     <th>Contingut</th>
                     <th>Id_usuari</th>
-                    <th>Estat</th>
-                    <th>Contador de visites</th>
-                    <th>Hora d'inici</th>
-                    <th>Hora final</th>
-                    <th>Dia</th>
+                    <th>Estat</th>                   
+                    <th>Accions</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,15 +24,12 @@
                     <td>{{ $publicacio->id_publicacio }}</td>
                     <td>{{ $publicacio->titol }}</td>
                     <td>{{ $publicacio->contingut }}</td>
-                    <td>{{ $publicacio->estat }}</td>
-                    <td>{{ $publicacio->views_count }}</td>
-                    <td>{{ $publicacio->horainici }}</td>
-                    <td>{{ $publicacio->horafi }}</td>
-                    <td>{{ $publicacio->dia }}</td>
+                    <td>{{ $publicacio->id_usuari }}</td>
+                    <td>{{ $publicacio->estat }}</td>              
                     <td>
-                        <a href="{{ route('publicacions.edit', $publicacions->id_publicacio) }}" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="{{ route('publicacions.show', $publicacions->id_publicacio) }}" class="btn btn-info">Veure Detalls</a>
-                        <form action="{{ route('publicacions.destroy', $publicacions->id_publicacio) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('publicacions.edit', $publicacio->id_publicacio) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('publicacions.show', $publicacio->id_publicacio) }}" class="btn btn-info">Veure Detalls</a>
+                        <form action="{{ route('publicacions.destroy', $publicacio->id_publicacio) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás segur d\'eliminar la publicació?')">Sí, eliminar</button>

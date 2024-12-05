@@ -17,19 +17,21 @@ class PublicacioController extends Controller
     // Mostrar el formulari per crear una nova publicació
     public function create()
     {
-        return view('publicacions.create');
+        $usuaris = \App\Models\Usuari::all();
+        return view('publicacions.create', compact('usuaris'));
     }
 
     // Guardar una nova publicació
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'usuari_id' => 'required|exists:usuaris,id',
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            'imatge' => 'nullable|string',
+            'id_usuari' => 'required|exists:usuaris,id',
+            // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
-            'data_publicacio' => 'required|date',
+           // 'publicacio_data' =>'required|date',
+          //  'data_publicacio' => 'required|date',
         ]);
 
         Publicacio::create($validated);
@@ -58,7 +60,7 @@ class PublicacioController extends Controller
             'usuari_id' => 'required|exists:usuaris,id',
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            'imatge' => 'nullable|string',
+            // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
             'data_publicacio' => 'required|date',
         ]);
