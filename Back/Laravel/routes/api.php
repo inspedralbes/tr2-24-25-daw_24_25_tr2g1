@@ -38,5 +38,8 @@ Route::delete('/usuaris/{id}', [AuthController::class, 'destroy'])->name('user-d
 Route::get('/publicacions', [PublicacioController::class, 'index']);
 Route::get('/publicacions/{id}', [PublicacioController::class, 'show']);
 Route::post('/publicacions', [PublicacioController::class, 'store']);
+Route::post('/sendDate', [PublicacioController::class, 'sendDate']);
 Route::put('/publicacions/{id}', [PublicacioController::class, 'update']);
 Route::delete('/publicacions/{id}', [PublicacioController::class, 'destroy']);
+
+

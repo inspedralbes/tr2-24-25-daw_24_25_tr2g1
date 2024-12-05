@@ -39,6 +39,13 @@ class PublicacioController extends Controller
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha creat correctament!');
     }
 
+    public function sendDate()
+    {
+        $publicacio = Publicacio::all();
+
+        return response()->json(['status' => 'success', 'data' => $publicacio]);
+    }
+
     // Mostrar una publicació específica
     public function show($id)
     {
