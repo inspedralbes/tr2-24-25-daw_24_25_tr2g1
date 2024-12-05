@@ -10,13 +10,17 @@
 
     php artisan make:controller Nombre
 
-# Para crear un Seeder es el comando 
+# Para crear un Seeder es el comando
 
     php artisan make:seeder Nombre
 
 # Para ejecutar el seeder y lo hago
 
     php artisan db:seed --class=NombreDeLaClase
+
+# Para crear el seeder
+
+    php artisan make:seeder UsuarisTableSeeder
 
 # Para ejecutar todos los seeder de golpe seria con el comando
 
@@ -27,4 +31,5 @@
     php artisan key:generate
 
 # Para insertar datos en la base de datos
+
     php artisan import:users
