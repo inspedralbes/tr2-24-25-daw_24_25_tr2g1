@@ -39,15 +39,6 @@
                 <option value="Viernes">Viernes</option>
                 <option value="Sabado">Sabado</option>
             </select>
-            <label for="precio">Precio:</label>
-            <select id="precio" v-model="selectedPrecio">
-                <option value="">Totes</option>
-                <option value="0-20">0€ - 20€</option>
-                <option value="20-40">20€ - 40€</option>
-                <option value="40-60">40€ - 60€</option>
-                <option value="60-80">60€ - 80€</option>
-                <option value="80-100">80€ - 100€</option>
-            </select>
         </div>
 
         <div class="ads-list">
