@@ -30,13 +30,21 @@ class PublicacioController extends Controller
             'id_usuari' => 'required|exists:usuaris,id',
             // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
-           // 'publicacio_data' =>'required|date',
-          //  'data_publicacio' => 'required|date',
+            // 'publicacio_data' =>'required|date',
+            //  'data_publicacio' => 'required|date',
         ]);
 
         Publicacio::create($validated);
 
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha creat correctament!');
+    }
+
+    // Enviar datos a Front
+    public function sendDate()
+    {
+        $publicacio = Publicacio::all();
+
+        return response()->json(['status' => 'success', 'data' => $publicacio]);
     }
 
     // Mostrar una publicació específica
@@ -53,16 +61,12 @@ class PublicacioController extends Controller
         return view('publicacions.edit', compact('publicacio'));
     }
 
-    // Actualitzar una publicació existent
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'usuari_id' => 'required|exists:usuaris,id',
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
-            'data_publicacio' => 'required|date',
         ]);
 
         $publicacio = Publicacio::findOrFail($id);
@@ -70,6 +74,26 @@ class PublicacioController extends Controller
 
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha actualitzat correctament!');
     }
+
+
+
+    // // Actualitzar una publicació existent
+    // public function update(Request $request, $id)
+    // {
+    //     $validated = $request->validate([
+    //         'usuari_id' => 'required|exists:usuaris,id',
+    //         'titol' => 'required|string|max:100',
+    //         'contingut' => 'required|string',
+    //         // 'imatge' => 'nullable|string',
+    //         'estat' => 'required|in:activa,inactiva',
+    //         'data_publicacio' => 'required|date',
+    //     ]);
+
+    //     $publicacio = Publicacio::findOrFail($id);
+    //     $publicacio->update($validated);
+
+    //     return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha actualitzat correctament!');
+    // }
 
     // Eliminar una publicació
     public function destroy($id)
