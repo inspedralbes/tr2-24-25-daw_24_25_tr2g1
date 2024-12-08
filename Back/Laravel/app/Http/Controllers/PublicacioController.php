@@ -40,7 +40,7 @@ class PublicacioController extends Controller
     }
 
     // Enviar datos a Front
-    public function sendDate()
+    public function sendData()
     {
         $publicacio = Publicacio::all();
 

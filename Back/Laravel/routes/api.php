@@ -40,6 +40,10 @@ Route::get('/publicacions/{id}', [PublicacioController::class, 'show']);
 Route::post('/publicacions', [PublicacioController::class, 'store']);
 Route::put('/publicacions/{id}', [PublicacioController::class, 'update']);
 Route::delete('/publicacions/{id}', [PublicacioController::class, 'destroy']);
+
+
 // Enviar datos a Front
-Route::post('/sendDate', [PublicacioController::class, 'sendDate']);
+Route::post('/sendData', [PublicacioController::class, 'sendData']);
+
+Route::post('/sendDataUsers', [AuthController::class, 'sendDataUsers']);
 

@@ -51,6 +51,14 @@ class AuthController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
     }
 
+
+    // Enviar datos a Front en formato JSON
+    public function sendDataUsers()
+    {
+        $usuaris = Usuari::all();
+        return response()->json(['status'=> 'success','data'=> $usuaris]);
+    }
+
     // CRUD de mostrar usuaris
     public function index()
     {
