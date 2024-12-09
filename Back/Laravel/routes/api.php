@@ -25,7 +25,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 //ruta registre usuari
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'store']);
 // ruta para CRUD
 Route::get('/usuaris', [AuthController::class, 'index']);
 Route::get('/usuaris/{id}', [AuthController::class, 'show']);

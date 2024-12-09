@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string('nom', 100);
             $table->string('cognom1', 100);
             $table->string('cognom2', 100);
-            $table->string('email')->unique();
             $table->string('password', 60);
-            $table->enum('rol', ['alumne', 'mentor', 'professor']);
             $table->date('data_naixement')->nullable();
-            $table->string('telefon', 9)->nullable();
-            $table->string('foto_profile')->nullable();
+            $table->enum('rol', ['alumne', 'mentor', 'professor']);
+            $table->string('correu')->unique();
+            $table->string('correualternatiu')->unique();
+            $table->enum('pregunta_secreta',['Quin és nom del teu primer amic?','On vas fer la ESO?','Quin és el teu cotxe preferit?']);
+            $table->string('resposta_secreta');
+            $table->string('telefon', 9)->nullable();            
             $table->text('biografia')->nullable();
             $table->enum('major', ['si', 'no']);
             $table->timestamps();
