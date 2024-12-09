@@ -1,18 +1,13 @@
 # **Transversals**
-### Estructura mínima de carpetes per als projectes transversals
 
-És **obligatori** seguir aquesta estructura. No obstant això, podeu ampliar-la segons les necessitats del vostre projecte.
-
----
-
-## **Instruccions inicials**
-1. Aquest fitxer ha de contenir informació detallada sobre el vostre projecte.  
-2. Abans de començar, **substituïu aquest text** amb els detalls específics del vostre projecte.  
-3. Utilitzeu el format **Markdown** per assegurar una presentació clara i ben estructurada.  
-
+- Permet als professors gestionar i supervisar el procés de mentoria.
+- Inclou una borsa de classes particulars amb control de qualitat garantit pels professors.
+- Ofereix comunicació en temps real entre mentors i alumnes gràcies a sockets en el back-end.
+  
 ---
 
 ## **Detalls del projecte**
+
 
 ### **Integrants de l'equip**
 - Eduard Vilaseca Vilà  
@@ -49,8 +44,9 @@ Plataforma per a la gestió de mentoria d'alumnes. Inclou una borsa d'ajuda per 
 - **Objectiu breu:**  
 Crear una eina funcional per facilitar la connexió i mentoria entre alumnes.  
 
-- **Estat actual:**  
-*(Descripció breu de l'estat actual, per exemple: "En fase de desenvolupament inicial", "Prototip completat", etc.)*
+- **Estat actual:**
+Prototip completat.
+En fase de desenvolupament inicial.
 
 ---
 
