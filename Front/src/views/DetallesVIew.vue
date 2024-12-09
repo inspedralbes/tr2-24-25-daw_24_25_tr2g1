@@ -1,8 +1,9 @@
 <template>
   <div class="ad-details">
     <h2>{{ adDetails.titol }}</h2>
+    <br>
     <p>{{ adDetails.contingut }}</p>
-    <button @click="signUp">Apuntarse</button>
+    <button @click="signUp">Inscriure'm</button>
   </div>
 </template>
 

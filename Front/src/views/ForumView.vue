@@ -1,15 +1,14 @@
 <template>
   <div class="forum-container">
     <!-- Campo de búsqueda -->
-    <input v-model="searchQuery" type="text" placeholder="Buscar publicacions d'ofertes" class="search-input"/>
+    <input v-model="searchQuery" type="text" placeholder="Buscar ofertes" class="search-input"/>
 
     <!-- Lista dinámica de anuncios -->
     <div class="ads-list">
       <div v-for="ad in filteredAds" :key="ad.id" class="ad-item">
-        <h3 class="ad-title">{{ ad.titol }}</h3>
+        <h3 class="ad-title">{{ ad.titol }}</h3>       
         <p class="ad-description">{{ ad.contingut }}</p>
-        <p>{{ ad.estat }}</p>
-        <button @click="viewAdDetails(ad.id)">Ver más</button>
+        <button @click="viewAdDetails(ad.id)">Veure més</button>
       </div>
     </div>
   </div>
