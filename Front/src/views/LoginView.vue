@@ -317,7 +317,7 @@ function showForgotPassword() {
   color: rgba(156, 163, 175, 1);
 }
 
-select{
+.input-group select{
     width: 100%;
     border-radius: 0.375rem;
     border: 1px solid rgba(55, 65, 81, 1);
