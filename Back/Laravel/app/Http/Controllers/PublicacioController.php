@@ -39,7 +39,7 @@ class PublicacioController extends Controller
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha creat correctament!');
     }
 
-    // Enviar datos a Front
+    // Enviar datos a Front 
     public function sendData()
     {
         $publicacio = Publicacio::all();
