@@ -38,16 +38,15 @@ const goToContact = () => {
   router.push('/contact');
   isNavBarClicked.value = true;
 }
+
 </script>
 
 <template>
   <nav id="navDesktop">
     <div class="logo" @click="router.push('/'), isNavBarClicked = false">AlumNet</div>
     <div>
-        <ul class="navElements">
             <!-- <li><RouterLink to="/experience">Classes</RouterLink></li> -->
-            <li><RouterLink to="/login"><img src="/src/assets/icons/user.svg" alt="Login" width="25px"></RouterLink></li>
-        </ul>
+            <RouterLink to="/login" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Login" width="25px"></RouterLink>
     </div>
   </nav>
   <div class="description" v-if="!isNavBarClicked">
@@ -58,12 +57,18 @@ const goToContact = () => {
   </div>
 
   <div class="landing-nav">
-    <button @click="goToForum">Foro</button>
+    <RouterLink to="/forum" @click="isNavBarClicked = true"  class="button">FORO</RouterLink>
+    <RouterLink to="/profiles" @click="isNavBarClicked = true"  class="button">MENTORS</RouterLink>
+    <RouterLink to="/jobs" @click="isNavBarClicked = true"  class="button">BUSCAR OFERTES</RouterLink>
+    <RouterLink to="/publish" @click="isNavBarClicked = true"  class="button">PUBLICAR OFERTA</RouterLink>
+    <RouterLink to="/aboutUs" @click="isNavBarClicked = true"  class="button">SOBRE NOSALTRES</RouterLink>
+    <RouterLink to="/contact" @click="isNavBarClicked = true"  class="button">CONTACTE</RouterLink>
+    <!-- <button @click="goToForum">Foro</button>
     <button @click="goToProfiles">Mentors</button>
     <button @click="goToJobs">Buscar Ofertes</button>
     <button @click="goToPostJob">Publicar Oferta</button>
     <button @click="goToAbout">Sobre nosaltres</button>
-    <button @click="goToContact">Contacte</button>
+    <button @click="goToContact">Contacte</button> -->
   </div>
 
   <div class="container">

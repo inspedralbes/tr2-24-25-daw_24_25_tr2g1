@@ -7,6 +7,7 @@ import SearchOffer from '../views/SearchOfferView.vue'
 import PublisOffer from '../views/PublishOfferView.vue'
 import aboutUs from '../views/AboutUsView.vue'
 import Contact from '../views/ContactView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const routes = [
   {
@@ -48,6 +49,11 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: Contact 
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
   }
 ]
 

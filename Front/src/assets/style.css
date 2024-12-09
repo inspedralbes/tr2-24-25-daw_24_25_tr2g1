@@ -1,7 +1,13 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  color: #333;
+  line-height: 1.6;
 }
 
 nav, .navElements {
@@ -20,36 +26,26 @@ nav {
     font-size: 1.5rem;
 }
 
-/* a {
-    color: black;
-    text-decoration: none;
-    text-decoration-color: white;
-}
-
-a:hover {
-    color: gray;
-    text-decoration: underline;
-    text-underline-offset: 1rem;
-    text-decoration-color: rgb(181, 181, 181);
-} */
-
 .logo {
     font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s;
 }
 
 .logo:hover {
-    cursor: default;
+  transform: scale(.9);
 }
 
 .description {
+  width: 70%;
+  margin: 0 auto;
     text-align: center;
-    margin: 2rem;
     color: #101010;
     font-family: 'Arial', sans-serif;
 }
 
 .description p {
-    margin: 1rem 0;
     line-height: 1.6;
 }
 
@@ -93,16 +89,15 @@ a:hover {
 }
 
 .landing-nav {
+  margin: 3vh auto;
     display: flex;
     justify-content: center;
-    margin: 2rem;
 }
 
-.landing-nav button {
+.landing-nav .button {
     margin: 10px;
     width: 200px;
     height: 50px;
-    padding: 10px 20px;
     font-size: 16px;
     color: #ffffff; 
     background-color: #000000;
@@ -112,20 +107,24 @@ a:hover {
     transition: background-color 0.3s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.landing-nav button:hover {
+.landing-nav .button:hover {
     background-color: #0095ff;
 }
 
 footer {
-    background-color: #333;
+  flex: 0;
+  background-color: #333;
     color: white;
     text-align: center;
     padding: 20px;
     font-family: Arial, sans-serif;
     font-size: 14px;
-    position: fixed;
     bottom: 0;
     width: 100%;
 }
@@ -176,46 +175,6 @@ footer p:hover {
     align-items: center;
     min-height: 40px;
 }
-
-
-.contact-section {
-    padding: 2rem;
-    background-color: #f9f9f9;
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .contact-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-    text-transform: uppercase;
-  }
-  
-  .contact-info {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
-  .contact-item {
-    margin: 0.5rem 0;
-  }
-  
-  .contact-label {
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .contact-link {
-    color: #0095ff;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .contact-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
-  }
 
 .publish-container {
   padding: 2rem;
