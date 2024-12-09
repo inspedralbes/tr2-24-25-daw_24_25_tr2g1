@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: '/ad/:id',
-    name: 'DetallesPage',
+    name: 'Detalles',
     component: DetallesPage
   },
   {
