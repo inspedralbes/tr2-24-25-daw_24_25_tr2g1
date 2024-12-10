@@ -57,6 +57,11 @@
                 <label for="data_naixement">Data de naixement</label>
                 <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement" placeholder="---" required>
             </div>
+
+            <div class="input-group">
+              <label for="telefon">Telefon</label>
+              <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="---">
+            </div>
             <div class="input-group">
                 <label for="contrasenya">Contrasenya</label>
                 <input type="password" name="password" id="password" v-model="password" placeholder="---" required>
@@ -97,8 +102,7 @@
             </div>
 
             <div class="input-group">
-                <h3><label>En cas de perdre la contrasenya fes click al botó de sota</label></h3>                
-                <button @click="afegirPreguntaSecreta = !afegirPreguntaSecreta">Recuperació de la contrasenya</button>
+                <h3><label>En cas de perdre la contrasenya omple els camps següents</label></h3>              
             </div>
 
             <!-- Pregunta secreta -->
