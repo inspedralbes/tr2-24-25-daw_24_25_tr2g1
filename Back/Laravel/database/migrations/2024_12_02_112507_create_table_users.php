@@ -23,7 +23,6 @@ return new class extends Migration
             $table->enum('rol', ['alumne', 'mentor', 'professor']);
             $table->string('correu')->unique();
             $table->string('correualternatiu')->unique();
-            $table->string('telefon', 9)->nullable();
             $table->enum('pregunta_secreta',['Quin és nom del teu primer amic?','On vas fer la ESO?','Quin és el teu cotxe preferit?']);
             $table->string('resposta_secreta');
             $table->string('telefon', 9)->nullable();            
