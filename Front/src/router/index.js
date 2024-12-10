@@ -13,53 +13,53 @@ const routes = [
   {
     path: '/forum',
     name: 'forum',
-    component: ForumPage
+    component: ForumPage,
   },
   {
     path: '/ad/:id',
     name: 'Detalles',
-    component: DetallesPage
+    component: DetallesPage,
   },
   {
     path: '/auth',
     name: 'auth',
-    component: AuthPage
+    component: AuthPage,
   },
   {
     path: '/profiles',
     name: 'profiles',
-    component: MentorsPage
+    component: MentorsPage,
   },
   {
     path: '/jobs',
     name: 'jobs',
-    component: SearchOffer
+    component: SearchOffer,
   },
   {
     path: '/publish',
     name: 'publish',
-    component: PublisOffer 
+    component: PublisOffer,
   },
   {
     path: '/aboutUs',
     name: 'aboutUs',
-    component: aboutUs 
+    component: aboutUs,
   },
   {
     path: '/contact',
     name: 'contact',
-    component: Contact 
+    component: Contact,
   },
   {
     path: '/login',
     name: 'login',
-    component: LoginView
-  }
+    component: LoginView,
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 export default router
