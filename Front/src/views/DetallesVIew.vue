@@ -1,7 +1,6 @@
 <template>
   <div class="ad-details">
     <h2>{{ adDetails.titol }}</h2>
-    <br>
     <p>{{ adDetails.contingut }}</p>
     <button @click="signUp">Inscriure'm</button>
   </div>
@@ -25,31 +24,40 @@ const signUp = () => {
   router.push('/auth')
 }
 </script>
-
 <style scoped>
 .ad-details {
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #f9f9fa;
+  border-radius: 12px;
+  border: 1px solid #e1e4e8;
 }
 
 h2 {
-  font-size: 20px;
+  color: #2c3e50;
+  font-size: 22px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #007bff;
 }
 
 p {
+  color: #4a4a4a;
   font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
 }
 
 button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  cursor: pointer;
+  padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
 button:hover {
