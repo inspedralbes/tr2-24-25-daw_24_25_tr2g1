@@ -106,7 +106,7 @@
             </div>
 
             <!-- Pregunta secreta -->
-            <div class="input-group" v-if="afegirPreguntaSecreta">
+            <div class="input-group">
                 <div class="input-group">
                     <label for="pregunta">Tria una pregunta</label>
                     <select name="preguntasecreta" id="">
