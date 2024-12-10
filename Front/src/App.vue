@@ -56,6 +56,7 @@ const goToContact = () => {
     </div>
   </div>
 
+  <!-- Desktop View -->
   <div class="landing-nav">
     <RouterLink to="/forum" @click="isNavBarClicked = true"  class="button">FORO</RouterLink>
     <RouterLink to="/profiles" @click="isNavBarClicked = true"  class="button">MENTORS</RouterLink>
@@ -69,6 +70,16 @@ const goToContact = () => {
     <button @click="goToPostJob">Publicar Oferta</button>
     <button @click="goToAbout">Sobre nosaltres</button>
     <button @click="goToContact">Contacte</button> -->
+  </div>
+
+  <!-- Mobile View -->
+  <div class="landing-nav-mobile">
+    <RouterLink to="/forum" @click="isNavBarClicked = true"  class="button"><img src="/src/assets/icons/foro.png" width="25vh"></RouterLink>
+    <RouterLink to="/profiles" @click="isNavBarClicked = true"  class="button"><img src="/src/assets/icons/mentor.png" width="25vh"></RouterLink>
+    <RouterLink to="/jobs" @click="isNavBarClicked = true"  class="button"><img src="/src/assets/icons/buscar.png" width="25vh"></RouterLink>
+    <RouterLink to="/publish" @click="isNavBarClicked = true"  class="button"><img src="/src/assets/icons/publicar.png" width="25vh"></RouterLink>
+    <RouterLink to="/aboutUs" @click="isNavBarClicked = true"  class="button"><img src="/src/assets/icons/sobrenosaltres.png" width="25vh"></RouterLink>
+    <RouterLink to="/contact" @click="isNavBarClicked = true"  class="button"><img src="/src/assets/icons/contacte.png" width="25vh"></RouterLink>
   </div>
 
   <div class="container">

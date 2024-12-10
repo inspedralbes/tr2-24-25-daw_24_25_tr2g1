@@ -209,7 +209,8 @@ function showForgotPassword() {
 }
 
 .form {
-  margin-top: 1.5rem;
+    background-color: rgba(17, 24, 39, 1);
+    margin-top: 1.5rem;
 }
 
 .input-group {
@@ -317,7 +318,7 @@ function showForgotPassword() {
   color: rgba(156, 163, 175, 1);
 }
 
-.input-group select{
+.input-group select {
     width: 100%;
     border-radius: 0.375rem;
     border: 1px solid rgba(55, 65, 81, 1);
