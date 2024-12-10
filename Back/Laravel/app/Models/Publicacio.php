@@ -13,6 +13,7 @@ class Publicacio extends Model
         'contingut',
         'estat',
         'id_usuari',
+        'especialitat',
         // 'imatge',
         // 'views_count',
         // 'publlicacio_data',

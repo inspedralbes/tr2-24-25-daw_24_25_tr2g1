@@ -18,6 +18,7 @@ return new class extends Migration
             // $table->string('imatge')->nullable();
             $table->foreignId('id_usuari')->references('id')->on('usuaris')->onDelete('cascade');
             $table->enum('estat', ['activa', 'inactiva']);
+            $table->enum('especialitat', ['Matemáticas', 'Inglés', 'Ciencias','Biologia', 'Pogramacio','Geografia','Tecnologia','Quimica']);
             //$table->timestamp('publicacio_data')->nullable();
             $table->timestamps();
         });

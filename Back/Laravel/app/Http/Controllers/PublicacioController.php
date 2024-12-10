@@ -22,16 +22,17 @@ class PublicacioController extends Controller
     }
 
     // Guardar una nova publicació
+
     public function store(Request $request)
     {
+        dd($request->all()); // Esto detendrá la ejecución y mostrará los datos enviados
+
         $validated = $request->validate([
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
             'id_usuari' => 'required|exists:usuaris,id',
-            // 'imatge' => 'nullable|string',
             'estat' => 'required|in:activa,inactiva',
-            // 'publicacio_data' =>'required|date',
-            //  'data_publicacio' => 'required|date',
+            'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
         ]);
 
         Publicacio::create($validated);
@@ -39,7 +40,7 @@ class PublicacioController extends Controller
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha creat correctament!');
     }
 
-    // Enviar datos a Front 
+    // Enviar datos a Front
     public function sendData()
     {
         $publicacio = Publicacio::all();
@@ -67,6 +68,7 @@ class PublicacioController extends Controller
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
             'estat' => 'required|in:activa,inactiva',
+            'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
         ]);
 
         $publicacio = Publicacio::findOrFail($id);
