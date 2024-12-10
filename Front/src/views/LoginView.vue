@@ -34,35 +34,43 @@
             <a @click="showLogin = !showLogin">Registrar-se</a>
         </p>    
     </div>
+
+
     <!-- Signup -->
     <div class="signup-container" v-if="!showLogin && !forgotPassword">
         <p class="title">REGISTRAR-SE</p>
         <form class="form">
             <div class="input-group">
                 <label for="nom">Nom</label>
-                <input type="text" name="nom" id="nom" v-model="nom" placeholder="---">
+                <input type="text" name="nom" id="nom" v-model="nom" placeholder="---" required>
             </div>
             <div class="input-group">
-                <label for="pCognom">Primer cognom</label>
-                <input type="text" name="pCognom" id="pCognom" v-model="pCognom" placeholder="---">
+                <label for="cognom1">Primer cognom</label>
+                <input type="text" name="cognom1" id="cognom1" v-model="cognom1" placeholder="---" required>
             </div>
             <div class="input-group">
-                <label for="sCognom">Segon cognom</label>
-                <input type="text" name="sCognom" id="sCognom" v-model="sCognom" placeholder="---">
+                <label for="cognom2">Segon cognom</label>
+                <input type="text" name="cognom2" id="cognom2" v-model="cognom2" placeholder="---" required>
+            </div>
+
+            <div class="input-group">
+                <label for="data_naixement">Data de naixement</label>
+                <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement" placeholder="---" required>
+            </div>
+
+            <div class="input-group">
+              <label for="telefon">Telefon</label>
+              <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="---">
             </div>
             <div class="input-group">
                 <label for="contrasenya">Contrasenya</label>
-                <input type="password" name="contrasenya" id="contrasenya" v-model="contrasenya" placeholder="---">
+                <input type="password" name="password" id="password" v-model="password" placeholder="---" required>
             </div>
             <div class="input-group">
+                <!-- afegir un comprovant de les dues contrasenyes -->
                 <label for="contrasenya2">Confirmar contrasenya</label>
-                <input type="password" name="contrasenya2" id="contrasenya2" v-model="contrasenya2" placeholder="---">
+                <input type="password" name="password2" id="password2" v-model="password2" placeholder="---" required>
             </div>
-            <div class="input-group">
-                <label for="correu">Correu</label>
-                <input type="mail" name="correu" id="username" v-model="correu" placeholder="---">
-            </div>
-
             <div class="input-group">
                 <label for="rol-select">Sel·lecciona el teu rol</label>
                 <select name="rol-select" id="rol-select" v-model="rol" required>
@@ -82,17 +90,30 @@
                 <input type="text" v-model="departament" placeholder="Departament" required />
             </div>
             <div class="input-group">
-                <label @click="afegirPreguntaSecreta = !afegirPreguntaSecreta">En cas de perdre la contrasenya </label >
+                <!-- afegir un if que si es difretn el correu de l'alumne amb el de professor avisi(tot depen de el rol) -->
+                <label for="correu">Correu</label>
+                <input type="mail" name="correu" id="username" v-model="correu" placeholder="---" required>
+            </div>
+
+            <div class="input-group">
+                <!-- afegir un if que si es difretn el correu de l'alumne amb el de professor avisi(tot depen de el rol) -->
+                <label for="correualt">Correu Alternatiu</label>
+                <input type="mail" name="correualt" id="correualt" v-model="correualt" placeholder="---" required>
+            </div>
+
+            <div class="input-group">
+                <h3><label>En cas de perdre la contrasenya omple els camps següents</label></h3>              
             </div>
 
             <!-- Pregunta secreta -->
             <div class="input-group" v-if="afegirPreguntaSecreta">
                 <div class="input-group">
+                    <label for="pregunta">Tria una pregunta</label>
                     <select name="preguntasecreta" id="">
                         <option disabled selected>Pregunta secreta</option>
-                        <option value="pregunta1">Com es el nombre del teu primer amic?</option>
+                        <option value="pregunta1">Quin és nom del teu primer amic?</option>
                         <option value="pregunta2">On vas fer l'ESO?</option>
-                        <option value="pregunta3">El teu cotxe preferit?</option>
+                        <option value="pregunta3">Quin és el teu cotxe preferit?</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -102,7 +123,7 @@
                     </div>
                 </div>
             </div>
-            <button class="sign">Registrar-se</button>
+            <button @click.prevent="registrarUsuari"class="sign">Registrar-se</button>
         </form>
         <div class="social-message">
             <div class="line"></div>
@@ -168,6 +189,7 @@
 </template>
 
 <script setup>
+import axios from 'axios';
 import { ref } from 'vue';
 
 let showLogin = ref(true);
@@ -176,11 +198,13 @@ let canviarContrasenya = ref(false);
 let afegirPreguntaSecreta = ref(false);
 
 let nom = ref('');
-let pCognom = ref('');
-let sCognom = ref('');
-let contrasenya = ref('');
-let contrasenya2 = ref('');
+let cognom1 = ref('');
+let cognom2 = ref('');
+let password = ref('');
+let password2 = ref('');
+let data_naixement = ref('');
 let correu = ref('');
+let correualt = ref('');
 let rol = ref('');
 let curs = ref('');
 let especialitat = ref('');
@@ -190,6 +214,47 @@ function showForgotPassword() {
     forgotPassword.value = !forgotPassword.value
     showLogin.value = !showLogin.value
 }
+//funció registrar usuari
+async function registrarUsuari() {
+  if (password.value !== password2.value) {
+    alert("Les contrasenyes no coincideixen!");
+    return;
+  }
+
+  // Construir dades segons el rol
+  const dadesUsuari = {
+    nom: nom.value,
+    primerCognom: cognom1.value,
+    segonCognom: cognom2.value,
+    contrasenya: password.value,
+    dataNaixement: data_naixement.value,
+    correu: correu.value,
+    correuAlternatiu: correualt.value,
+    rol: rol.value,
+  };
+
+  // Afegir només el camp rellevant segons el rol
+  if (rol.value === 'alumne') {
+    dadesUsuari.curs = curs.value; // Només l'alumne té aquest camp
+  } else if (rol.value === 'mentor') {
+    dadesUsuari.especialitat = especialitat.value; // Només el mentor té aquest camp
+  } else if (rol.value === 'professor') {
+    dadesUsuari.departament = departament.value; // Només el professor té aquest camp
+  }
+
+  try {
+    console.log(dadesUsuari);
+    const resposta = await axios.post('http://localhost:8000.com/api/store', dadesUsuari);
+    
+    alert("Usuari registrat amb èxit!");
+    console.log(resposta.data);
+  } catch (error) {
+    console.error("Error al registrar l'usuari:", error);
+    alert("Error al registrar l'usuari. Intenta-ho més tard.");
+  }
+}
+
+
 </script>
 
 <style>
