@@ -45,7 +45,12 @@ class AuthController extends Controller
             'major'=> $validated['major'],
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
+      //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Usuari creat correctament!',
+        ]);
     }
 
 

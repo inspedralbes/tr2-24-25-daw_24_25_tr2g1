@@ -200,7 +200,6 @@ let showLogin = ref(true);
 let forgotPassword = ref(false);
 let canviarContrasenya = ref(false);
 
-
 let nom = ref('');
 let cognom1 = ref('');
 let cognom2 = ref('');
@@ -263,6 +262,9 @@ async function registrarUsuari() {
   try {
     const resposta = await axios.post('http://localhost:8000/api/store', dadesUsuari);
     console.log('Usuari registrat:', resposta.data);
+    alert('Usuari registrat correctament!');
+    window.location.reload();
+    router.push('/foro');
 } catch (error) {
     
         console.error('Error desconegut:', error);
