@@ -26,7 +26,9 @@ const signUp = () => {
 </script>
 <style scoped>
 .ad-details {
-  max-width: 600px;
+  width: 800px;
+  height: 260px;
+  /* max-width: 600px; */
   margin: 30px auto;
   padding: 25px;
   background-color: #f9f9fa;
