@@ -148,6 +148,9 @@ nav {
   .landing-nav {
     display: none;
   }
+  .description p:first-child{
+    font-size: 2vh;
+  }
 }
 
 @media (min-width: 769px) {
