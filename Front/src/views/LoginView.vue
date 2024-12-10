@@ -102,6 +102,12 @@
             </div>
 
             <div class="input-group">
+              <label for="major">Major d'edat</label>
+              <input type="text" name="major" id="major" v-model="major">
+
+            </div>
+
+            <div class="input-group">
                 <h3><label>En cas de perdre la contrasenya omple els camps següents</label></h3>              
             </div>
 
@@ -109,16 +115,16 @@
             <div class="input-group">
                 <div class="input-group">
                     <label for="pregunta_secreta">Tria una pregunta</label>
-                    <select name="pregunta_secreta" id="">
+                    <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta"> 
                     <option value="" disabled selected>---</option>
-                    <option value="pregunta_secreta">Com es el nombre del teu primer amic?</option>
-                    <option value="pregunta_secreta">On vas fer l'ESO?</option>
-                    <option value="pregunta_secreta">El teu cotxe preferit?</option>
+                    <option value="Com es el nombre del teu primer amic?">Com es el nombre del teu primer amic?</option>
+                    <option value="On vas fer la ESO?">On vas fer la ESO?</option>
+                    <option value="El teu cotxe preferit?">El teu cotxe preferit?</option>
                 </select>
                 </div>
                 <div class="input-group">
                     <label for="resposta_secreta">Resposta</label>
-                    <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="---">
+                    <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="---" v-model="resposta_secreta">
                 </div>
             </div>
             <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
@@ -210,6 +216,8 @@ let rol = ref('');
 let curs = ref('');
 let especialitat = ref('');
 let departament = ref('');
+let major = ref('');
+
 
 function showForgotPassword() {
     forgotPassword.value = !forgotPassword.value
@@ -222,46 +230,45 @@ async function registrarUsuari() {
     return;
   }
 
+
   // Construir dades segons el rol
   const dadesUsuari = {
-    nom: nom.value,
-    cognom1: cognom1.value,
-    cognom2: cognom2.value,
-    password: password.value,
-    data_naixement: data_naixement.value,
-    correu: correu.value,
-    correualternatiu: correualternatiu.value,
-    pregunta_secreta: pregunta_secreta.value,
-    resposta_secreta: resposta_secreta.value,
-    telefon: telefon.value,
-    rol: rol.value,
-  };
+  nom: nom.value,
+  cognom1: cognom1.value,
+  cognom2: cognom2.value,
+  password: password.value,
+  data_naixement: data_naixement.value,
+  correu: correu.value,
+  correualternatiu: correualternatiu.value,
+  pregunta_secreta: pregunta_secreta.value,
+  resposta_secreta: resposta_secreta.value,
+  telefon: telefon.value,
+  rol: rol.value,
+  major: major.value,
+};
+
 
   // Afegir només el camp rellevant segons el rol
   if (rol.value === 'alumne') {
-    dadesUsuari.curs = curs.value; // Només l'alumne té aquest camp
-  } else if (rol.value === 'mentor') {
-    dadesUsuari.especialitat = especialitat.value; // Només el mentor té aquest camp
-  } else if (rol.value === 'professor') {
-    dadesUsuari.departament = departament.value; // Només el professor té aquest camp
-  }
+  dadesUsuari.curs = curs.value;
+} else if (rol.value === 'mentor') {
+  dadesUsuari.especialitat = especialitat.value;
+} else if (rol.value === 'professor') {
+  dadesUsuari.departament = departament.value;
+}
+
+
+  console.log("Datos enviados al backend:", dadesUsuari);
 
   try {
-    console.log(dadesUsuari);
-    const resposta = await axios.post('http://localhost:8000/api/store', dadesUsuari, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    });
+    const resposta = await axios.post('http://localhost:8000/api/store', dadesUsuari);
+    console.log('Usuari registrat:', resposta.data);
+} catch (error) {
     
-    alert("Usuari registrat amb èxit!");
-    console.log(resposta.data);
-  } catch (error) {
-    console.error("Error al registrar l'usuari:", error);
-    alert("Error al registrar l'usuari. Intenta-ho més tard.");
-  }
+        console.error('Error desconegut:', error);
+    }
 }
+
 
 
 </script>

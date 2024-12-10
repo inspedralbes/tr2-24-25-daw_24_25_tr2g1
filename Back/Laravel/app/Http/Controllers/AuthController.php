@@ -18,12 +18,11 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
             'data_naixement' => 'required|date',
             'rol' => 'required|in:alumne,mentor,professor',
-            'correu' => 'required|correu|unique:usuaris,correu',
-            'correualternatiu'=> 'required|correu|unique:usuaris,correualternatiu',
-            'pregunta_secreta' => 'required|in: Quin és el nom del teu primer amic?,On vas fer la ESO?,Quin és el teu cotxe preferit?',
-            'resposta_secreta'=> 'required|string',
+            'correu' => 'required|email|unique:usuaris,correu',
+            'correualternatiu'=> 'required|email|unique:usuaris,correualternatiu',
+           'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
+            'resposta_secreta' => 'nullable|string',
             'telefon' => 'required|string|max:9',
-            'biografia' => 'nullable|string',
             'major' => 'required|in:si,no',
         ]);
 
@@ -39,10 +38,10 @@ class AuthController extends Controller
             'rol' => $validated['rol'],
             'correu' => $validated['correu'],
             'correualternatiu'=> $validated['correualternatiu'],
-            'pregunta_secreta'=> $validated['pregunta_secreta'],
-            'resposta_secreta'=> $validated['resposta_secreta'],
+            'pregunta_secreta' => $validated['pregunta_secreta'],
+            'resposta_secreta' =>  $validated['resposta_secreta'],
             'telefon' => $validated['telefon'],
-            'biografia' => $validated['biografia'],
+            //'biografia' => $validated['biografia'],
             'major'=> $validated['major'],
         ]);
 
