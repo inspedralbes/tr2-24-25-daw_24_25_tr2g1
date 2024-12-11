@@ -75,7 +75,7 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f4f4f6;
+  background-color: lightgrey;
 }
 
 .search-input {
@@ -147,7 +147,7 @@ onMounted(() => {
 }
 
 .button:hover {
-  background-color: #021931;
+  background-color: black;
   color: white;
 }
 

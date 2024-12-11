@@ -21,7 +21,7 @@ onMounted(async () => {
 })
 
 const signUp = () => {
-  router.push('/auth')
+  router.push('/login')
 }
 </script>
 <style scoped>
@@ -37,11 +37,11 @@ const signUp = () => {
 }
 
 h2 {
-  color: #2c3e50;
+  color: #000000;
   font-size: 22px;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid #000000;
 }
 
 p {
@@ -53,7 +53,7 @@ p {
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 6px;
@@ -63,6 +63,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: lightgrey;
+  color: black;
 }
 </style>

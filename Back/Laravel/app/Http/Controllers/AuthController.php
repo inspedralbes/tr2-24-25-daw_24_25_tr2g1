@@ -5,9 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function login(Request $request)
+    {
+        // Validar les dades d'inici de sessió
+        $validated = $request->validate([
+            'correu' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        // Buscar l'usuari pel correu
+        $usuari = Usuari::where('correu', $validated['correu'])->first();
+
+        // Comprovar si l'usuari existeix i si la contrasenya és correcta
+        if (!$usuari || !Hash::check($validated['password'], $usuari->password)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Dades incorrectes',
+            ], 401);
+        }
+
+        // Generar un token d'autenticació (Sanctum o personalitzat)
+        $token = $usuari->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Inici de sessió correcte',
+            'token' => $token,
+            'usuari' => $usuari,
+        ]);
+    }
     public function store(Request $request)
     {
         // Validación de los datos del formulario
@@ -19,14 +49,14 @@ class AuthController extends Controller
             'data_naixement' => 'required|date',
             'rol' => 'required|in:alumne,mentor,professor',
             'correu' => 'required|email|unique:usuaris,correu',
-            'correualternatiu'=> 'required|email|unique:usuaris,correualternatiu',
-           'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
+            'correualternatiu' => 'required|email|unique:usuaris,correualternatiu',
+            'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
             'resposta_secreta' => 'nullable|string',
             'telefon' => 'required|string|max:9',
             'major' => 'required|in:si,no',
         ]);
 
-       
+
 
         // Crear el usuario en la base de datos
         $usuari = Usuari::create([
@@ -37,15 +67,15 @@ class AuthController extends Controller
             'data_naixement' => $validated['data_naixement'],
             'rol' => $validated['rol'],
             'correu' => $validated['correu'],
-            'correualternatiu'=> $validated['correualternatiu'],
+            'correualternatiu' => $validated['correualternatiu'],
             'pregunta_secreta' => $validated['pregunta_secreta'],
             'resposta_secreta' =>  $validated['resposta_secreta'],
             'telefon' => $validated['telefon'],
             //'biografia' => $validated['biografia'],
-            'major'=> $validated['major'],
+            'major' => $validated['major'],
         ]);
 
-      //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
+        //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
 
         return response()->json([
             'status' => 'success',
@@ -58,7 +88,7 @@ class AuthController extends Controller
     public function sendDataUsers()
     {
         $usuaris = Usuari::all();
-        return response()->json(['status'=> 'success','data'=> $usuaris]);
+        return response()->json(['status' => 'success', 'data' => $usuaris]);
     }
 
     // CRUD de mostrar usuaris
@@ -94,9 +124,9 @@ class AuthController extends Controller
             'data_naixement' => 'required|date',
             'rol' => 'required|in:alumne,mentor,professor',
             'correu' => 'required|correu|unique:usuaris,correu',
-            'correualternatiu'=> 'required|correu|unique:usuaris,correualternatiu',
+            'correualternatiu' => 'required|correu|unique:usuaris,correualternatiu',
             'pregunta_secreta' => 'required|in: Quin és el nom del teu primer amic?,On vas fer la ESO?,Quin és el teu cotxe preferit?',
-            'resposta_secreta'=> 'required|string',
+            'resposta_secreta' => 'required|string',
             'telefon' => 'required|string|max:9',
             'biografia' => 'nullable|string',
             'major' => 'required|in:si,no',
