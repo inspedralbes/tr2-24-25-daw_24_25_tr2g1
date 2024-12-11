@@ -195,6 +195,7 @@
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 let showLogin = ref(true);
 let forgotPassword = ref(false);
@@ -216,6 +217,8 @@ let curs = ref('');
 let especialitat = ref('');
 let departament = ref('');
 let major = ref('');
+
+const router = useRouter();
 
 
 function showForgotPassword() {
@@ -263,8 +266,7 @@ async function registrarUsuari() {
     const resposta = await axios.post('http://localhost:8000/api/store', dadesUsuari);
     console.log('Usuari registrat:', resposta.data);
     alert('Usuari registrat correctament!');
-    window.location.reload();
-    router.push('/foro');
+    router.push('/forum');
 } catch (error) {
     
         console.error('Error desconegut:', error);
