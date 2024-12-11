@@ -138,8 +138,8 @@ onMounted(() => {
 .button {
   align-self: center;
   padding: 8px 15px;
-  background-color: rgb(169, 169, 169);
-  color: black;
+  background-color: black;
+  color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -147,8 +147,8 @@ onMounted(() => {
 }
 
 .button:hover {
-  background-color: black;
-  color: white;
+  background-color: rgb(169, 169, 169);
+  color: black;
 }
 
 .load-more-container {
@@ -159,7 +159,7 @@ onMounted(() => {
 
 .load-more-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color:  black;
   color: white;
   border: none;
   border-radius: 6px;
@@ -168,6 +168,7 @@ onMounted(() => {
 }
 
 .load-more-button:hover {
-  background-color: #0056b3;
+  background-color: rgb(169, 169, 169);
+  color: black;
 }
 </style>
