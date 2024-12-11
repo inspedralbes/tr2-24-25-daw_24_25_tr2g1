@@ -9,15 +9,15 @@
         <br>
         <div class="flex">
           <label>
-            <input class="input" type="text" placeholder="Nom" name="gener" v-model="gener" />
+            <input class="input" type="text" placeholder="Nom" name="nom" id="nom" v-model="nom" />
           </label>
 
           <label>
-            <input class="input" type="text" placeholder="Primer Cognom" name="gener" v-model="gener" />
+            <input class="input" type="text" placeholder="Primer Cognom" id="cognom1" name="cognom1" v-model="cognom1" />
           </label>
 
           <label>
-            <input class="input" type="text" placeholder="Segon Cognom" name="gener" v-model="gener" />
+            <input class="input" type="text" placeholder="Segon Cognom" id="cognom2" name="cognom2" v-model="cognom2" />
           </label>
         </div>
 
