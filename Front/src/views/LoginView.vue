@@ -281,14 +281,8 @@ function showForgotPassword() {
   forgotPassword.value = !forgotPassword.value
   showLogin.value = !showLogin.value
 }
-//funció registrar usuari
-async function registrarUsuari() {
-  if (password.value !== password2.value) {
-    alert('Les contrasenyes no coincideixen!')
-    return
-  }
 
-  async function login() {
+async function login() {
     try {
       // Agafem els valors dels camps del formulari
       const correu = document.querySelector('#correu').value
@@ -313,6 +307,14 @@ async function registrarUsuari() {
       }
     }
   }
+//funció registrar usuari
+async function registrarUsuari() {
+  if (password.value !== password2.value) {
+    alert('Les contrasenyes no coincideixen!')
+    return
+  }
+
+  
 
   // Construir dades segons el rol
   const dadesUsuari = {
