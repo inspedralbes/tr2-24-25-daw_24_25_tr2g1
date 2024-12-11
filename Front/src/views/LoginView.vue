@@ -12,7 +12,7 @@
           <label for="contrasenya">Contrasenya</label>
           <input type="password" name="contrasenya" id="contrasenya" placeholder="---" />
           <div class="forgot">
-            <a rel="noopener noreferrer" href="#" @click="showForgotPassword">Forgot Password ?</a>
+            <a rel="noopener noreferrer" href="#" @click="showForgotPassword">Has oblidat la contrasenya?</a>
           </div>
         </div>
         <button @click.prevent="login" class="sign">Iniciar sessió</button>
