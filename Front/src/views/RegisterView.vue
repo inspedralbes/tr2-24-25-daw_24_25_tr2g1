@@ -1,7 +1,7 @@
 <template>
     <!-- Signup -->
     <div class="signup-container" v-if="!showLogin && !forgotPassword">
-        <p class="title">REGISTRAR-SE</p>
+        <p class="title">REGISTRAR-SEEEEE</p>
         <form class="form">
             <div class="input-group">
                 <h3>Dades personals</h3>
@@ -13,12 +13,12 @@
 
                     <label>
                         <input class="input" type="text" placeholder="Primer Cognom" id="cognom1" name="cognom1"
-                            v-model="cognom1" />
+                            v-model="cognom1"/>
                     </label>
 
                     <label>
                         <input class="input" type="text" placeholder="Segon Cognom" id="cognom2" name="cognom2"
-                            v-model="cognom2" />
+                            v-model="cognom2"/>
                     </label>
                 </div>
 
