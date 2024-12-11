@@ -31,9 +31,9 @@
             </button>
         </div>
         <p class="signup">No tens un compte?
-            <a @click="showLogin = !showLogin">Registrar-se</a>
-        </p>    
-    </div>
+          <a @click="showLogin = !showLogin">Registrar-se</a>
+        </p>   
+      </div>
 
 
     <!-- Signup -->
@@ -54,6 +54,10 @@
             </div>
 
             <div class="input-group">
+                <label for="password">Contrasenya</label>
+                <input type="password" name="password" id="password" v-model="password" placeholder="---" required>
+            </div>
+            <div class="input-group">
                 <label for="data_naixement">Data de naixement</label>
                 <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement" placeholder="---" required>
             </div>
@@ -63,12 +67,8 @@
               <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="---">
             </div>
             <div class="input-group">
-                <label for="contrasenya">Contrasenya</label>
-                <input type="password" name="password" id="password" v-model="password" placeholder="---" required>
-            </div>
-            <div class="input-group">
                 <!-- afegir un comprovant de les dues contrasenyes -->
-                <label for="contrasenya2">Confirmar contrasenya</label>
+                <label for="password2">Confirmar contrasenya</label>
                 <input type="password" name="password2" id="password2" v-model="password2" placeholder="---" required>
             </div>
             <div class="input-group">
@@ -92,13 +92,19 @@
             <div class="input-group">
                 <!-- afegir un if que si es difretn el correu de l'alumne amb el de professor avisi(tot depen de el rol) -->
                 <label for="correu">Correu</label>
-                <input type="mail" name="correu" id="username" v-model="correu" placeholder="---" required>
+                <input type="mail" name="correu" id="correu" v-model="correu" placeholder="---" required>
             </div>
 
             <div class="input-group">
                 <!-- afegir un if que si es difretn el correu de l'alumne amb el de professor avisi(tot depen de el rol) -->
-                <label for="correualt">Correu Alternatiu</label>
-                <input type="mail" name="correualt" id="correualt" v-model="correualt" placeholder="---" required>
+                <label for="correualternatiu">Correu Alternatiu</label>
+                <input type="mail" name="correualternatiu" id="correualternatiu" v-model="correualternatiu" placeholder="---" required>
+            </div>
+
+            <div class="input-group">
+              <label for="major">Major d'edat</label>
+              <input type="text" name="major" id="major" v-model="major">
+
             </div>
 
             <div class="input-group">
@@ -106,24 +112,22 @@
             </div>
 
             <!-- Pregunta secreta -->
-            <div class="input-group" v-if="afegirPreguntaSecreta">
+            <div class="input-group">
                 <div class="input-group">
-                    <label for="pregunta">Tria una pregunta</label>
-                    <select name="preguntasecreta" id="">
-                        <option disabled selected>Pregunta secreta</option>
-                        <option value="pregunta1">Quin és nom del teu primer amic?</option>
-                        <option value="pregunta2">On vas fer l'ESO?</option>
-                        <option value="pregunta3">Quin és el teu cotxe preferit?</option>
-                    </select>
+                    <label for="pregunta_secreta">Tria una pregunta</label>
+                    <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta"> 
+                    <option value="" disabled selected>---</option>
+                    <option value="Com es el nombre del teu primer amic?">Com es el nombre del teu primer amic?</option>
+                    <option value="On vas fer la ESO?">On vas fer la ESO?</option>
+                    <option value="El teu cotxe preferit?">El teu cotxe preferit?</option>
+                </select>
                 </div>
                 <div class="input-group">
-                    <label for="preguntaresposta">Resposta</label>
-                    <input type="text" name="preguntaresposta" id="preguntaresposta" placeholder="---">
-                    <div class="forgot">
-                    </div>
+                    <label for="resposta_secreta">Resposta</label>
+                    <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="---" v-model="resposta_secreta">
                 </div>
             </div>
-            <button @click.prevent="registrarUsuari"class="sign">Registrar-se</button>
+            <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
         </form>
         <div class="social-message">
             <div class="line"></div>
@@ -151,12 +155,12 @@
                 <input type="text" name="correu" id="correu" placeholder="a24alumnet@inspedralbes.cat">
             </div>
             <div class="input-group">
-                <label for="preguntasecreta">Pregunta secreta</label>
-                <select name="preguntasecreta" id="">
+                <label for="pregunta_secreta">Pregunta secreta</label>
+                <select name="pregunta_secreta" id="">
                     <option value="" disabled selected>---</option>
-                    <option value="pregunta1">Com es el nombre del teu primer amic?</option>
-                    <option value="pregunta2">On vas fer l'ESO?</option>
-                    <option value="pregunta3">El teu cotxe preferit?</option>
+                    <option value="pregunta_secreta">Com es el nombre del teu primer amic?</option>
+                    <option value="pregunta_secreta">On vas fer l'ESO?</option>
+                    <option value="pregunta_secreta">El teu cotxe preferit?</option>
                 </select>
             </div>
             <div class="input-group">
@@ -191,11 +195,11 @@
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 let showLogin = ref(true);
 let forgotPassword = ref(false);
 let canviarContrasenya = ref(false);
-let afegirPreguntaSecreta = ref(false);
 
 let nom = ref('');
 let cognom1 = ref('');
@@ -204,11 +208,18 @@ let password = ref('');
 let password2 = ref('');
 let data_naixement = ref('');
 let correu = ref('');
-let correualt = ref('');
+let correualternatiu = ref('');
+let pregunta_secreta = ref('');
+let telefon = ref('');
+let resposta_secreta = ref('');
 let rol = ref('');
 let curs = ref('');
 let especialitat = ref('');
 let departament = ref('');
+let major = ref('');
+
+const router = useRouter();
+
 
 function showForgotPassword() {
     forgotPassword.value = !forgotPassword.value
@@ -221,38 +232,47 @@ async function registrarUsuari() {
     return;
   }
 
+
   // Construir dades segons el rol
   const dadesUsuari = {
-    nom: nom.value,
-    primerCognom: cognom1.value,
-    segonCognom: cognom2.value,
-    contrasenya: password.value,
-    dataNaixement: data_naixement.value,
-    correu: correu.value,
-    correuAlternatiu: correualt.value,
-    rol: rol.value,
-  };
+  nom: nom.value,
+  cognom1: cognom1.value,
+  cognom2: cognom2.value,
+  password: password.value,
+  data_naixement: data_naixement.value,
+  correu: correu.value,
+  correualternatiu: correualternatiu.value,
+  pregunta_secreta: pregunta_secreta.value,
+  resposta_secreta: resposta_secreta.value,
+  telefon: telefon.value,
+  rol: rol.value,
+  major: major.value,
+};
+
 
   // Afegir només el camp rellevant segons el rol
   if (rol.value === 'alumne') {
-    dadesUsuari.curs = curs.value; // Només l'alumne té aquest camp
-  } else if (rol.value === 'mentor') {
-    dadesUsuari.especialitat = especialitat.value; // Només el mentor té aquest camp
-  } else if (rol.value === 'professor') {
-    dadesUsuari.departament = departament.value; // Només el professor té aquest camp
-  }
+  dadesUsuari.curs = curs.value;
+} else if (rol.value === 'mentor') {
+  dadesUsuari.especialitat = especialitat.value;
+} else if (rol.value === 'professor') {
+  dadesUsuari.departament = departament.value;
+}
+
+
+  console.log("Datos enviados al backend:", dadesUsuari);
 
   try {
-    console.log(dadesUsuari);
-    const resposta = await axios.post('http://localhost:8000.com/api/store', dadesUsuari);
+    const resposta = await axios.post('http://localhost:8000/api/store', dadesUsuari);
+    console.log('Usuari registrat:', resposta.data);
+    alert('Usuari registrat correctament!');
+    router.push('/forum');
+} catch (error) {
     
-    alert("Usuari registrat amb èxit!");
-    console.log(resposta.data);
-  } catch (error) {
-    console.error("Error al registrar l'usuari:", error);
-    alert("Error al registrar l'usuari. Intenta-ho més tard.");
-  }
+        console.error('Error desconegut:', error);
+    }
 }
+
 
 
 </script>

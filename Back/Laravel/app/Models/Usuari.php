@@ -16,16 +16,16 @@ class Usuari extends Authenticatable
         'nom',
         'cognom1',
         'cognom2',
-        'email',
         'password',
+        'data_naixement',
+        'rol',
+        'correu',
+        'correualternatiu',
+        'pregunta_secreta',
+        'resposta_secreta',
         'telefon',
         'biografia',
-        'data_naixement',
         'major',
-        'rol',
-        'foto_profile',
-        'created_at',
-        'updated_at',
     ];
 
     // Camps ocults per a arrays, útil per protegir dades sensibles
