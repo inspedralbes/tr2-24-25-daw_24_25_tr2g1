@@ -33,3 +33,10 @@
 # Para insertar datos en la base de datos
 
     php artisan import:users
+
+
+
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+php artisan view:clear
