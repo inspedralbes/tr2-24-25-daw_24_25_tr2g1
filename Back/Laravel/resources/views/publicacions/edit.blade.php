@@ -25,6 +25,21 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="especialitat" class="form-label">Especialitat</label>
+            <select class="form-select" name="especialitat" id="especialitat" required>
+                <option value="">Selecciona una Especialitat</option>
+                <option value="Matemáticas" {{ old('especialitat', $publicacio->especialitat) == 'Matemáticas' ? 'selected' : '' }}>Matemáticas</option>
+                <option value="Inglés" {{ old('especialitat', $publicacio->especialitat) == 'Inglés' ? 'selected' : '' }}>Inglés</option>
+                <option value="Ciencias" {{ old('especialitat', $publicacio->especialitat) == 'Ciencias' ? 'selected' : '' }}>Ciencias</option>
+                <option value="Biologia" {{ old('especialitat', $publicacio->especialitat) == 'Biologia' ? 'selected' : '' }}>Biologia</option>
+                <option value="Pogramacio" {{ old('especialitat', $publicacio->especialitat) == 'Pogramacio' ? 'selected' : '' }}>Pogramacio</option>
+                <option value="Geografia" {{ old('especialitat', $publicacio->especialitat) == 'Geografia' ? 'selected' : '' }}>Geografia</option>
+                <option value="Tecnologia" {{ old('especialitat', $publicacio->especialitat) == 'Tecnologia' ? 'selected' : '' }}>Tecnologia</option>
+                <option value="Quimica" {{ old('especialitat', $publicacio->especialitat) == 'Quimica' ? 'selected' : '' }}>Quimica</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-warning">Actualizar Publicació</button>
         <a href="{{ route('publicacions.index') }}" class="btn btn-secondary">Tornar a la llista de publicacions</a>
     </form>

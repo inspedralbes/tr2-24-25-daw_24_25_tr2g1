@@ -35,6 +35,21 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="especialitat" class="form-label">Especialitat</label>
+            <select class="form-select" name="especialitat" id="especialitat" required>
+                <option value="">Selecciona una Especialitat</option>
+                <option value="Matemáticas">Matemáticas</option>
+                <option value="Inglés">Inglés</option>
+                <option value="Ciencias">Ciencias</option>
+                <option value="Biologia">Biologia</option>
+                <option value="Pogramacio">Pogramacio</option>
+                <option value="Geografia">Geografia</option>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Quimica">Quimica</option>
+            </select>
+        </div>
+
         <button type="submit" class="btn btn-success">Crear Publicació</button>
         <a href="{{ route('publicacions.index') }}" class="btn btn-secondary" Tornar a la llista de publicacions</a>
     </form>

@@ -15,40 +15,42 @@ class AuthController extends Controller
             'nom' => 'required|string|max:100',
             'cognom1' => 'required|string|max:100',
             'cognom2' => 'required|string|max:100',
-            'email' => 'required|email|unique:usuaris,email',
             'password' => 'required|string|min:6',
-            'rol' => 'required|in:alumne,mentor,professor',
             'data_naixement' => 'required|date',
+            'rol' => 'required|in:alumne,mentor,professor',
+            'correu' => 'required|email|unique:usuaris,correu',
+            'correualternatiu'=> 'required|email|unique:usuaris,correualternatiu',
+           'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
+            'resposta_secreta' => 'nullable|string',
             'telefon' => 'required|string|max:9',
-            'biografia' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'major' => 'required|in:si,no',
         ]);
 
-        // Procesamiento de la imagen
-        if ($request->hasFile('image')) {
-            // Generamos un nombre único para la imagen
-            $imageName = time() . '.' . $request->image->extension();
-            // Guardamos la imagen en el directorio 'public/images'
-            $request->image->storeAs('public/images', $imageName);
-        } else {
-            $imageName = null;
-        }
+       
 
         // Crear el usuario en la base de datos
         $usuari = Usuari::create([
             'nom' => $validated['nom'],
             'cognom1' => $validated['cognom1'],
             'cognom2' => $validated['cognom2'],
-            'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
-            'rol' => $validated['rol'],
             'data_naixement' => $validated['data_naixement'],
+            'rol' => $validated['rol'],
+            'correu' => $validated['correu'],
+            'correualternatiu'=> $validated['correualternatiu'],
+            'pregunta_secreta' => $validated['pregunta_secreta'],
+            'resposta_secreta' =>  $validated['resposta_secreta'],
             'telefon' => $validated['telefon'],
-            'foto_profile' => $imageName,
-            'biografia' => $validated['biografia'],
+            //'biografia' => $validated['biografia'],
+            'major'=> $validated['major'],
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
+      //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Usuari creat correctament!',
+        ]);
     }
 
 
@@ -88,13 +90,16 @@ class AuthController extends Controller
             'nom' => 'required|string|max:100',
             'cognom1' => 'required|string|max:100',
             'cognom2' => 'required|string|max:100',
-            'email' => 'required|email|unique:usuaris,email,' . $id,
-            'password' => 'nullable|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
+            'data_naixement' => 'required|date',
             'rol' => 'required|in:alumne,mentor,professor',
-            'data_naixement' => 'sometimes|date',
-            'telefon' => 'sometimes|string|max:9',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'correu' => 'required|correu|unique:usuaris,correu',
+            'correualternatiu'=> 'required|correu|unique:usuaris,correualternatiu',
+            'pregunta_secreta' => 'required|in: Quin és el nom del teu primer amic?,On vas fer la ESO?,Quin és el teu cotxe preferit?',
+            'resposta_secreta'=> 'required|string',
+            'telefon' => 'required|string|max:9',
             'biografia' => 'nullable|string',
+            'major' => 'required|in:si,no',
         ]);
 
         $usuari = Usuari::findOrFail($id);

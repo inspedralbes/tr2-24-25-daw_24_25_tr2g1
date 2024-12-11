@@ -6,36 +6,7 @@ import { ref } from 'vue'
 let isNavBarClicked = ref(false)
 const router = useRouter()
 
-const goToForum = () => {
-  console.log('Navegando al foro...')
-  router.push('/forum')
-  isNavBarClicked.value = true
-}
 
-const goToProfiles = () => {
-  router.push('/profiles')
-  isNavBarClicked.value = true
-}
-
-const goToJobs = () => {
-  router.push('/jobs')
-  isNavBarClicked.value = true
-}
-
-const goToPostJob = () => {
-  router.push('/publish')
-  isNavBarClicked.value = true
-}
-
-const goToAbout = () => {
-  router.push('/aboutUs')
-  isNavBarClicked.value = true
-}
-
-const goToContact = () => {
-  router.push('/contact')
-  isNavBarClicked.value = true
-}
 </script>
 
 <template>
@@ -67,24 +38,12 @@ const goToContact = () => {
 
   <!-- Desktop View -->
   <div class="landing-nav">
-    <RouterLink to="/forum" @click="isNavBarClicked = true" class="button">FORO</RouterLink>
-    <RouterLink to="/profiles" @click="isNavBarClicked = true" class="button">MENTORS</RouterLink>
-    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button"
-      >BUSCAR OFERTES</RouterLink
-    >
-    <RouterLink to="/publish" @click="isNavBarClicked = true" class="button"
-      >PUBLICAR OFERTA</RouterLink
-    >
-    <RouterLink to="/aboutUs" @click="isNavBarClicked = true" class="button"
-      >SOBRE NOSALTRES</RouterLink
-    >
-    <RouterLink to="/contact" @click="isNavBarClicked = true" class="button">CONTACTE</RouterLink>
-    <!-- <button @click="goToForum">Foro</button>
-    <button @click="goToProfiles">Mentors</button>
-    <button @click="goToJobs">Buscar Ofertes</button>
-    <button @click="goToPostJob">Publicar Oferta</button>
-    <button @click="goToAbout">Sobre nosaltres</button>
-    <button @click="goToContact">Contacte</button> -->
+    <RouterLink to="/forum" @click="isNavBarClicked = true"  class="button">FORO</RouterLink>
+    <RouterLink to="/profiles" @click="isNavBarClicked = true"  class="button">MENTORS</RouterLink>
+    <RouterLink to="/jobs" @click="isNavBarClicked = true"  class="button">BUSCAR OFERTES</RouterLink>
+    <RouterLink to="/publish" @click="isNavBarClicked = true"  class="button">PUBLICAR OFERTA</RouterLink>
+    <RouterLink to="/aboutUs" @click="isNavBarClicked = true"  class="button">SOBRE NOSALTRES</RouterLink>
+    <RouterLink to="/contact" @click="isNavBarClicked = true"  class="button">CONTACTE</RouterLink>
   </div>
 
   <!-- Mobile View -->
