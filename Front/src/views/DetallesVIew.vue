@@ -2,6 +2,9 @@
   <div class="ad-details">
     <h2>{{ adDetails.titol }}</h2>
     <p>{{ adDetails.contingut }}</p>
+    <p>Especialitat: {{ adDetails.especialitat }}</p>
+    <p>Mentor: {{ adDetails.mentor }}</p>
+    <p>Horari: {{ adDetails.horainici }}</p>
     <button @click="signUp">Inscriure'm</button>
   </div>
 </template>
@@ -27,7 +30,7 @@ const signUp = () => {
 <style scoped>
 .ad-details {
   width: 800px;
-  height: 260px;
+  height: 360px;
   /* max-width: 600px; */
   margin: 30px auto;
   padding: 25px;

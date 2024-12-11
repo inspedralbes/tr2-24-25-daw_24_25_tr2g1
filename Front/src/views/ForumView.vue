@@ -75,7 +75,7 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f4f4f6;
+  background-color: lightgray;
 }
 
 .search-input {
@@ -116,7 +116,7 @@ onMounted(() => {
 
 .ad-item:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 20px #283848;
+  box-shadow: 0 10px 20px black;
 }
 
 .ad-title {
