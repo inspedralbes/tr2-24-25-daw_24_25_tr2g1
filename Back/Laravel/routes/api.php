@@ -26,6 +26,10 @@
 
     //ruta registre usuari
     Route::post('/store', [AuthController::class, 'store']);
+
+    //ruta login usuari
+    Route::post('/login', [AuthController::class, 'login']);
+
     // ruta para CRUD
     Route::get('/usuaris', [AuthController::class, 'index']);
     Route::get('/usuaris/{id}', [AuthController::class, 'show']);
