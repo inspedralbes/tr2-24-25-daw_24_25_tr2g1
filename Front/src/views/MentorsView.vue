@@ -28,7 +28,7 @@ const filtredMentors = computed(() => {
   return mentor.value.filter((mentor) => {
     const query = searchQuery.value.toLowerCase()
     return (
-      mentor.nom.toLowerCase().includes(query) || mentor.especialitat.toLowerCase().includes(query)
+      mentor.nom.toLowerCase().includes(query) || mentor.especialitat.toLowerCase().includes(query) || mentor.cognom.toLowerCase().includes(query)
     )
   })
 })
