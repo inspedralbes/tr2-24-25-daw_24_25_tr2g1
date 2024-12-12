@@ -45,4 +45,9 @@ const router = useRouter();
 </template>
 
 <style scoped>
+
+.button:hover {
+    background-color: rgb(169, 169, 169);
+    color: black;
+  }
 </style>

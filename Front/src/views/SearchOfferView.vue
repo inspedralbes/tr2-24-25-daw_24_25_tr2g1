@@ -127,7 +127,7 @@
   
   .search-input:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: lightgrey;
   }
   
   .ads-list {
