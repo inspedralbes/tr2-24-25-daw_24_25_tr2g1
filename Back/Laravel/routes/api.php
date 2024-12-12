@@ -48,6 +48,6 @@
 
     // Enviar datos a Front
     Route::post('/sendData', [PublicacioController::class, 'sendData']);
-
+    Route::post('/sendDataMentors', [MentorController::class, 'sendDataMentors']);
     Route::post('/sendDataUsers', [AuthController::class, 'sendDataUsers']);
 

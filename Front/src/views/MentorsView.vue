@@ -7,7 +7,6 @@
               <h4>Especialitat: {{ mentor.especialitat }}</h4>
                 <h4>Curs: {{ mentor.curs }}</h4>
                 <h4>Correu de contacte: {{ mentor.correu }}</h4>
-            <!-- <button @click="viewAdDetails(mentor.id)">Ver más</button> -->
             </div>
         </div>
     </div>
