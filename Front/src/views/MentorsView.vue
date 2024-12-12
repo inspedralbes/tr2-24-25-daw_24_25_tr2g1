@@ -48,3 +48,10 @@ onMounted(() => {
   fetchMentors()
 })
 </script>
+
+
+<style scoped>
+.forum-container {
+  border-radius: 2%;
+}
+</style>

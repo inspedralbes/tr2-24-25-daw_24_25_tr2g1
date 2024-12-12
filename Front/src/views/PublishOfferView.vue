@@ -4,8 +4,8 @@
         <div class="publish-container">
             <form>
                 <br><input type="text" name="Titol" id="" placeholder="Titol de la clase">
-                <br><input type="text" name="Contingut" id="" placeholder="Contingut de la classe"> 
-                <br><input type="text" name="idUsuari" id="" placeholder="ID Usuari"> 
+                <br><input type="text" name="Contingut" id="" placeholder="Contingut de la classe">
+                <br><input type="text" name="idUsuari" id="" placeholder="ID Usuari">
                 <br>Estat<select name="Estat" id="">
                     <option value="">Actiu</option>
                     <option value="">Ocult</option>
@@ -28,7 +28,7 @@
                     <option value="">13:30</option>
                     <option value="">14:00</option>
                 </select><br>
-               <br> Hora Final:
+                <br> Hora Final:
                 <br><select name="horaFinal" id="">
                     <option value="">8:30</option>
                     <option value="">9:00</option>
@@ -49,7 +49,7 @@
         </div>
     </div>
 </template>
-  
+
 
 <script setup>
 import { ref } from 'vue';
