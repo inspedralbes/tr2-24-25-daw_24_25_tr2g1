@@ -31,7 +31,7 @@ const signUp = () => {
 <style scoped>
 .ad-details {
   width: 800px;
-  height: 360px;
+  height: 450px;
   /* max-width: 600px; */
   margin: 30px auto;
   padding: 25px;
