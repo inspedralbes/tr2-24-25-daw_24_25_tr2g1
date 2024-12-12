@@ -3,8 +3,8 @@ import ForumPage from '../views/ForumView.vue'
 import DetallesPage from '../views/DetallesView.vue'
 import AuthPage from '../views/AuthView.vue'
 import MentorsPage from '../views/MentorsView.vue'
-import SearchOffer from '../views/SearchOfferView.vue'
-import PublisOffer from '../views/PublishOfferView.vue'
+import SearchOfferView from '../views/SearchOfferView.vue'
+import PublisOfferView from '../views/PublishOfferView.vue'
 import aboutUs from '../views/AboutUsView.vue'
 import Contact from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -34,12 +34,12 @@ const routes = [
   {
     path: '/jobs',
     name: 'jobs',
-    component: SearchOffer
+    component: SearchOfferView
   },
   {
     path: '/publish',
     name: 'publish',
-    component: PublisOffer 
+    component: PublisOfferView 
   },
   {
     path: '/aboutUs',
