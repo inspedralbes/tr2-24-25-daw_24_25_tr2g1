@@ -1,7 +1,7 @@
 <template>
     <!-- Signup -->
     <div class="signup-container" v-if="!showLogin && !forgotPassword">
-        <p class="title">REGISTRAR-SEEEEE</p>
+        <p class="title">REGISTRAR-SE</p>
         <form class="form">
             <div class="input-group">
                 <h3>Dades personals</h3>
