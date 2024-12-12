@@ -58,7 +58,8 @@
 
         <div class="flex">
           <label>
-            <input type="mail" name="correu" id="correu" v-model="correu" placeholder="Correu" required />
+            <input type="mail" name="correu" id="correu" v-model="correu" placeholder="Correu"
+              :class="{ 'input-error': isEmailInvalid }" @input="validateEmail" required />
           </label>
           <label>
             <input type="mail" name="correualternatiu" id="correualternatiu" placeholder="Correu Alternatiu"
@@ -94,102 +95,6 @@
       </div>
       <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
     </form>
-
-    <!-- <div class="input-group">
-        <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" v-model="nom" placeholder="---" required />
-      </div> -->
-
-    <!-- <div class="input-group">
-        <label for="cognom1">Primer cognom</label>
-        <input type="text" name="cognom1" id="cognom1" v-model="cognom1" placeholder="---" required />
-      </div>
-
-
-      <div class="input-group">
-        <label for="cognom2">Segon cognom</label>
-        <input type="text" name="cognom2" id="cognom2" v-model="cognom2" placeholder="---" required />
-      </div> -->
-
-    <!-- <div class="input-group">
-        <label for="password">Contrasenya</label>
-        <input type="password" name="password" id="password" v-model="password" placeholder="---" required />
-      </div> -->
-    <!-- <div class="input-group">
-    <label for="data_naixement">Data de naixement</label>
-    <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement" placeholder="---" required />
-  </div> -->
-
-    <!-- <div class="input-group">
-        <label for="telefon">Telefon</label>
-        <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="---" />
-      </div> -->
-    <!-- <div class="input-group">
-
-        <label for="password2">Confirmar contrasenya</label>
-        <input type="password" name="password2" id="password2" v-model="password2" placeholder="---" required />
-      </div> -->
-
-    <!-- <div class="input-group">
-        <label for="rol-select">Sel·lecciona el teu rol</label>
-        <select name="rol-select" id="rol-select" v-model="rol" required>
-          <option disabled selected value=""></option>
-          <option value="alumne">Alumne</option>
-          <option value="mentor">Mentor</option>
-          <option value="professor">Professor</option>
-        </select>
-      </div> -->
-    <!-- <div class="input-group" v-if="rol === 'alumne'">
-        <input type="text" v-model="curs" placeholder="Curs" required />
-      </div>
-      <div class="input-group" v-if="rol === 'mentor'">
-        <input type="text" v-model="especialitat" placeholder="Especialitat" required />
-      </div>
-      <div class="input-group" v-if="rol === 'professor'">
-        <input type="text" v-model="departament" placeholder="Departament" required />
-      </div> -->
-    <!--
-      <div class="input-group">
-
-        <label for="correu">Correu</label>
-        <input type="mail" name="correu" id="correu" v-model="correu" placeholder="---" required />
-      </div>
-
-      <div class="input-group">
-
-        <label for="correualternatiu">Correu Alternatiu</label>
-        <input type="mail" name="correualternatiu" id="correualternatiu" v-model="correualternatiu" placeholder="---"
-          required />
-      </div> -->
-
-    <!-- <div class="input-group">
-        <label for="major">Major d'edat</label>
-        <input type="text" name="major" id="major" v-model="major" />
-      </div> -->
-
-    <!-- <div class="input-group">
-        <h3><label>En cas de perdre la contrasenya omple els camps següents</label></h3>
-      </div> -->
-
-    <!-- Pregunta secreta -->
-    <!-- <div class="input-group">
-        <div class="input-group">
-          <label for="pregunta_secreta">Tria una pregunta</label>
-          <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta">
-            <option value="" disabled selected>---</option>
-            <option value="Com es el nombre del teu primer amic?">Com es el nombre del teu primer amic?</option>
-            <option value="On vas fer la ESO?">On vas fer la ESO?</option>
-            <option value="El teu cotxe preferit?">El teu cotxe preferit?</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="resposta_secreta">Resposta</label>
-          <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="---"
-            v-model="resposta_secreta" />
-        </div>
-      </div> -->
-    <!-- <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
-    </form> -->
     <div class="social-message">
       <div class="line"></div>
       <p class="message">Registrar-se amb</p>
@@ -210,10 +115,124 @@
   </div>
 </template>
 
-<script setup>
+<!-- <div class="input-group">
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom" v-model="nom" placeholder="---" required />
+      </div> -->
 
-// import axios from 'axios'
-import { ref } from 'vue'
+<!-- <div class="input-group">
+        <label for="cognom1">Primer cognom</label>
+        <input type="text" name="cognom1" id="cognom1" v-model="cognom1" placeholder="---" required />
+      </div>
+
+
+      <div class="input-group">
+        <label for="cognom2">Segon cognom</label>
+        <input type="text" name="cognom2" id="cognom2" v-model="cognom2" placeholder="---" required />
+      </div> -->
+
+<!-- <div class="input-group">
+        <label for="password">Contrasenya</label>
+        <input type="password" name="password" id="password" v-model="password" placeholder="---" required />
+      </div> -->
+<!-- <div class="input-group">
+    <label for="data_naixement">Data de naixement</label>
+    <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement" placeholder="---" required />
+  </div> -->
+
+<!-- <div class="input-group">
+        <label for="telefon">Telefon</label>
+        <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="---" />
+      </div> -->
+<!-- <div class="input-group">
+
+        <label for="password2">Confirmar contrasenya</label>
+        <input type="password" name="password2" id="password2" v-model="password2" placeholder="---" required />
+      </div> -->
+
+<!-- <div class="input-group">
+        <label for="rol-select">Sel·lecciona el teu rol</label>
+        <select name="rol-select" id="rol-select" v-model="rol" required>
+          <option disabled selected value=""></option>
+          <option value="alumne">Alumne</option>
+          <option value="mentor">Mentor</option>
+          <option value="professor">Professor</option>
+        </select>
+      </div> -->
+<!-- <div class="input-group" v-if="rol === 'alumne'">
+        <input type="text" v-model="curs" placeholder="Curs" required />
+      </div>
+      <div class="input-group" v-if="rol === 'mentor'">
+        <input type="text" v-model="especialitat" placeholder="Especialitat" required />
+      </div>
+      <div class="input-group" v-if="rol === 'professor'">
+        <input type="text" v-model="departament" placeholder="Departament" required />
+      </div> -->
+<!--
+      <div class="input-group">
+
+        <label for="correu">Correu</label>
+        <input type="mail" name="correu" id="correu" v-model="correu" placeholder="---" required />
+      </div>
+
+      <div class="input-group">
+
+        <label for="correualternatiu">Correu Alternatiu</label>
+        <input type="mail" name="correualternatiu" id="correualternatiu" v-model="correualternatiu" placeholder="---"
+          required />
+      </div> -->
+
+<!-- <div class="input-group">
+        <label for="major">Major d'edat</label>
+        <input type="text" name="major" id="major" v-model="major" />
+      </div> -->
+
+<!-- <div class="input-group">
+        <h3><label>En cas de perdre la contrasenya omple els camps següents</label></h3>
+      </div> -->
+
+<!-- Pregunta secreta -->
+<!-- <div class="input-group">
+        <div class="input-group">
+          <label for="pregunta_secreta">Tria una pregunta</label>
+          <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta">
+            <option value="" disabled selected>---</option>
+            <option value="Com es el nombre del teu primer amic?">Com es el nombre del teu primer amic?</option>
+            <option value="On vas fer la ESO?">On vas fer la ESO?</option>
+            <option value="El teu cotxe preferit?">El teu cotxe preferit?</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="resposta_secreta">Resposta</label>
+          <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="---"
+            v-model="resposta_secreta" />
+        </div>
+      </div> -->
+<!-- <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
+    </form> -->
+<!-- <div class="social-message">
+      <div class="line"></div>
+      <p class="message">Registrar-se amb</p>
+      <div class="line"></div>
+    </div>
+    <div class="social-icons">
+      <button aria-label="Log in with Google" class="icon">
+        <img src="/src/assets/icons/google-logo.svg" />
+      </button>
+      <button aria-label="Log in with GitHub" class="icon">
+        <img src="/src/assets/icons/github.svg" />
+      </button>
+    </div>
+    <p class="signup">
+      Tens un compte?
+      <a @click="showLogin = !showLogin">Login</a>
+    </p>
+  </div>
+</template> -->
+
+
+<script setup>
+import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 let nom = ref('')
@@ -231,15 +250,68 @@ let departament = ref('')
 let rol = ref('')
 let curs = ref('')
 let especialitat = ref('')
+let major = ref('')
 
 const router = useRouter()
 
+// Email validation
+const emailPatterns = {
+  alumne: /^[a-zA-Z][0-9]{2}/,
+  mentor: /^[a-zA-Z][0-9]{2}/,
+  professor: /^(?![a-zA-Z][0-9]{2}@).*@.+\..+$/,
+}
+
+const isEmailInvalid = computed(() => {
+  if (!rol.value || !correu.value) {
+    return false;
+  }
+
+ // comprobar primer 3 caracteres en alumne y mentor
+  if (rol.value === 'alumne' || rol.value === 'mentor') {
+    const pattern = emailPatterns[rol.value];
+    return !pattern.test(correu.value);
+  }
+
+  // per professor no comprobar
+  if (rol.value === 'professor') {
+    return !(/^(?![a-zA-Z][0-9]{2}@).*@.+\..+$/.test(correu.value));
+  }
+  return false;
+});
+
+
+//validacio reactiva del correu
+watch([correu, rol], () => {
+  if (isEmailInvalid.value) {
+    console.log('Correu invàlid per el rol seleccionat');
+  }
+});
 
 async function registrarUsuari() {
+  // Password match check
   if (password.value !== password2.value) {
     alert('Les contrasenyes no coincideixen!')
     return
   }
+
+  // Email validation based on role
+  if (isEmailInvalid.value) {
+    let errorMessage = ''
+    switch (rol.value) {
+      case 'alumne':
+        errorMessage = 'El correu per alumne ha de començar amb una lletra i 2 números, seguit de qualsevol cosa'
+        break
+      case 'professor':
+        errorMessage = 'El correu per professor no pot començar amb una lletra i 2 números'
+        break
+      case 'mentor':
+        errorMessage = 'El correu per mentor ha de començar amb una lletra i 2 números, seguit de qualsevol cosa'
+        break
+    }
+    alert(errorMessage)
+    return
+  }
+
   // Construir dades segons el rol
   const dadesUsuari = {
     nom: nom.value,
@@ -267,16 +339,17 @@ async function registrarUsuari() {
 
   console.log('Datos enviados al backend:', dadesUsuari)
 
-  try{
+  try {
     const response = await fetch('http://localhost:8000/api/store', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json',
       },
-      body:JSON.stringify(dadesUsuari)
-    }) 
-    if(!response.ok){
+      body: JSON.stringify(dadesUsuari),
+    })
+
+    if (!response.ok) {
       const errorData = await response.json()
       throw new Error(errorData.message || 'Error al registrar usuari')
     }
@@ -285,13 +358,14 @@ async function registrarUsuari() {
     console.log('Usuari registrat:', respostaData)
     alert('Usuari registrat correctament')
     router.push('/forum')
-  }catch(error){
+  } catch (error) {
     console.error('Error al registrar usuari:', error)
-    alert('Error: ${error.message}')
+    alert(`Error: ${error.message}`)
   }
-
 }
+
 </script>
+
 
 <style>
 .signup-container {
@@ -304,6 +378,16 @@ async function registrarUsuari() {
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
   border: 1px solid #222;
+}
+
+.input-error {
+  border: 2px solid red !important;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.input-group input[type="mail"].input-error {
+  border: 2px solid red !important;
+  background-color: rgba(255, 0, 0, 0.1);
 }
 
 .title {
@@ -335,7 +419,7 @@ async function registrarUsuari() {
   padding: 1rem 1.25rem;
   background-color: #141414;
   color: #fff;
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
   border-radius: 8px;
   outline: none;
   transition: all 0.3s ease;
