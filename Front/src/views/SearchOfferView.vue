@@ -63,11 +63,17 @@
   import { getPublicaciones } from '../services/communicationManager.js'
   
   const router = useRouter()
+  const searchQuery = ref('')
   const ads = ref([])
   const pageSize = ref(9) // Nombre d'anuncis a mostrar inicialment i en cada càrrega
   const currentPage = ref(1)
   
-  
+  // Computat per cercar a la llista d'anuncis
+  const filteredAds = computed(() => {
+    return ads.value.filter(ad =>
+      ad.titol.toLowerCase().includes(searchQuery.value.toLowerCase())
+    )
+  })
   
   // Computat per mostrar anuncis paginats i filtrats
   const displayedAds = computed(() => {
