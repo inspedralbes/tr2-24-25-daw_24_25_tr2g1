@@ -40,9 +40,10 @@ class PublicacionsSeeder extends Seeder
                 Publicacio::create([
                     'titol' => $publicacio['titol'],
                     'contingut' => $publicacio['contingut'],
-                    // 'imatge' => $publicacio['imatge'],
+                    'hora_inici'=> $publicacio['hora_inici'],
+                    'hora_final'=> $publicacio['hora_final'],
+                    'dia'=> $publicacio['dia'],
                     'id_usuari' => $publicacio['id_usuari'],
-                    'estat' => $publicacio['estat'],
                     'especialitat' => $publicacio['especialitat'],
 
                 ]);

@@ -4,7 +4,8 @@
     <p>{{ adDetails.contingut }}</p>
     <p>Especialitat: {{ adDetails.especialitat }}</p>
     <p>Mentor: {{ adDetails.mentor }}</p>
-    <p>Horari: {{ adDetails.horainici }}</p>
+    <p>Dia: {{ adDetails.dia }}</p>
+    <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
     <button @click="signUp">Inscriure'm</button>
   </div>
 </template>
