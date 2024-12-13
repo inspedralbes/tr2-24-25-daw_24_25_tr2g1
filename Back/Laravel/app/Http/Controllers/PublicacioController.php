@@ -105,4 +105,36 @@ class PublicacioController extends Controller
 
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha eliminat correctament!');
     }
+
+    public function createOffer(Request $request) {
+
+        //dd($request->all()); // Esto detendrá la ejecución y mostrará los datos enviados
+
+        $validated = $request->validate([
+            'titol' => 'required|string|max:100',
+            'contingut' => 'required|string',
+            'especialitat' => 'required|string|max:255',
+            'horaInici' => 'required|string',
+            'horaFinal' => 'required|string',
+            'dia' => 'required|string|max:255',
+            'id_usuari' => 'required|exists:usuaris,id',
+        ]);
+
+        $publicacion = new Publicacio();
+
+        $publicacion->titol = $validated['titol'];
+        $publicacion->contingut = $validated['contingut'];
+        $publicacion->especialitat = $validated['especialitat'];
+        $publicacion->hora_inici = $validated['horaInici'];
+        $publicacion->hora_final = $validated['horaFinal'];
+        $publicacion->dia = $validated['dia'];  
+        $publicacion->id_usuari = $validated['id_usuari'];
+
+        $publicacion->save();
+
+
+        //Publicacio::create($validated);
+
+        return response()->json(['status' => 'success', 'message' => 'La oferta s\'ha creat correctament!']);
+    }
 }

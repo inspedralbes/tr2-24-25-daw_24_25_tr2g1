@@ -1,30 +1,30 @@
 <template>
     <div class="publish-container">
     <h2>Publicar oferta</h2>
-    <form onsubmit="publish.submitForm()">
+    <form>
       <div class="form-group">
         <label for="titulo">Títol de la classe</label>
-        <input type="text" name="Titol" id="titulo" placeholder="Escriu el títol" required v-model="publish.titol.value" />
+        <input type="text" name="Titol" id="titulo" placeholder="Escriu el títol" required v-model="titol" />
       </div>
 
       <div class="form-group">
         <label for="especialitat">Especialitat de la classe</label>
-        <input type="text" name="especialitat" id="especialitat" placeholder="Especialitat" v-model="publish.especialitat.value"required />
+        <input type="text" name="especialitat" id="especialitat" placeholder="Especialitat" v-model="especialitat"required />
       </div>
 
       <div class="form-group">
         <label for="contingut">Contingut de la classe</label>
-        <textarea name="Contingut" id="contingut" placeholder="Descripció del contingut" rows="4" v-model="publish.contingut.value" required></textarea>
+        <textarea name="Contingut" id="contingut" placeholder="Descripció del contingut" rows="4" v-model="contingut" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="data">Dia</label>
-        <input type="date" name="data" id="data" v-model="publish.data" required />
+        <input type="date" name="data" id="data" v-model="data" required />
       </div>
 
       <div class="form-group">
         <label for="horaInici">Hora d'inici</label>
-        <select name="horaInici" id="horaInici" v-model="publish.horaInici" required>
+        <select name="horaInici" id="horaInici" v-model="horaInici" required>
           <option value="08:00">8:00</option>
           <option value="08:30">8:30</option>
           <option value="09:00">9:00</option>
@@ -43,7 +43,7 @@
 
       <div class="form-group">
         <label for="horaFinal">Hora final</label>
-        <select name="horaFinal" id="horaFinal" v-model="publish.horaFinal" required>
+        <select name="horaFinal" id="horaFinal" v-model="horaFinal" required>
           <option value="08:30">8:30</option>
           <option value="09:00">9:00</option>
           <option value="09:30">9:30</option>
@@ -61,14 +61,77 @@
       </div>
 
       <div class="form-group">
-        <button type="submit">Publicar Oferta</button>
+        <button type="submit" @click.prevent="submit">Publicar Oferta</button>
       </div>
     </form>
   </div>
 </template>
   
 
-<script setup>
+<script>
+import { ref } from "vue";
+
+import * as com from "@/services/communicationManager.js"; 
+
+export default {
+  setup() {
+    // Definimos las variables reactivas con `ref`
+    const titol = ref("");
+    const especialitat = ref("");
+    const contingut = ref("");
+    const data = ref("");
+    const horaInici = ref("");
+    const horaFinal = ref("");
+
+    // Lógica de validación y envío
+    const submit = async () => {
+      if (horaInici.value >= horaFinal.value) {
+        alert("L'hora final ha de ser posterior a l'hora d'inici.");
+        return;
+      }
+
+      // Simula enviar els dades
+      const oferta = {
+        titol: titol.value,
+        especialitat: especialitat.value,
+        contingut: contingut.value,
+        //data: data.value,
+        horaInici: horaInici.value,
+        horaFinal: horaFinal.value,
+        id_usuari: 1,
+        dia: 'Dilluns'
+      };
+
+      const data =  await com.fetchPublicaciones(oferta);
+      console.log("Vue",data);
+      
+
+
+
+      console.log("Oferta enviada:", oferta);
+      alert("Oferta publicada correctament!");
+
+      // Reinicia els camps
+      titol.value = "";
+      especialitat.value = "";
+      contingut.value = "";
+      data.value = "";
+      horaInici.value = "";
+      horaFinal.value = "";
+    };
+
+    // Devuelve las variables y la función de envío
+    return {
+      titol,
+      especialitat,
+      contingut,
+      data,
+      horaInici,
+      horaFinal,
+      submit,
+    };
+  },
+};
 </script>
 
 <style scoped>

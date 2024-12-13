@@ -14,6 +14,25 @@ export const getPublicaciones = async () => {
     return []
   }
 }
+export async function fetchPublicaciones(oferta) {  
+  // Envia els dades a la API
+  try {
+    const resposta = await fetch('http://127.0.0.1:8000/api/createOffer', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(oferta),
+    })
+
+    if (!resposta.ok) throw new Error(data.message || 'Error de connexió')
+
+    const data = await resposta.json()
+    console.log(data)
+  } catch (error) {
+    console.error('Error al enviar la oferta:', error)
+  }
+}
 
 export const getMentors = async () => {
   try {
@@ -42,5 +61,3 @@ export const getAdDetails = async (id) => {
     return {}
   }
 }
-
-

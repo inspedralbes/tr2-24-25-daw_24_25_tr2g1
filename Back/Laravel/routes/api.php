@@ -51,3 +51,6 @@
     Route::post('/sendDataMentors', [MentorController::class, 'sendDataMentors']);
     Route::post('/sendDataUsers', [AuthController::class, 'sendDataUsers']);
 
+    // Oferta
+    Route::post('/createOffer', [PublicacioController::class, 'createOffer']);
+
