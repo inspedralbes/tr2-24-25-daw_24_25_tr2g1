@@ -82,6 +82,7 @@ export default {
     const data = ref("");
     const horaInici = ref("");
     const horaFinal = ref("");
+    //const id_usuari = ref(1); Falta per fer perque necesita l'id de l 'usuari loggejat
 
     // Lógica de validación y envío
     const submit = async () => {
@@ -98,16 +99,13 @@ export default {
         //data: data.value,
         horaInici: horaInici.value,
         horaFinal: horaFinal.value,
-        id_usuari: 1,
-        dia: 'Dilluns'
+        id_usuari: 1, // Per defecte de moment es guarda l'id de l'usuari 1
+        dia: 'Dilluns' // Per defecte de moment es guarda el dia dilluns
       };
 
       const data =  await com.fetchPublicaciones(oferta);
       console.log("Vue",data);
       
-
-
-
       console.log("Oferta enviada:", oferta);
       alert("Oferta publicada correctament!");
 
@@ -115,7 +113,7 @@ export default {
       titol.value = "";
       especialitat.value = "";
       contingut.value = "";
-      data.value = "";
+      //data.value = "";
       horaInici.value = "";
       horaFinal.value = "";
     };
