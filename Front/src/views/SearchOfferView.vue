@@ -5,28 +5,14 @@
       <label for="especialitat">Especialitat:</label>
       <select id="especialitat" v-model="selectedEspecialitat">
         <option value="">Totes</option>
-        <option value="Matemáticas">Matemáticas</option>
-        <option value="Inglés">Inglés</option>
-        <option value="Ciencias">Ciencias</option>
-        <option value="Ciencias Sociales">Ciencias Sociales</option>
-        <option value="Ciencias Naturales">Ciencias Naturales</option>
+        <option> {{ adDetails.especialitat }}</option>
+      
       </select>
       <label for="hora">Hora:</label>
       <select id="hora" v-model="selectedHora">
         <option value="">Totes</option>
-        <option value="">8:00</option>
-        <option value="">8:30</option>
-        <option value="">9:00</option>
-        <option value="">9:30</option>
-        <option value="">10:00</option>
-        <option value="">10:30</option>
-        <option value="">11:00</option>
-        <option value="">11:30</option>
-        <option value="">12:00</option>
-        <option value="">12:30</option>
-        <option value="">13:00</option>
-        <option value="">13:30</option>
-        <option value="">14:00</option>
+        <option value=""></option>
+      
       </select>
       <label for="dia">Dia:</label>
       <select id="dia" v-model="selectedDia">
@@ -59,12 +45,15 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getPublicaciones } from '../services/communicationManager.js'
+import { getAdDetails } from '../services/communicationManager.js'
+
 
 const router = useRouter()
 const searchQuery = ref('')
 const ads = ref([])
 const pageSize = ref(9) // Nombre d'anuncis a mostrar inicialment i en cada càrrega
 const currentPage = ref(1)
+const adDetails=ref([])
 
 // Computat per cercar a la llista d'anuncis
 const filteredAds = computed(() => {
@@ -96,9 +85,14 @@ const fetchPublicaciones = async () => {
   ads.value = await getPublicaciones()
 }
 
+const fetchAdDetails = async () => {
+  adDetails.value = await getAdDetails()
+}
+
 // Obtenir publicacions quan el component es munta
 onMounted(() => {
   fetchPublicaciones()
+  fetchAdDetails()
 })
 </script>
 
