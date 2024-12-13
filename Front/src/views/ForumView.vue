@@ -76,7 +76,7 @@ onMounted(() => {
   margin: 0 auto;
   padding: 20px;
   background-color: lightgrey;
-  border-radius: 2%; // por mirar
+  border-radius: 2%;
 }
 
 .search-input {
