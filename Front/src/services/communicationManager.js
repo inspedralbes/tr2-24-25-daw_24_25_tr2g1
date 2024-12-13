@@ -14,9 +14,10 @@ export const getPublicaciones = async () => {
     return []
   }
 }
-export async function fetchPublicaciones(oferta) {  
+export async function createPublicacion(oferta) {  
   // Envia els dades a la API
   try {
+    // console.log(oferta) per comprovar les dades que rebem des de l'usuari
     const resposta = await fetch('http://127.0.0.1:8000/api/createOffer', {
       method: 'POST',
       headers: {
@@ -28,7 +29,7 @@ export async function fetchPublicaciones(oferta) {
     if (!resposta.ok) throw new Error(data.message || 'Error de connexió')
 
     const data = await resposta.json()
-    console.log(data)
+    return data;
   } catch (error) {
     console.error('Error al enviar la oferta:', error)
   }

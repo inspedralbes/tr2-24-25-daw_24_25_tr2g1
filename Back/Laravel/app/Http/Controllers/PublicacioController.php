@@ -111,24 +111,24 @@ class PublicacioController extends Controller
         //dd($request->all()); // Esto detendrá la ejecución y mostrará los datos enviados
 
         $validated = $request->validate([
+            'id_usuari' => 'required|exists:usuaris,id',
             'titol' => 'required|string|max:100',
-            'contingut' => 'required|string',
             'especialitat' => 'required|string|max:255',
+            'contingut' => 'required|string',
+            'dataPublicacion' => 'required|date',
             'horaInici' => 'required|string',
             'horaFinal' => 'required|string',
-            'dia' => 'required|string|max:255',
-            'id_usuari' => 'required|exists:usuaris,id',
         ]);
 
         $publicacion = new Publicacio();
 
+        $publicacion->id_usuari = $validated['id_usuari'];
         $publicacion->titol = $validated['titol'];
-        $publicacion->contingut = $validated['contingut'];
         $publicacion->especialitat = $validated['especialitat'];
+        $publicacion->contingut = $validated['contingut'];
+        $publicacion->data_publicacio = $validated['dataPublicacion'];
         $publicacion->hora_inici = $validated['horaInici'];
         $publicacion->hora_final = $validated['horaFinal'];
-        $publicacion->dia = $validated['dia'];  
-        $publicacion->id_usuari = $validated['id_usuari'];
 
         $publicacion->save();
 

@@ -18,8 +18,8 @@
       </div>
 
       <div class="form-group">
-        <label for="data">Dia</label>
-        <input type="date" name="data" id="data" v-model="data" required />
+        <label for="dataPublicacion">Dia</label>
+        <input type="date" name="dataPublicacion" id="dataPublicacion" v-model="dataPublicacion" required />
       </div>
 
       <div class="form-group">
@@ -79,7 +79,7 @@ export default {
     const titol = ref("");
     const especialitat = ref("");
     const contingut = ref("");
-    const data = ref("");
+    const dataPublicacion = ref("");
     const horaInici = ref("");
     const horaFinal = ref("");
     //const id_usuari = ref(1); Falta per fer perque necesita l'id de l 'usuari loggejat
@@ -93,17 +93,16 @@ export default {
 
       // Simula enviar els dades
       const oferta = {
+        id_usuari: 1, // Per defecte de moment es guarda l'id de l'usuari 1
         titol: titol.value,
         especialitat: especialitat.value,
         contingut: contingut.value,
-        //data: data.value,
+        dataPublicacion: dataPublicacion.value,
         horaInici: horaInici.value,
         horaFinal: horaFinal.value,
-        id_usuari: 1, // Per defecte de moment es guarda l'id de l'usuari 1
-        dia: 'Dilluns' // Per defecte de moment es guarda el dia dilluns
       };
 
-      const data =  await com.fetchPublicaciones(oferta);
+      const data =  await com.createPublicacion(oferta);
       console.log("Vue",data);
       
       console.log("Oferta enviada:", oferta);
@@ -113,7 +112,7 @@ export default {
       titol.value = "";
       especialitat.value = "";
       contingut.value = "";
-      //data.value = "";
+      dataPublicacion.value = "";
       horaInici.value = "";
       horaFinal.value = "";
     };
@@ -123,7 +122,7 @@ export default {
       titol,
       especialitat,
       contingut,
-      data,
+      dataPublicacion,
       horaInici,
       horaFinal,
       submit,

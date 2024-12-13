@@ -38,14 +38,13 @@ class PublicacionsSeeder extends Seeder
         foreach($data['publicacions'] as $publicacio){
             try {
                 Publicacio::create([
+                    'id_usuari' => $publicacio['id_usuari'],
                     'titol' => $publicacio['titol'],
+                    'especialitat' => $publicacio['especialitat'],
                     'contingut' => $publicacio['contingut'],
+                    'data_publicacio'=> $publicacio['data_publicacio'],
                     'hora_inici'=> $publicacio['hora_inici'],
                     'hora_final'=> $publicacio['hora_final'],
-                    'dia'=> $publicacio['dia'],
-                    'id_usuari' => $publicacio['id_usuari'],
-                    'especialitat' => $publicacio['especialitat'],
-
                 ]);
             } catch (\Exception $e) {
                 $this->command->error('Error al crear publicació: ' . $e->getMessage());
