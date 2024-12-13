@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('correualternatiu')->unique();
             $table->enum('pregunta_secreta',['Quin és nom del teu primer amic?','On vas fer la ESO?','Quin és el teu cotxe preferit?']);
             $table->string('resposta_secreta');
-            $table->string('telefon', 9)->nullable();            
+            $table->string('telefon', 9)->nullable();
             $table->text('biografia')->nullable();
             $table->enum('major', ['si', 'no']);
             $table->timestamps();

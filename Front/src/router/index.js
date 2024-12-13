@@ -8,6 +8,7 @@ import PublisOffer from '../views/PublishOfferView.vue'
 import aboutUs from '../views/AboutUsView.vue'
 import Contact from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView
   }
 ]
 
