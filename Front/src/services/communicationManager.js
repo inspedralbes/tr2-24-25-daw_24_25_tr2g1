@@ -15,6 +15,20 @@ export const getPublicaciones = async () => {
   }
 }
 
+export const getMentors = async () => {
+  try {
+    const response = await axios.post('http://localhost:8000/api/sendDataMentors')
+    if (response.data.status === 'success') {
+      return response.data.data // Devuelve los datos de las publicaciones
+    }
+    console.log('publicacions rebudes')
+    throw new Error('No se pudo obtener los mentores')
+  } catch (error) {
+    console.error('Error al obtener mentores:', error)
+    return []
+  }
+}
+
 export const getAdDetails = async (id) => {
   try {
     const response = await axios.post('http://localhost:8000/api/sendData')

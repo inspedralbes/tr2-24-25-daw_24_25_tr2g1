@@ -5,211 +5,180 @@
             "contingut": "Ofereixo classes particulars de reforç en Matemàtiques per a alumnes de grau mitjà. Sessions personalitzades per superar dificultats.",
             "id_usuari": 7,
             "especialitat": "Matemáticas",
-            "estat": "activa"
+            "hora_inici": "09:00",
+            "hora_final": "11:00",
+            "dia": "Dilluns"
         },
         {
             "titol": "Anglès per a alumnes de grau mitjà",
             "contingut": "Professor amb experiència ofereix classes d'anglès per millorar la comprensió oral i escrita.",
             "id_usuari": 15,
             "especialitat": "Inglés",
-            "estat": "activa"
+            "hora_inici": "14:00",
+            "hora_final": "16:00",
+            "dia": "Dimarts"
         },
         {
             "titol": "Reforç en Ciències Naturals",
             "contingut": "Classes particulars de Ciències Naturals per a alumnes que necessiten reforçar conceptes clau del temari.",
             "id_usuari": 3,
             "especialitat": "Ciencias",
-            "estat": "activa"
+            "hora_inici": "10:00",
+            "hora_final": "12:00",
+            "dia": "Dimecres"
         },
         {
             "titol": "Biologia per a estudiants",
             "contingut": "Explicació detallada dels conceptes més importants de Biologia, amb enfocament pràctic.",
             "id_usuari": 11,
             "especialitat": "Biologia",
-            "estat": "activa"
+            "hora_inici": "13:00",
+            "hora_final": "15:00",
+            "dia": "Dijous"
         },
         {
             "titol": "Introducció a la Programació",
             "contingut": "Aprèn els conceptes bàsics de programació amb classes pràctiques per a alumnes de grau mitjà.",
             "id_usuari": 18,
             "especialitat": "Pogramacio",
-            "estat": "activa"
+            "hora_inici": "15:00",
+            "hora_final": "17:00",
+            "dia": "Divendres"
         },
         {
             "titol": "Descobreix la Geografia Mundial",
             "contingut": "Classes interactives per comprendre els aspectes geogràfics més rellevants.",
             "id_usuari": 6,
             "especialitat": "Geografia",
-            "estat": "activa"
+            "hora_inici": "11:00",
+            "hora_final": "13:00",
+            "dia": "Dilluns"
         },
         {
             "titol": "Tecnologia Aplicada",
             "contingut": "Explora conceptes de tecnologia amb classes pràctiques i adaptades.",
             "id_usuari": 12,
             "especialitat": "Tecnologia",
-            "estat": "activa"
+            "hora_inici": "09:00",
+            "hora_final": "10:30",
+            "dia": "Dimecres"
         },
         {
             "titol": "Química per a Principiants",
             "contingut": "Introducció als conceptes fonamentals de la Química, amb experiments inclusos.",
             "id_usuari": 9,
             "especialitat": "Quimica",
-            "estat": "activa"
+            "hora_inici": "16:00",
+            "hora_final": "18:00",
+            "dia": "Dimarts"
         },
         {
             "titol": "Matemàtiques Avançades",
             "contingut": "Aprofundiment en conceptes matemàtics per a estudiants amb nivell intermedi.",
             "id_usuari": 2,
             "especialitat": "Matemáticas",
-            "estat": "activa"
+            "hora_inici": "14:00",
+            "hora_final": "16:00",
+            "dia": "Dijous"
         },
         {
             "titol": "Anglès Conversa",
             "contingut": "Millora la teva fluïdesa en anglès amb sessions de conversa dinàmiques.",
             "id_usuari": 16,
             "especialitat": "Inglés",
-            "estat": "activa"
+            "hora_inici": "18:00",
+            "hora_final": "19:30",
+            "dia": "Divendres"
         },
         {
             "titol": "Ciències Experimentals",
             "contingut": "Descobreix el fascinant món de les ciències a través d'experiments pràctics.",
             "id_usuari": 5,
             "especialitat": "Ciencias",
-            "estat": "activa"
+            "hora_inici": "11:00",
+            "hora_final": "13:00",
+            "dia": "Dimarts"
         },
         {
             "titol": "Laboratori de Biologia",
             "contingut": "Sessions pràctiques per comprendre els processos biològics de manera visual.",
             "id_usuari": 20,
             "especialitat": "Biologia",
-            "estat": "activa"
+            "hora_inici": "09:30",
+            "hora_final": "11:30",
+            "dia": "Dimecres"
         },
         {
             "titol": "Programació per a Joves",
             "contingut": "Introducció al coding amb llenguatges moderns i projectes interessants.",
             "id_usuari": 1,
             "especialitat": "Pogramacio",
-            "estat": "activa"
+            "hora_inici": "15:00",
+            "hora_final": "17:00",
+            "dia": "Dijous"
         },
         {
             "titol": "Geografia Humana",
             "contingut": "Explora les relacions entre humans i els espais geogràfics.",
             "id_usuari": 13,
             "especialitat": "Geografia",
-            "estat": "activa"
+            "hora_inici": "12:00",
+            "hora_final": "14:00",
+            "dia": "Dilluns"
         },
         {
             "titol": "Tecnologia i Innovació",
             "contingut": "Descobreix les últimes tendències tecnològiques i les seves aplicacions.",
             "id_usuari": 8,
             "especialitat": "Tecnologia",
-            "estat": "activa"
+            "hora_inici": "10:00",
+            "hora_final": "12:00",
+            "dia": "Divendres"
         },
         {
             "titol": "Química Pràctica",
             "contingut": "Comprèn la química a través d'experiments segurs i didàctics.",
             "id_usuari": 17,
             "especialitat": "Quimica",
-            "estat": "activa"
+            "hora_inici": "11:30",
+            "hora_final": "13:30",
+            "dia": "Dimecres"
         },
         {
             "titol": "Matemàtiques Creatives",
             "contingut": "Aprèn matemàtiques de manera divertida i visual.",
             "id_usuari": 4,
             "especialitat": "Matemáticas",
-            "estat": "activa"
+            "hora_inici": "09:00",
+            "hora_final": "11:00",
+            "dia": "Dilluns"
         },
         {
             "titol": "Anglès per a Professionals",
             "contingut": "Millora el teu anglès amb enfocament en vocabulari professional.",
             "id_usuari": 14,
             "especialitat": "Inglés",
-            "estat": "activa"
+            "hora_inici": "16:00",
+            "hora_final": "18:00",
+            "dia": "Dimecres"
         },
         {
             "titol": "Ciències de la Terra",
             "contingut": "Explora els processos naturals del nostre planeta de manera didàctica.",
             "id_usuari": 10,
             "especialitat": "Ciencias",
-            "estat": "activa"
+            "hora_inici": "14:00",
+            "hora_final": "16:00",
+            "dia": "Dimarts"
         },
         {
             "titol": "Biologia Molecular",
             "contingut": "Introducció als conceptes avançats de la biologia molecular.",
             "id_usuari": 19,
             "especialitat": "Biologia",
-            "estat": "activa"
-        },
-
-        {
-            "titol": "Robòtica per a Joves",
-            "contingut": "Introducció al món de la robòtica amb projectes pràctics i divertits per a estudiants.",
-            "id_usuari": 12,
-            "especialitat": "Tecnologia",
-            "estat": "activa"
-        },
-        {
-            "titol": "Preparació per a Olimpíades Matemàtiques",
-            "contingut": "Entrenament especialitzat per a estudiants que volen destacar en competicions matemàtiques.",
-            "id_usuari": 6,
-            "especialitat": "Matemáticas",
-            "estat": "activa"
-        },
-        {
-            "titol": "Anglès Científic",
-            "contingut": "Aprèn terminologia científica en anglès per a estudiants de ciències.",
-            "id_usuari": 17,
-            "especialitat": "Inglés",
-            "estat": "activa"
-        },
-        {
-            "titol": "Biotecnologia Explicada",
-            "contingut": "Explora els avenços més recents en biotecnologia amb explicacions entenedores.",
-            "id_usuari": 3,
-            "especialitat": "Biologia",
-            "estat": "activa"
-        },
-        {
-            "titol": "Algorismes i Estructures de Dades",
-            "contingut": "Curs avançat de programació per a estudiants que volen aprofundir en conceptes computacionals.",
-            "id_usuari": 9,
-            "especialitat": "Pogramacio",
-            "estat": "activa"
-        },
-        {
-            "titol": "Geopolítica Mundial",
-            "contingut": "Anàlisi dels principals processos geogràfics i polítics actuals.",
-            "id_usuari": 15,
-            "especialitat": "Geografia",
-            "estat": "activa"
-        },
-        {
-            "titol": "Intel·ligència Artificial Bàsica",
-            "contingut": "Introducció als conceptes fonamentals de la intel·ligència artificial i els seus camps d'aplicació.",
-            "id_usuari": 11,
-            "especialitat": "Tecnologia",
-            "estat": "activa"
-        },
-        {
-            "titol": "Química Ambiental",
-            "contingut": "Estudia l'impacte de la química en el medi ambient i els processos ecològics.",
-            "id_usuari": 7,
-            "especialitat": "Quimica",
-            "estat": "activa"
-        },
-        {
-            "titol": "Resolució de Problemes Matemàtics",
-            "contingut": "Tècniques i estratègies per resoldre problemes matemàtics de manera eficient.",
-            "id_usuari": 19,
-            "especialitat": "Matemáticas",
-            "estat": "activa"
-        },
-        {
-            "titol": "Anglès Tècnic per a Professionals",
-            "contingut": "Millora del llenguatge tècnic en anglès per a estudiants i professionals.",
-            "id_usuari": 2,
-            "especialitat": "Inglés",
-            "estat": "activa"
+            "hora_inici": "15:30",
+            "hora_final": "17:30",
+            "dia": "Divendres"
         }
     ]
 }

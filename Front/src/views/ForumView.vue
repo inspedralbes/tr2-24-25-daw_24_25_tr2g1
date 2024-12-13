@@ -76,6 +76,7 @@ onMounted(() => {
   margin: 0 auto;
   padding: 20px;
   background-color: lightgrey;
+  border-radius: 2%; // por mirar
 }
 
 .search-input {
@@ -159,7 +160,7 @@ onMounted(() => {
 
 .load-more-button {
   padding: 10px 20px;
-  background-color:  black;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 6px;

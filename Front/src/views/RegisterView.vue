@@ -1,7 +1,6 @@
 <template>
-  <!-- Signup -->
   <div class="signup-container" v-if="!showLogin && !forgotPassword">
-    <p class="title">REGISTRAR-SEEEEE</p>
+    <p class="title">REGISTRAR-SE</p>
     <form class="form">
       <div class="input-group">
         <h3>Dades personals</h3>
@@ -77,6 +76,9 @@
             required />
         </div>
 
+        <div class="input-group">
+          <h3 class="olvidar">En cas de perdre la contrasenya omple els camps següents:</h3>
+        </div>
         <div class="input-group">
           <h3 class="olvidar">En cas de perdre la contrasenya omple els camps següents:</h3>
         </div>
@@ -381,6 +383,15 @@ async function registrarUsuari() {
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
   border: 1px solid #222;
+  width: 100%;
+  max-width: 850px;
+  margin: 2rem auto;
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+  border: 1px solid #222;
 }
 
 .input-error {
@@ -418,15 +429,15 @@ async function registrarUsuari() {
 
 .input-group input,
 .input-group select {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  background-color: #141414;
-  color: #fff;
-  /* border: 1px solid #333; */
-  border-radius: 8px;
-  outline: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background-color: #141414;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
 .input-group input:focus,
@@ -539,6 +550,10 @@ async function registrarUsuari() {
     padding: 2rem;
   }
 
+  .flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
   .flex {
     flex-direction: column;
     gap: 1rem;

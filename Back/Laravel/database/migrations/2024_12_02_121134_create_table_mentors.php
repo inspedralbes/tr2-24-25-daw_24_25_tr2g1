@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('mentors', function (Blueprint $table) {
             $table->id('id_mentor');
+            $table->string('nom');
+            $table->string('cognom');
+            $table->string('correu');
             $table->string('especialitat');
-            $table->string('descripció');
+            $table->string('curs');
             $table->timestamps();
         });
     }

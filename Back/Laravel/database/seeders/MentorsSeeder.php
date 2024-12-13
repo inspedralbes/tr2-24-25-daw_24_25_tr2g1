@@ -5,9 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Publicacio;
+use App\Models\Mentor;
 
-class PublicacionsSeeder extends Seeder
+class MentorsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,9 @@ class PublicacionsSeeder extends Seeder
     public function run(): void
     {
         // Clear existing data
-        DB::table('publicacions')->truncate();
+        DB::table('mentors')->truncate();
 
-        $archivo_json = base_path('./resources/json/publicacions.json');
+        $archivo_json = base_path('./resources/json/mentors.json');
 
         if (!file_exists($archivo_json)) {
             $this->command->error('El archivo JSON no existe');
@@ -29,28 +29,28 @@ class PublicacionsSeeder extends Seeder
         $data = json_decode($json_data, true);
 
         // Validar la estructura del JSON
-        if (!isset($data['publicacions']) || !is_array($data['publicacions'])) {
+        if (!isset($data['mentors']) || !is_array($data['mentors'])) {
             $this->command->error('Estructura de JSON inválida');
             return;
         }
 
         // Enviar los datos a la base de datos
-        foreach($data['publicacions'] as $publicacio){
+        foreach($data['mentors'] as $mentor){
             try {
-                Publicacio::create([
-                    'titol' => $publicacio['titol'],
-                    'contingut' => $publicacio['contingut'],
-                    'hora_inici'=> $publicacio['hora_inici'],
-                    'hora_final'=> $publicacio['hora_final'],
-                    'dia'=> $publicacio['dia'],
-                    'id_usuari' => $publicacio['id_usuari'],
-                    'especialitat' => $publicacio['especialitat'],
+                Mentor::create([
+                    'nom' => $mentor['nom'],
+                    'cognom'=> $mentor['cognom'],
+                    'correu'=> $mentor['correu'],
+                    'especialitat'=> $mentor['especialitat'],
+                    'curs'=> $mentor['curs'],
+
+                    
 
                 ]);
             } catch (\Exception $e) {
                 $this->command->error('Error al crear publicació: ' . $e->getMessage());
             }
         }
-        $this->command->info('Publicacions creades correctament');
+        $this->command->info('Mentors creades correctament');
     }
 }
