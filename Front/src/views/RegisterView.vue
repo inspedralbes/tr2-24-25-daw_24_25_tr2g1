@@ -258,7 +258,7 @@ const router = useRouter()
 const emailPatterns = {
   alumne: /^[a-zA-Z][0-9]{2}/,
   mentor: /^[a-zA-Z][0-9]{2}/,
-  professor: /^(?![a-zA-Z][0-9]{2}@).*@.+\..+$/,
+  professor: /^(?![a-zA-Z][0-9]{2}).*@.+\..+$/,
 }
 
 const isEmailInvalid = computed(() => {
@@ -266,7 +266,7 @@ const isEmailInvalid = computed(() => {
     return false;
   }
 
- // comprobar primer 3 caracteres en alumne y mentor
+  // comprobar primer 3 caracteres en alumne y mentor
   if (rol.value === 'alumne' || rol.value === 'mentor') {
     const pattern = emailPatterns[rol.value];
     return !pattern.test(correu.value);
@@ -274,7 +274,10 @@ const isEmailInvalid = computed(() => {
 
   // per professor no comprobar
   if (rol.value === 'professor') {
-    return !(/^(?![a-zA-Z][0-9]{2}@).*@.+\..+$/.test(correu.value));
+    const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}@/;
+    const validEmailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return invalidProfessorPattern.test(correu.value) && validEmailFormat.test(correu.value);
   }
   return false;
 });
