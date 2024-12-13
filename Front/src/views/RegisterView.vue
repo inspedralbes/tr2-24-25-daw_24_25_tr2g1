@@ -23,7 +23,7 @@
         <div class="flex">
           <label>
             <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement"
-              placeholder="Data Naixement" required />
+              placeholder="Data Naixement" required /> 
           </label>
 
           <label>
@@ -60,6 +60,7 @@
             <input type="mail" name="correu" id="correu" v-model="correu" placeholder="Correu"
               :class="{ 'input-error': isEmailInvalid }" @input="validateEmail" required />
           </label>
+
           <label>
             <input type="mail" name="correualternatiu" id="correualternatiu" placeholder="Correu Alternatiu"
               v-model="correualternatiu" required />
@@ -68,6 +69,7 @@
             <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="Telèfon" />
           </label>
         </div>
+        <p v-if="isEmailInvalid" class="error-message">{{ emailErrorMessage }}</p><br>
         <h3>Contrasenya</h3>
         <br />
         <div class="flex">
@@ -79,7 +81,6 @@
         <div class="input-group">
           <h3 class="olvidar">En cas de perdre la contrasenya omple els camps següents:</h3>
         </div>
-
         <br />
         <div class="flex">
           <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta" required>
@@ -157,10 +158,8 @@ const isEmailInvalid = computed(() => {
 
   // per professor no comprobar
   if (rol.value === 'professor') {
-    const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}@/;
-    const validEmailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return invalidProfessorPattern.test(correu.value) && validEmailFormat.test(correu.value);
+    const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}/;
+    return invalidProfessorPattern.test(correu.value);
   }
   return false;
 });
@@ -172,6 +171,23 @@ watch([correu, rol], () => {
     console.log('Correu invàlid per el rol seleccionat');
   }
 });
+
+const emailErrorMessage = computed(() => {
+  if (!isEmailInvalid.value) {
+    return '';
+  }
+
+  switch (rol.value) {
+    case 'alumne':
+      return 'El correu per alumne ha de començar amb una lletra i 2 números, seguit de qualsevol cosa';
+    case 'professor':
+      return 'El correu per professor no pot començar amb una lletra i 2 números';
+    case 'mentor':
+      return 'El correu per mentor ha de començar amb una lletra i 2 números, seguit de qualsevol cosa';
+    default:
+      return '';
+  }
+})
 
 async function registrarUsuari() {
   // Password match check
@@ -285,6 +301,16 @@ async function registrarUsuari() {
   background-color: rgba(255, 0, 0, 0.1);
 }
 
+.invalid-email {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
 .title {
   text-align: center;
   font-size: 2rem;
@@ -310,15 +336,15 @@ async function registrarUsuari() {
 
 .input-group input,
 .input-group select {
-    width: 100%;
-    padding: 1rem 1.25rem;
-    background-color: #141414;
-    color: #fff;
-    border: 1px solid #333;
-    border-radius: 8px;
-    outline: none;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background-color: #141414;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .input-group input:focus,
@@ -435,6 +461,7 @@ async function registrarUsuari() {
     flex-direction: column;
     gap: 1rem;
   }
+
   .flex {
     flex-direction: column;
     gap: 1rem;
