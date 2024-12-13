@@ -253,7 +253,6 @@ let rol = ref('')
 let curs = ref('')
 let especialitat = ref('')
 let major = ref('')
-// merge
 
 const router = useRouter()
 
