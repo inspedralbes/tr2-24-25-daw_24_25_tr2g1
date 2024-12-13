@@ -276,10 +276,8 @@ const isEmailInvalid = computed(() => {
 
   // per professor no comprobar
   if (rol.value === 'professor') {
-    const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}@/;
-    const validEmailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return invalidProfessorPattern.test(correu.value) && validEmailFormat.test(correu.value);
+    const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}/;
+    return invalidProfessorPattern.test(correu.value);
   }
   return false;
 });
