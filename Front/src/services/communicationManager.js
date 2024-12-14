@@ -5,6 +5,7 @@ export const getPublicaciones = async () => {
   try {
     const response = await axios.post('http://localhost:8000/api/sendData')
     if (response.data.status === 'success') {
+      console.log('Datos recibidos para publicaciones:', response.data.data);
       return response.data.data // Devuelve los datos de las publicaciones
     }
     console.log('publicacions rebudes')

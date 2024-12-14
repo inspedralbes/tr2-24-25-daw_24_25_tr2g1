@@ -8,25 +8,30 @@
         <option value="Matemáticas">Matemáticas</option>
         <option value="Inglés">Inglés</option>
         <option value="Ciencias">Ciencias</option>
+        <option value="Biologia">Biologia</option>
+        <option value="Pogramacio">Pogramacio</option>
+        <option value="Geografia">Geografia</option>
+        <option value="Tecnologia">Tecnologia</option>
+        <option value="Quimica">Quimica</option>
         <option value="Ciencias Sociales">Ciencias Sociales</option>
         <option value="Ciencias Naturales">Ciencias Naturales</option>
       </select>
       <label for="hora">Hora:</label>
       <select id="hora" v-model="selectedHora">
         <option value="">Totes</option>
-        <option value="">8:00</option>
-        <option value="">8:30</option>
-        <option value="">9:00</option>
-        <option value="">9:30</option>
-        <option value="">10:00</option>
-        <option value="">10:30</option>
-        <option value="">11:00</option>
-        <option value="">11:30</option>
-        <option value="">12:00</option>
-        <option value="">12:30</option>
-        <option value="">13:00</option>
-        <option value="">13:30</option>
-        <option value="">14:00</option>
+        <option value="8:00">8:00</option>
+        <option value="8:30">8:30</option>
+        <option value="9:00">9:00</option>
+        <option value="9:30">9:30</option>
+        <option value="10:00">10:00</option>
+        <option value="10:30">10:30</option>
+        <option value="11:00">11:00</option>
+        <option value="11:30">11:30</option>
+        <option value="12:00">12:00</option>
+        <option value="12:30">12:30</option>
+        <option value="13:00">13:00</option>
+        <option value="13:30">13:30</option>
+        <option value="14:00">14:00</option>
       </select>
       <label for="dia">Dia:</label>
       <select id="dia" v-model="selectedDia">
@@ -37,6 +42,8 @@
         <option value="Jueves">Jueves</option>
         <option value="Viernes">Viernes</option>
       </select>
+
+      <button class="search-button" @click="searchOffers">Buscar</button>
     </div>
 
     <!-- Llista d'anuncis dinàmica -->
@@ -44,6 +51,11 @@
       <div v-for="ad in displayedAds" :key="ad.id" class="ad-item">
         <h3 class="ad-title">{{ ad.titol }}</h3>
         <p class="ad-description">{{ ad.contingut }}</p>
+        <p class="ad-details">
+          <span>Especialitat: {{ ad.especialitat }}</span>
+          <span>Hora: {{ ad.hora }}</span>
+          <span>Dia: {{ ad.dia }}</span>
+        </p>
         <button class="button" @click="viewAdDetails(ad.id)">Veure més</button>
       </div>
     </div>
@@ -66,9 +78,29 @@ const ads = ref([])
 const pageSize = ref(9) // Nombre d'anuncis a mostrar inicialment i en cada càrrega
 const currentPage = ref(1)
 
+// Filtres per especialitat, hora i dia
+const selectedEspecialitat = ref('')
+const selectedHora = ref('')
+const selectedDia = ref('')
+
+
+
 // Computat per cercar a la llista d'anuncis
 const filteredAds = computed(() => {
-  return ads.value.filter((ad) => ad.titol.toLowerCase().includes(searchQuery.value.toLowerCase()))
+
+  return ads.value.filter((ad) => {
+    const matchEspecialitat = !selectedEspecialitat.value || ad.especialitat === selectedEspecialitat.value
+
+      // Filtratge per Hora (comprovant si comença amb l'hora seleccionada)
+      const matchHora = !selectedHora.value ||
+      (ad.hora && ad.hora.startsWith(selectedHora.value))
+
+    // Filtratge per Dia
+    const matchDia = !selectedDia.value ||
+      ad.dia === selectedDia.value
+
+    return matchEspecialitat && matchHora && matchDia
+  })
 })
 
 // Computat per mostrar anuncis paginats i filtrats
