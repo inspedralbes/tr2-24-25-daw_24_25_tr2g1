@@ -5,42 +5,19 @@
       <label for="especialitat">Especialitat:</label>
       <select id="especialitat" v-model="selectedEspecialitat">
         <option value="">Totes</option>
-        <option value="Matemáticas">Matemáticas</option>
-        <option value="Inglés">Inglés</option>
-        <option value="Ciencias">Ciencias</option>
-        <option value="Biologia">Biologia</option>
-        <option value="Pogramacio">Pogramacio</option>
-        <option value="Geografia">Geografia</option>
-        <option value="Tecnologia">Tecnologia</option>
-        <option value="Quimica">Quimica</option>
-        <option value="Ciencias Sociales">Ciencias Sociales</option>
-        <option value="Ciencias Naturales">Ciencias Naturales</option>
+        <option v-for="especialitat in uniqueEspecialitats" :key="especialitat" :value="especialitat">{{ especialitat }}</option>
       </select>
+
       <label for="hora">Hora:</label>
-      <select id="hora" v-model="selectedHora">
+      <select id="hora" v-model="selectedHoraInici">
         <option value="">Totes</option>
-        <option value="8:00">8:00</option>
-        <option value="8:30">8:30</option>
-        <option value="9:00">9:00</option>
-        <option value="9:30">9:30</option>
-        <option value="10:00">10:00</option>
-        <option value="10:30">10:30</option>
-        <option value="11:00">11:00</option>
-        <option value="11:30">11:30</option>
-        <option value="12:00">12:00</option>
-        <option value="12:30">12:30</option>
-        <option value="13:00">13:00</option>
-        <option value="13:30">13:30</option>
-        <option value="14:00">14:00</option>
+        <option v-for="hour in uniqueHoraInici" :key="hour" :value="hour">{{ hour }}</option>
       </select>
+
       <label for="dia">Dia:</label>
       <select id="dia" v-model="selectedDia">
         <option value="">Totes</option>
-        <option value="Lunes">Lunes</option>
-        <option value="Martes">Martes</option>
-        <option value="Miercoles">Miercoles</option>
-        <option value="Jueves">Jueves</option>
-        <option value="Viernes">Viernes</option>
+        <option v-for="day in uniqueDies" :key="day" :value="day">{{ day }}</option>
       </select>
 
       <button class="search-button" @click="searchOffers">Buscar</button>
@@ -53,14 +30,14 @@
         <p class="ad-description">{{ ad.contingut }}</p>
         <p class="ad-details">
           <span>Especialitat: {{ ad.especialitat }}</span>
-          <span>Hora: {{ ad.hora }}</span>
+          <span>Hora Inici: {{ ad.hora_inici }}</span>
+          <span>Hora Final: {{ ad.hora_final }}</span>
           <span>Dia: {{ ad.dia }}</span>
         </p>
         <button class="button" @click="viewAdDetails(ad.id)">Veure més</button>
       </div>
     </div>
 
-    <!-- Botó Carregar més -->
     <div class="load-more-container" v-if="hasMoreAds">
       <button class="load-more-button" @click="loadMoreAds">Carregar més publicacions</button>
     </div>
@@ -75,31 +52,44 @@ import { getPublicaciones } from '../services/communicationManager.js'
 const router = useRouter()
 const searchQuery = ref('')
 const ads = ref([])
+const uniqueEspecialitats = ref([])
+const uniqueHoraInici = ref([])
+const uniqueDies = ref([])
 const pageSize = ref(9) // Nombre d'anuncis a mostrar inicialment i en cada càrrega
 const currentPage = ref(1)
 
-// Filtres per especialitat, hora i dia
 const selectedEspecialitat = ref('')
-const selectedHora = ref('')
+const selectedHoraInici = ref('')
 const selectedDia = ref('')
 
+// Funcion per extraer especialitats uniques
+const extractUniqueEspecialitats = () => {
+  const allEspecialitats = ads.value.map(ad => ad.especialitat).filter(Boolean)
+  uniqueEspecialitats.value = [...new Set(allEspecialitats)].sort()
+}
 
+// Funcion per extraer horas uniques
+const extractUniqueHours = () => {
+
+  const allHoraInici  = ads.value.map(ab => ab.hora_inici).filter(Boolean)
+  uniqueHoraInici.value = [...new Set(allHoraInici)].sort()
+}
+
+// Funcion per extraer dies uniques
+const extractUniqueDays = () => {
+  const allDies = ads.value.map(ad => ad.dia).filter(Boolean)
+  uniqueDies.value = [...new Set(allDies)].sort()
+}
 
 // Computat per cercar a la llista d'anuncis
 const filteredAds = computed(() => {
 
   return ads.value.filter((ad) => {
     const matchEspecialitat = !selectedEspecialitat.value || ad.especialitat === selectedEspecialitat.value
+    const matchHoraInici = !selectedHoraInici.value || (ad.hora_inici && ad.hora_inici.startsWith(selectedHoraInici.value))
+    const matchDia = !selectedDia.value || ad.dia === selectedDia.value
 
-      // Filtratge per Hora (comprovant si comença amb l'hora seleccionada)
-      const matchHora = !selectedHora.value ||
-      (ad.hora && ad.hora.startsWith(selectedHora.value))
-
-    // Filtratge per Dia
-    const matchDia = !selectedDia.value ||
-      ad.dia === selectedDia.value
-
-    return matchEspecialitat && matchHora && matchDia
+    return matchEspecialitat && matchHoraInici && matchDia
   })
 })
 
@@ -126,12 +116,16 @@ const loadMoreAds = () => {
 // Funció per obtenir publicacions
 const fetchPublicaciones = async () => {
   ads.value = await getPublicaciones()
+  extractUniqueEspecialitats()
+  extractUniqueHours()
+  extractUniqueDays()
 }
 
 // Obtenir publicacions quan el component es munta
 onMounted(() => {
   fetchPublicaciones()
 })
+
 </script>
 
 <style scoped>
@@ -143,22 +137,58 @@ onMounted(() => {
   border-radius: 2%;
 }
 
-.search-input {
-  width: 100%;
-  padding: 12px;
-  margin: 30px;
-  border: 2px solid #e0e0e0;
+/* Estilo de los filtros */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filters label {
   font-size: 16px;
-  transition: border-color 0.5s ease;
-  margin-left: -5px;
+  color: #333;
+  margin-right: 10px;
 }
 
-.search-input:focus {
+.filters select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.filters select:focus {
   outline: none;
-  border-color: lightgrey;
+  border-color: #007bff;
 }
 
+.search-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Estilo de la lista de anuncios */
 .ads-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

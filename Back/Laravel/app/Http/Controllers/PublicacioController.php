@@ -33,6 +33,11 @@ class PublicacioController extends Controller
             'id_usuari' => 'required|exists:usuaris,id',
             'estat' => 'required|in:activa,inactiva',
             'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
+            'hora_inici' => 'required|string',
+            'hora_final' => 'required|string',
+            // 'hora_inici' => 'required|date_format:H:i',
+            // 'hora_fi' => 'required|date_format:H:i',
+            'dia' => 'required|in:Dilluns,Dimarts,Dimecres,Dijous,Divendres',
         ]);
 
         Publicacio::create($validated);
