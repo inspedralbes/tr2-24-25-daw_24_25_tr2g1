@@ -1,3 +1,4 @@
+<!--  -->
 <template>
   <div class="signup-container" v-if="!showLogin && !forgotPassword">
     <p class="title">REGISTRAR-SE</p>
@@ -156,10 +157,11 @@ const isEmailInvalid = computed(() => {
     return !pattern.test(correu.value);
   }
 
-  // per professor no comprobar
   if (rol.value === 'professor') {
     const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}/;
-    return invalidProfessorPattern.test(correu.value);
+    const validEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return invalidProfessorPattern.test(correu.value) || !validEmailPattern.test(correu.value);
   }
   return false;
 });
@@ -169,6 +171,8 @@ const isEmailInvalid = computed(() => {
 watch([correu, rol], () => {
   if (isEmailInvalid.value) {
     console.log('Correu invàlid per el rol seleccionat');
+  }else{
+    console.log('Correu valid per el rol seleccionat');
   }
 });
 
@@ -188,6 +192,7 @@ const emailErrorMessage = computed(() => {
       return '';
   }
 })
+
 
 async function registrarUsuari() {
   // Password match check
