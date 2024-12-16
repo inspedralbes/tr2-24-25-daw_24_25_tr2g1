@@ -6,15 +6,14 @@ import { ref } from 'vue'
 let isNavBarClicked = ref(false)
 const router = useRouter()
 
-
 </script>
 
 <template>
   <nav id="navDesktop">
     <div class="logo" @click="(router.push('/'), (isNavBarClicked = false))">AlumNet</div>
     <div>
-            <!-- <li><RouterLink to="/experience">Classes</RouterLink></li> -->
-            <RouterLink to="/login" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Login" width="25px"></RouterLink>
+        <!-- <li><RouterLink to="/experience">Classes</RouterLink></li> -->
+        <RouterLink to="/login" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Login" width="25px"></RouterLink>
     </div>
   </nav>
   <div class="description" v-if="!isNavBarClicked">
