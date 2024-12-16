@@ -40,6 +40,9 @@
             </select>
         </div>
 
+        
+
+
         <button type="submit" class="btn btn-warning">Actualizar Publicació</button>
         <a href="{{ route('publicacions.index') }}" class="btn btn-secondary">Tornar a la llista de publicacions</a>
     </form>

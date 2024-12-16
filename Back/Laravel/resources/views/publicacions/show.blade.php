@@ -8,11 +8,12 @@
         <div class="card-body">
             <h2 class="card-title">{{ $publicacio->titol }}</h2>
             <p class="card-text"><strong>Contingut:</strong> {{ $publicacio->contingut }}</p>
-            <p class="card-text"><strong>Comptador de visites:</strong> {{ $publicacio->views_count }}</p>
+            {{-- <p class="card-text"><strong>Comptador de visites:</strong> {{ $publicacio->views_count }}</p> --}}
             <p class="card-text"><strong>Estat:</strong> {{ $publicacio->estat }}</p>
             <p class="card-text"><strong>Especialitat:</strong> {{ $publicacio->especialitat }}</p>
-            <p class="card-text"><strong>Hora d'inici:</strong> {{ $publicacio->horainici }}</p>
-            <p class="card-text"><strong>Hora final:</strong> {{ $publicacio->horafi }}</p>
+            <p class="card-text"><strong>Hora d'inici:</strong> {{ $publicacio->hora_inici }}</p>
+            <p class="card-text"><strong>Hora final:</strong> {{ $publicacio->hora_final }}</p>
+
             <p class="card-text"><strong>Dia:</strong> {{ $publicacio->dia }}</p>
         </div>
     </div>
