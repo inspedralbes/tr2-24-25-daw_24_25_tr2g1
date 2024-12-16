@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use App\Models\Alumne;
 
 class AuthController extends Controller
 {
@@ -50,37 +52,40 @@ class AuthController extends Controller
             'rol' => 'required|in:alumne,mentor,professor',
             'correu' => 'required|email|unique:usuaris,correu',
             'correualternatiu' => 'required|email|unique:usuaris,correualternatiu',
-            'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
+            // 'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
+            // 'resposta_secreta' => 'nullable|string',
+            'pregunta_secreta' => 'nullable|string',
             'resposta_secreta' => 'nullable|string',
             'telefon' => 'required|string|max:9',
             'major' => 'required|in:si,no',
+            // 'curs' => 'nullable|string',
         ]);
-
-
 
         // Crear el usuario en la base de datos
-        $usuari = Usuari::create([
-            'nom' => $validated['nom'],
-            'cognom1' => $validated['cognom1'],
-            'cognom2' => $validated['cognom2'],
-            'password' => bcrypt($validated['password']),
-            'data_naixement' => $validated['data_naixement'],
-            'rol' => $validated['rol'],
-            'correu' => $validated['correu'],
-            'correualternatiu' => $validated['correualternatiu'],
-            'pregunta_secreta' => $validated['pregunta_secreta'],
-            'resposta_secreta' =>  $validated['resposta_secreta'],
-            'telefon' => $validated['telefon'],
-            //'biografia' => $validated['biografia'],
-            'major' => $validated['major'],
-        ]);
+        try {
+            $usuari = Usuari::create([
+                'nom' => $request['nom'],
+                'cognom1' => $request['cognom1'],
+                'cognom2' => $request['cognom2'],
+                'password' => bcrypt($request['password']),
+                'data_naixement' => $request['data_naixement'],
+                'rol' => $request['rol'],
+                'correu' => $request['correu'],
+                'correualternatiu' => $request['correualternatiu'],
+                'pregunta_secreta' => $request['pregunta_secreta'] ?? null,
+                'resposta_secreta' =>  $request['resposta_secreta'] ?? null,
+                'telefon' => $request['telefon'],
+                'major' => $request['major'],
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
 
         //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
-
         return response()->json([
             'status' => 'success',
             'message' => 'Usuari creat correctament!',
-        ]);
+        ], 200);
     }
 
 

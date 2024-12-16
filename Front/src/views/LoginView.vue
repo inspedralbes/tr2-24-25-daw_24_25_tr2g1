@@ -12,7 +12,7 @@
           <label for="contrasenya">Contrasenya</label>
           <input type="password" name="contrasenya" id="contrasenya" placeholder="---" />
           <div class="forgot">
-            <a rel="noopener noreferrer" href="#" @click="showForgotPassword">Forgot Password ?</a>
+            <a rel="noopener noreferrer" href="#" @click="showForgotPassword">Has oblidat la contrasenya?</a>
           </div>
         </div>
         <button @click.prevent="login" class="sign">Iniciar sessió</button>
@@ -32,177 +32,10 @@
       </div>
       <p class="signup">
         No tens un compte?
-        <a @click="showLogin = !showLogin">Registrar-se</a>
+        <a @click="router.push('/register')">Registrar-se</a>
       </p>
     </div>
 
-    <!-- Signup -->
-    <div class="signup-container" v-if="!showLogin && !forgotPassword">
-      <p class="title">REGISTRAR-SE</p>
-      <form class="form">
-        <div class="input-group">
-          <label for="nom">Nom</label>
-          <input type="text" name="nom" id="nom" v-model="nom" placeholder="---" required />
-        </div>
-        <div class="input-group">
-          <label for="cognom1">Primer cognom</label>
-          <input
-            type="text"
-            name="cognom1"
-            id="cognom1"
-            v-model="cognom1"
-            placeholder="---"
-            required
-          />
-        </div>
-        <div class="input-group">
-          <label for="cognom2">Segon cognom</label>
-          <input
-            type="text"
-            name="cognom2"
-            id="cognom2"
-            v-model="cognom2"
-            placeholder="---"
-            required
-          />
-        </div>
-
-        <div class="input-group">
-          <label for="password">Contrasenya</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            v-model="password"
-            placeholder="---"
-            required
-          />
-        </div>
-        <div class="input-group">
-          <label for="data_naixement">Data de naixement</label>
-          <input
-            type="date"
-            name="data_naixement"
-            id="data_naixement"
-            v-model="data_naixement"
-            placeholder="---"
-            required
-          />
-        </div>
-
-        <div class="input-group">
-          <label for="telefon">Telefon</label>
-          <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="---" />
-        </div>
-        <div class="input-group">
-          <!-- afegir un comprovant de les dues contrasenyes -->
-          <label for="password2">Confirmar contrasenya</label>
-          <input
-            type="password"
-            name="password2"
-            id="password2"
-            v-model="password2"
-            placeholder="---"
-            required
-          />
-        </div>
-        <div class="input-group">
-          <label for="rol-select">Sel·lecciona el teu rol</label>
-          <select name="rol-select" id="rol-select" v-model="rol" required>
-            <option disabled selected value=""></option>
-            <option value="alumne">Alumne</option>
-            <option value="mentor">Mentor</option>
-            <option value="professor">Professor</option>
-          </select>
-        </div>
-        <div class="input-group" v-if="rol === 'alumne'">
-          <input type="text" v-model="curs" placeholder="Curs" required />
-        </div>
-        <div class="input-group" v-if="rol === 'mentor'">
-          <input type="text" v-model="especialitat" placeholder="Especialitat" required />
-        </div>
-        <div class="input-group" v-if="rol === 'professor'">
-          <input type="text" v-model="departament" placeholder="Departament" required />
-        </div>
-        <div class="input-group">
-          <!-- afegir un if que si es difretn el correu de l'alumne amb el de professor avisi(tot depen de el rol) -->
-          <label for="correu">Correu</label>
-          <input
-            type="mail"
-            name="correu"
-            id="correu"
-            v-model="correu"
-            placeholder="---"
-            required
-          />
-        </div>
-
-        <div class="input-group">
-          <!-- afegir un if que si es difretn el correu de l'alumne amb el de professor avisi(tot depen de el rol) -->
-          <label for="correualternatiu">Correu Alternatiu</label>
-          <input
-            type="mail"
-            name="correualternatiu"
-            id="correualternatiu"
-            v-model="correualternatiu"
-            placeholder="---"
-            required
-          />
-        </div>
-
-        <div class="input-group">
-          <label for="major">Major d'edat</label>
-          <input type="text" name="major" id="major" v-model="major" />
-        </div>
-
-        <div class="input-group">
-          <h3><label>En cas de perdre la contrasenya omple els camps següents</label></h3>
-        </div>
-
-        <!-- Pregunta secreta -->
-        <div class="input-group">
-          <div class="input-group">
-            <label for="pregunta_secreta">Tria una pregunta</label>
-            <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta">
-              <option value="" disabled selected>---</option>
-              <option value="Com es el nombre del teu primer amic?">
-                Com es el nombre del teu primer amic?
-              </option>
-              <option value="On vas fer la ESO?">On vas fer la ESO?</option>
-              <option value="El teu cotxe preferit?">El teu cotxe preferit?</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label for="resposta_secreta">Resposta</label>
-            <input
-              type="text"
-              name="resposta_secreta"
-              id="resposta_secreta"
-              placeholder="---"
-              v-model="resposta_secreta"
-            />
-          </div>
-        </div>
-        <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
-      </form>
-      <div class="social-message">
-        <div class="line"></div>
-        <p class="message">Registrar-se amb</p>
-        <div class="line"></div>
-      </div>
-      <div class="social-icons">
-        <button aria-label="Log in with Google" class="icon">
-          <img src="/src/assets/icons/google-logo.svg" />
-        </button>
-        <button aria-label="Log in with GitHub" class="icon">
-          <img src="/src/assets/icons/github.svg" />
-        </button>
-      </div>
-      <p class="signup">
-        Tens un compte?
-        <a @click="showLogin = !showLogin">Login</a>
-      </p>
-    </div>
     <!-- Forgot Password -->
     <div class="forgotPassword-container" v-if="forgotPassword">
       <p class="title">RECUPERAR CONTRASENYA</p>
@@ -257,6 +90,7 @@ import { useRouter } from 'vue-router'
 let showLogin = ref(true)
 let forgotPassword = ref(false)
 let canviarContrasenya = ref(false)
+const router = useRouter()
 
 let nom = ref('')
 let cognom1 = ref('')
@@ -275,79 +109,34 @@ let especialitat = ref('')
 let departament = ref('')
 let major = ref('')
 
-const router = useRouter()
-
 function showForgotPassword() {
   forgotPassword.value = !forgotPassword.value
   showLogin.value = !showLogin.value
 }
-//funció registrar usuari
-async function registrarUsuari() {
-  if (password.value !== password2.value) {
-    alert('Les contrasenyes no coincideixen!')
-    return
-  }
 
-  async function login() {
-    try {
-      // Agafem els valors dels camps del formulari
-      const correu = document.querySelector('#correu').value
-      const password = document.querySelector('#contrasenya').value
-
-      // Enviem la sol·licitud al servidor
-      const resposta = await axios.post('http://localhost:8000/api/login', {
-        correu, // Aquí és "correu" en lloc de "email"
-        password,
-      })
-
-      // Guarda el token al localStorage (opcional)
-      localStorage.setItem('token', resposta.data.token)
-
-      alert('Login correcte')
-      router.push('/forum') // Redirigeix a una pàgina després de fer login
-    } catch (error) {
-      if (error.response) {
-        alert(`Error: ${error.response.data.message}`)
-      } else {
-        alert('Error de connexió')
-      }
-    }
-  }
-
-  // Construir dades segons el rol
-  const dadesUsuari = {
-    nom: nom.value,
-    cognom1: cognom1.value,
-    cognom2: cognom2.value,
-    password: password.value,
-    data_naixement: data_naixement.value,
-    correu: correu.value,
-    correualternatiu: correualternatiu.value,
-    pregunta_secreta: pregunta_secreta.value,
-    resposta_secreta: resposta_secreta.value,
-    telefon: telefon.value,
-    rol: rol.value,
-    major: major.value,
-  }
-
-  // Afegir només el camp rellevant segons el rol
-  if (rol.value === 'alumne') {
-    dadesUsuari.curs = curs.value
-  } else if (rol.value === 'mentor') {
-    dadesUsuari.especialitat = especialitat.value
-  } else if (rol.value === 'professor') {
-    dadesUsuari.departament = departament.value
-  }
-
-  console.log('Datos enviados al backend:', dadesUsuari)
-
+async function login() {
   try {
-    const resposta = await axios.post('http://localhost:8000/api/store', dadesUsuari)
-    console.log('Usuari registrat:', resposta.data)
-    alert('Usuari registrat correctament!')
-    router.push('/forum')
+    // Agafem els valors dels camps del formulari
+    const correu = document.querySelector('#correu').value
+    const password = document.querySelector('#contrasenya').value
+
+    // Enviem la sol·licitud al servidor
+    const resposta = await axios.post('http://localhost:8000/api/login', {
+      correu, // Aquí és "correu" en lloc de "email"
+      password,
+    })
+
+    // Guarda el token al localStorage (opcional)
+    localStorage.setItem('token', resposta.data.token)
+
+    alert('Login correcte')
+    router.push('/forum') // Redirigeix a una pàgina després de fer login
   } catch (error) {
-    console.error('Error desconegut:', error)
+    if (error.response) {
+      alert(`Error: ${error.response.data.message}`)
+    } else {
+      alert('Error de connexió')
+    }
   }
 }
 </script>

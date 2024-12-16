@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mentor;
 use App\Models\Publicacio;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsuariSeeder::class,
-            PublicacionsSeeder::class
+            PublicacionsSeeder::class,
+            MentorsSeeder::class
         ]);
 
 

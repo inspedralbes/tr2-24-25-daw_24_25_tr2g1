@@ -9,11 +9,13 @@ class Publicacio extends Model
     protected $table = 'publicacions';
 
     protected $fillable = [
-        'titol',
-        'contingut',
-        'estat',
         'id_usuari',
+        'titol',
         'especialitat',
+        'contingut',
+        'data_publicacio',
+        'hora_inici',
+        'hora_final',
         // 'imatge',
         // 'views_count',
         // 'publlicacio_data',

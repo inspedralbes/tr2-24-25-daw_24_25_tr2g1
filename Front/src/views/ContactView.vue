@@ -1,22 +1,22 @@
 <template>
   <form class="form">
-    <div class="title">Contacta'ns</div>
-    <input type="text" placeholder="Tu correu" class="input">
+    <div class="title">Contacta amb nosaltres</div>
+    <input type="text" placeholder="El teu correu" class="input">
     <textarea placeholder="Missatge"></textarea>
-    
+
     <div class="contacts">
-      <p>Nostres contactes</p>
+      <p>Dades de contacte:</p>
       <p>Correu: lorem@ipsum</p>
-      <p>Telefon: 123456789</p>
+      <p>Telèfon: 123456789</p>
     </div>
     <button>Enviar</button>
   </form>
 </template>
-  
+
 <script>
 </script>
 
-  <style>
+<style>
 .form {
   position: relative;
   display: flex;
@@ -77,6 +77,4 @@
   display: flex;
   gap: 10px;
 }
-    
 </style>
-  

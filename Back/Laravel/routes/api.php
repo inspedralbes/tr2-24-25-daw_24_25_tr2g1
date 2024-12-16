@@ -25,7 +25,13 @@
     })->middleware('auth:sanctum');
 
     //ruta registre usuari
-    Route::post('/store', [AuthController::class, 'store']);
+    Route::middleware('api')->group(function () {
+        Route::post('/store', [AuthController::class, 'store']);
+    });
+
+    //ruta login usuari
+    Route::post('/login', [AuthController::class, 'login']);
+
     // ruta para CRUD
     Route::get('/usuaris', [AuthController::class, 'index']);
     Route::get('/usuaris/{id}', [AuthController::class, 'show']);
@@ -44,6 +50,9 @@
 
     // Enviar datos a Front
     Route::post('/sendData', [PublicacioController::class, 'sendData']);
-
+    Route::post('/sendDataMentors', [MentorController::class, 'sendDataMentors']);
     Route::post('/sendDataUsers', [AuthController::class, 'sendDataUsers']);
+
+    // Oferta
+    Route::post('/createOffer', [PublicacioController::class, 'createOffer']);
 
