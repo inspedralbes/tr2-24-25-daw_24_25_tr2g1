@@ -5,7 +5,13 @@
       <label for="especialitat">Especialitat:</label>
       <select id="especialitat" v-model="selectedEspecialitat">
         <option value="">Totes</option>
-        <option v-for="especialitat in uniqueEspecialitats" :key="especialitat" :value="especialitat">{{ especialitat }}</option>
+        <option
+          v-for="especialitat in uniqueEspecialitats"
+          :key="especialitat"
+          :value="especialitat"
+        >
+          {{ especialitat }}
+        </option>
       </select>
 
       <label for="hora">Hora:</label>
@@ -65,29 +71,30 @@ const selectedDia = ref('')
 
 // Funcion per extraer especialitats uniques
 const extractUniqueEspecialitats = () => {
-  const allEspecialitats = ads.value.map(ad => ad.especialitat).filter(Boolean)
+  const allEspecialitats = ads.value.map((ad) => ad.especialitat).filter(Boolean)
   uniqueEspecialitats.value = [...new Set(allEspecialitats)].sort()
 }
 
 // Funcion per extraer horas uniques
 const extractUniqueHours = () => {
-
-  const allHoraInici  = ads.value.map(ab => ab.hora_inici).filter(Boolean)
+  const allHoraInici = ads.value.map((ab) => ab.hora_inici).filter(Boolean)
   uniqueHoraInici.value = [...new Set(allHoraInici)].sort()
 }
 
 // Funcion per extraer dies uniques
 const extractUniqueDays = () => {
-  const allDies = ads.value.map(ad => ad.dia).filter(Boolean)
+  const allDies = ads.value.map((ad) => ad.dia).filter(Boolean)
   uniqueDies.value = [...new Set(allDies)].sort()
 }
 
 // Computat per cercar a la llista d'anuncis
 const filteredAds = computed(() => {
-
   return ads.value.filter((ad) => {
-    const matchEspecialitat = !selectedEspecialitat.value || ad.especialitat === selectedEspecialitat.value
-    const matchHoraInici = !selectedHoraInici.value || (ad.hora_inici && ad.hora_inici.startsWith(selectedHoraInici.value))
+    const matchEspecialitat =
+      !selectedEspecialitat.value || ad.especialitat === selectedEspecialitat.value
+    const matchHoraInici =
+      !selectedHoraInici.value ||
+      (ad.hora_inici && ad.hora_inici.startsWith(selectedHoraInici.value))
     const matchDia = !selectedDia.value || ad.dia === selectedDia.value
 
     return matchEspecialitat && matchHoraInici && matchDia
@@ -126,10 +133,14 @@ const fetchPublicaciones = async () => {
 onMounted(() => {
   fetchPublicaciones()
 })
-
 </script>
 
 <style scoped>
+
+.no-results {
+  font-size: 16px;
+  color: #666;
+}
 .forum-container {
   max-width: 1200px;
   margin: 0 auto;
