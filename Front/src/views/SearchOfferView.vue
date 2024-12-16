@@ -25,6 +25,7 @@
 
     <!-- Llista d'anuncis dinàmica -->
     <div class="ads-list">
+      <div v-if="displayedAds.length === 0" class="no-results">No s'ha trobat cap resultat amb aquesta cerca.</div>
       <div v-for="ad in displayedAds" :key="ad.id" class="ad-item">
         <h3 class="ad-title">{{ ad.titol }}</h3>
         <p class="ad-description">{{ ad.contingut }}</p>
