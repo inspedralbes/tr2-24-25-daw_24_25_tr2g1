@@ -1,59 +1,9 @@
-<!--  -->
 <template>
   <div class="signup-container" v-if="!showLogin && !forgotPassword">
     <p class="title">REGISTRAR-SE</p>
     <form class="form">
       <div class="input-group">
-        <h3>Dades personals</h3>
-        <br />
-        <div class="flex">
-          <label>
-            <input class="input" type="text" placeholder="Nom" name="nom" id="nom" v-model="nom" />
-          </label>
-
-          <label>
-            <input class="input" type="text" placeholder="Primer Cognom" id="cognom1" name="cognom1"
-              v-model="cognom1" />
-          </label>
-
-          <label>
-            <input class="input" type="text" placeholder="Segon Cognom" id="cognom2" name="cognom2" v-model="cognom2" />
-          </label>
-        </div>
-
-        <div class="flex">
-          <label>
-            <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement"
-              placeholder="Data Naixement" required /> 
-          </label>
-
-          <label>
-            <select name="major" id="major" v-model="major" required>
-              <option value="" disabled selected>Major d'edat?</option>
-              <option value="si">Sí</option>
-              <option value="no">No</option>
-            </select>
-          </label>
-          <label>
-            <select name="rol-select" id="rol-select" v-model="rol" required>
-              <option value="" disabled selected>Rol</option>
-              <option value="alumne">Alumne</option>
-              <option value="mentor">Mentor</option>
-              <option value="professor">Professor</option>
-            </select>
-          </label>
-
-          <div class="input-group" v-if="rol === 'alumne'">
-            <input type="text" v-model="curs" placeholder="Curs" required />
-          </div>
-          <div class="input-group" v-if="rol === 'mentor'">
-            <input type="text" v-model="especialitat" placeholder="Especialitat" required />
-          </div>
-          <div class="input-group" v-if="rol === 'professor'">
-            <input type="text" v-model="departament" placeholder="Departament" required />
-          </div>
-        </div>
-        <h3>Correu electrònic i telèfon</h3>
+        <h2>Correu electrònic</h2>
         <br />
 
         <div class="flex">
@@ -61,18 +11,16 @@
             <input type="mail" name="correu" id="correu" v-model="correu" placeholder="Correu"
               :class="{ 'input-error': isEmailInvalid }" @input="validateEmail" required />
           </label>
-
           <label>
             <input type="mail" name="correualternatiu" id="correualternatiu" placeholder="Correu Alternatiu"
               v-model="correualternatiu" required />
           </label>
-          <label>
-            <input type="text" name="telefon" id="telefon" v-model="telefon" placeholder="Telèfon" />
-          </label>
         </div>
+
         <p v-if="isEmailInvalid" class="error-message">{{ emailErrorMessage }}</p><br>
-        <h3>Contrasenya</h3>
-        <br />
+
+        <h2>Contrasenyes</h2>
+        <br>
         <div class="flex">
           <input type="password" name="password" id="password" v-model="password" placeholder="Contrasenya" required />
           <input type="password" name="password2" id="password2" v-model="password2" placeholder="Confirmar Contrasenya"
@@ -82,25 +30,30 @@
         <div class="input-group">
           <h3 class="olvidar">En cas de perdre la contrasenya omple els camps següents:</h3>
         </div>
+
         <br />
+
         <div class="flex">
           <select name="pregunta_secreta" id="pregunta_secreta" v-model="pregunta_secreta" required>
-            <option value="" disabled selected>Escull una pregunta</option>
-            <option value="Nom primer amic?">Com es el nombre del teu primer amic?</option>
+            <option value="" disabled selected>Tria una pregunta</option>
+            <option value="Nom primer amic?">Quin és el nom del teu primer amic?</option>
             <option value="On ESO?">On vas fer la ESO?</option>
-            <option value="Cotxe preferit?">El teu cotxe preferit?</option>
+            <option value="Cotxe preferit?">Quin és el teu cotxe preferit?</option>
           </select>
           <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="Resposta"
             v-model="resposta_secreta" />
         </div>
       </div>
+
       <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
     </form>
+
     <div class="social-message">
       <div class="line"></div>
       <p class="message">Registrar-se amb</p>
       <div class="line"></div>
     </div>
+
     <div class="social-icons">
       <button aria-label="Log in with Google" class="icon">
         <img src="/src/assets/icons/google-logo.svg" />
@@ -109,6 +62,7 @@
         <img src="/src/assets/icons/github.svg" />
       </button>
     </div>
+
     <p class="signup">
       Tens un compte?
       <a @click="showLogin = !showLogin">Login</a>
@@ -120,22 +74,12 @@
 import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
-let nom = ref('')
-let cognom1 = ref('')
-let cognom2 = ref('')
 let password = ref('')
 let password2 = ref('')
-let data_naixement = ref('')
 let correu = ref('')
 let correualternatiu = ref('')
 let pregunta_secreta = ref('')
-let telefon = ref('')
 let resposta_secreta = ref('')
-let departament = ref('')
-let rol = ref('')
-let curs = ref('')
-let especialitat = ref('')
-let major = ref('')
 
 const router = useRouter()
 
@@ -147,52 +91,17 @@ const emailPatterns = {
 }
 
 const isEmailInvalid = computed(() => {
-  if (!rol.value || !correu.value) {
+  if (!correu.value) {
     return false;
   }
-
-  // comprobar primer 3 caracteres en alumne y mentor
-  if (rol.value === 'alumne' || rol.value === 'mentor') {
-    const pattern = emailPatterns[rol.value];
-    return !pattern.test(correu.value);
-  }
-
-  if (rol.value === 'professor') {
-    const invalidProfessorPattern = /^[a-zA-Z][0-9]{2}/;
-    const validEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return invalidProfessorPattern.test(correu.value) || !validEmailPattern.test(correu.value);
-  }
-  return false;
+  const validEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return !validEmailPattern.test(correu.value);
 });
 
-
-//validacio reactiva del correu
-watch([correu, rol], () => {
-  if (isEmailInvalid.value) {
-    console.log('Correu invàlid per el rol seleccionat');
-  }else{
-    console.log('Correu valid per el rol seleccionat');
-  }
-});
-
+// Email validation message
 const emailErrorMessage = computed(() => {
-  if (!isEmailInvalid.value) {
-    return '';
-  }
-
-  switch (rol.value) {
-    case 'alumne':
-      return 'El correu per alumne ha de començar amb una lletra i 2 números, seguit de qualsevol cosa';
-    case 'professor':
-      return 'El correu per professor no pot començar amb una lletra i 2 números';
-    case 'mentor':
-      return 'El correu per mentor ha de començar amb una lletra i 2 números, seguit de qualsevol cosa';
-    default:
-      return '';
-  }
-})
-
+  return isEmailInvalid.value ? 'El correu introduït no és vàlid.' : '';
+});
 
 async function registrarUsuari() {
   // Password match check
@@ -201,47 +110,19 @@ async function registrarUsuari() {
     return
   }
 
-  // Email validation based on role
+  // Email validation
   if (isEmailInvalid.value) {
-    let errorMessage = ''
-    switch (rol.value) {
-      case 'alumne':
-        errorMessage = 'El correu per alumne ha de començar amb una lletra i 2 números, seguit de qualsevol cosa'
-        break
-      case 'professor':
-        errorMessage = 'El correu per professor no pot començar amb una lletra i 2 números'
-        break
-      case 'mentor':
-        errorMessage = 'El correu per mentor ha de començar amb una lletra i 2 números, seguit de qualsevol cosa'
-        break
-    }
-    alert(errorMessage)
+    alert('El correu introduït no és vàlid.')
     return
   }
 
-  // Construir dades segons el rol
+  // Construir dades de l'usuari
   const dadesUsuari = {
-    nom: nom.value,
-    cognom1: cognom1.value,
-    cognom2: cognom2.value,
     password: password.value,
-    data_naixement: data_naixement.value,
     correu: correu.value,
     correualternatiu: correualternatiu.value,
     pregunta_secreta: pregunta_secreta.value,
     resposta_secreta: resposta_secreta.value,
-    telefon: telefon.value,
-    rol: rol.value,
-    major: major.value,
-  }
-
-  // Afegir només el camp rellevant segons el rol
-  if (rol.value === 'alumne') {
-    dadesUsuari.curs = curs.value
-  } else if (rol.value === 'mentor') {
-    dadesUsuari.especialitat = especialitat.value
-  } else if (rol.value === 'professor') {
-    dadesUsuari.departament = departament.value
   }
 
   console.log('Datos enviados al backend:', dadesUsuari)
@@ -270,7 +151,6 @@ async function registrarUsuari() {
     alert(`Error: ${error.message}`)
   }
 }
-
 </script>
 
 
