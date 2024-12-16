@@ -29,10 +29,10 @@
         <h3 class="ad-title">{{ ad.titol }}</h3>
         <p class="ad-description">{{ ad.contingut }}</p>
         <p class="ad-details">
-          <span>Especialitat: {{ ad.especialitat }}</span>
+          <!-- <span>Especialitat: {{ ad.especialitat }}</span>
           <span>Hora Inici: {{ ad.hora_inici }}</span>
           <span>Hora Final: {{ ad.hora_final }}</span>
-          <span>Dia: {{ ad.dia }}</span>
+          <span>Dia: {{ ad.dia }}</span> -->
         </p>
         <button class="button" @click="viewAdDetails(ad.id)">Veure més</button>
       </div>
@@ -174,7 +174,7 @@ onMounted(() => {
 
 .search-button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: black;
   color: white;
   border: none;
   border-radius: 6px;
@@ -184,7 +184,8 @@ onMounted(() => {
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: lightgray;
+  color: black;
   transform: scale(1.05);
 }
 
@@ -196,7 +197,7 @@ onMounted(() => {
 }
 
 .ad-item {
-  height: 80%;
+  height: 85%;
   width: 90%;
   background-color: white;
   border-radius: 10px;
