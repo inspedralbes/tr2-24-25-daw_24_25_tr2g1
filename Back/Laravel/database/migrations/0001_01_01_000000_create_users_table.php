@@ -8,15 +8,19 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     */
+    **/
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['Estudiante', 'Profesor', 'Mentor', 'Admin']);
+            $table->char('phone', 9)->nullable();
+            $table->string('profile_photo')->nullable();
+            $table->string('bio')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
