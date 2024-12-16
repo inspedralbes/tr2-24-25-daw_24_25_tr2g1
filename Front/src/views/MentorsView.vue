@@ -1,13 +1,23 @@
 <template>
   <div class="forum-container">
+    <!-- Entrada de cerca -->
     <input v-model="searchQuery" type="text" placeholder="Buscar mentor o especialitat" class="search-input" />
+    
+    <!-- Llista de mentors dinàmica -->
     <div class="ads-list">
-      <div v-for="mentor in filtredMentors" :key="mentor.id" class="ad-item">
+      <div v-for="mentor in displayedMentors" :key="mentor.id" class="ad-item">
         <h3 class="ad-mentor">Nom i Cognoms: {{ mentor.nom }} {{ mentor.cognom }}</h3>
         <h4>Especialitat: {{ mentor.especialitat }}</h4>
         <h4>Curs: {{ mentor.curs }}</h4>
         <h4>Correu de contacte: {{ mentor.correu }}</h4>
       </div>
+    </div>
+
+    <!-- Botó Carregar més -->
+    <div class="load-more-container" v-if="hasMoreMentors">
+      <button class="load-more-button" @click="loadMoreMentors">
+        Carregar més mentors
+      </button>
     </div>
   </div>
 </template>
@@ -20,10 +30,15 @@ import { getMentors } from '../services/communicationManager.js'
 const router = useRouter()
 const searchQuery = ref('')
 const mentor = ref([])
+const pageSize = ref(9)
+const currentPage = ref(1)
+
+// Funcio per obtenir els mentors
 const fetchMentors = async () => {
   mentor.value = await getMentors()
 }
 
+// Funcio per fer la busqueda d'un mentor
 const filtredMentors = computed(() => {
   return mentor.value.filter((mentor) => {
     const query = searchQuery.value.toLowerCase()
@@ -33,25 +48,22 @@ const filtredMentors = computed(() => {
   })
 })
 
+// Funcio per mostrar mentors paginats
 const displayedMentors = computed(() => {
   return filtredMentors.value.slice(0, pageSize.value * currentPage.value)
 })
 
+// Funcio per comprovar si hi ha mentors per carregar
 const hasMoreMentors = computed(() => {
   return filtredMentors.value.length > displayedMentors.value.length
 })
 
-const viewAdDetails = (id) => {
-  router.push(`/ad/${id}`)
+// Funció per carregar més mentors
+const loadMoreMentors = () => {
+  currentPage.value += 1
 }
+
 onMounted(() => {
   fetchMentors()
 })
 </script>
-
-
-<style scoped>
-.forum-container {
-  border-radius: 2%;
-}
-</style>
