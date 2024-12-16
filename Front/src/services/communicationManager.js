@@ -14,6 +14,8 @@ export const getPublicaciones = async () => {
     return []
   }
 }
+
+// Función para crear una publicación
 export async function createPublicacion(oferta) {  
   // Envia els dades a la API
   try {
@@ -35,6 +37,7 @@ export async function createPublicacion(oferta) {
   }
 }
 
+// Función para obtener los mentores
 export const getMentors = async () => {
   try {
     const response = await axios.post('http://localhost:8000/api/sendDataMentors')
@@ -49,6 +52,7 @@ export const getMentors = async () => {
   }
 }
 
+// Función para obtener los detalles de una publicación
 export const getAdDetails = async (id) => {
   try {
     const response = await axios.post('http://localhost:8000/api/sendData')
