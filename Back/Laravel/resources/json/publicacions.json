@@ -1,274 +1,184 @@
 {
     "publicacions": [
         {
-            "titol": "Clases de Matemáticas Personalizadas",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 1,
-            "especialitat": "Matemáticas",
-            "hora_inici": "08:00",
-            "hora_final": "09:30",
-            "dia": "Dilluns"
-        },
-        {
-            "titol": "Matemáticas para Todos los Niveles",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 2,
-            "especialitat": "Matemáticas",
-            "hora_inici": "09:00",
-            "hora_final": "10:30",
-            "dia": "Dimarts"
-        },
-        {
-            "titol": "Refuerzo Matemático Integral",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 3,
-            "especialitat": "Matemáticas",
-            "hora_inici": "10:00",
-            "hora_final": "11:30",
-            "dia": "Dimecres"
-        },
-        {
-            "titol": "Taller de Resolución de Problemas",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 4,
-            "especialitat": "Matemáticas",
-            "hora_inici": "11:00",
-            "hora_final": "12:30",
-            "dia": "Dijous"
-        },
-        {
-            "titol": "Matemáticas Divertidas",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 5,
-            "especialitat": "Matemáticas",
-            "hora_inici": "12:00",
-            "hora_final": "13:30",
-            "dia": "Divendres"
-        },
-        {
-            "titol": "Preparación para Exámenes",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 6,
-            "especialitat": "Matemáticas",
-            "hora_inici": "08:30",
-            "hora_final": "10:00",
-            "dia": "Dilluns"
-        },
-        {
-            "titol": "Matemáticas Aplicadas",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
             "id_usuari": 7,
+            "titol": "Classes de reforç per a Matemàtiques",
             "especialitat": "Matemáticas",
-            "hora_inici": "09:30",
-            "hora_final": "11:00",
-            "dia": "Dimarts"
-        },
-        {
-            "titol": "Academia de Álgebra",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 8,
-            "especialitat": "Matemáticas",
-            "hora_inici": "10:30",
-            "hora_final": "12:00",
-            "dia": "Dimecres"
-        },
-        {
-            "titol": "Tutoría Matemática Avanzada",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 9,
-            "especialitat": "Matemáticas",
-            "hora_inici": "11:30",
-            "hora_final": "13:00",
-            "dia": "Dijous"
-        },
-        {
-            "titol": "Matemáticas Paso a Paso",
-            "contingut": "Descobreix Matemáticas de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 10,
-            "especialitat": "Matemáticas",
-            "hora_inici": "12:30",
-            "hora_final": "13:30",
-            "dia": "Divendres"
-        },
-        {
-            "titol": "Inglés Conversacional",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 11,
-            "especialitat": "Inglés",
-            "hora_inici": "08:00",
-            "hora_final": "09:30",
-            "dia": "Dilluns"
-        },
-        {
-            "titol": "English for Beginners",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 12,
-            "especialitat": "Inglés",
+            "contingut": "Ofereixo classes particulars de reforç en Matemàtiques per a alumnes de grau mitjà. Sessions personalitzades per superar dificultats.",
+            "data_publicacio": "2024-01-15",
             "hora_inici": "09:00",
-            "hora_final": "10:30",
-            "dia": "Dimarts"
+            "hora_final": "11:00"
         },
         {
-            "titol": "Preparación Certificaciones Cambridge",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 13,
-            "especialitat": "Inglés",
-            "hora_inici": "10:00",
-            "hora_final": "11:30",
-            "dia": "Dimecres"
-        },
-        {
-            "titol": "Inglés Business",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 14,
-            "especialitat": "Inglés",
-            "hora_inici": "11:00",
-            "hora_final": "12:30",
-            "dia": "Dijous"
-        },
-        {
-            "titol": "Pronunciación y Fluidez",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
             "id_usuari": 15,
+            "titol": "Anglès per a alumnes de grau mitjà",
             "especialitat": "Inglés",
-            "hora_inici": "12:00",
-            "hora_final": "13:30",
-            "dia": "Divendres"
+            "contingut": "Professor amb experiència ofereix classes d'anglès per millorar la comprensió oral i escrita.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "14:00",
+            "hora_final": "16:00"
         },
         {
-            "titol": "Gramática Inglesa Práctica",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 16,
-            "especialitat": "Inglés",
-            "hora_inici": "08:30",
-            "hora_final": "10:00",
-            "dia": "Dilluns"
-        },
-        {
-            "titol": "Inglés para Estudiantes",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 17,
-            "especialitat": "Inglés",
-            "hora_inici": "09:30",
-            "hora_final": "11:00",
-            "dia": "Dimarts"
-        },
-        {
-            "titol": "Taller de Listening",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 18,
-            "especialitat": "Inglés",
-            "hora_inici": "10:30",
-            "hora_final": "12:00",
-            "dia": "Dimecres"
-        },
-        {
-            "titol": "Conversación en Inglés",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 19,
-            "especialitat": "Inglés",
-            "hora_inici": "11:30",
-            "hora_final": "13:00",
-            "dia": "Dijous"
-        },
-        {
-            "titol": "Inglés Académico",
-            "contingut": "Descobreix Inglés de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 12,
-            "especialitat": "Inglés",
-            "hora_inici": "12:30",
-            "hora_final": "13:30",
-            "dia": "Divendres"
-        },
-        {
-            "titol": "Ciencias Integradas",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 7,
-            "especialitat": "Ciencias",
-            "hora_inici": "08:00",
-            "hora_final": "09:30",
-            "dia": "Dilluns"
-        },
-        {
-            "titol": "Laboratorio Científico",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
             "id_usuari": 3,
+            "titol": "Reforç en Ciències Naturals",
             "especialitat": "Ciencias",
-            "hora_inici": "09:00",
-            "hora_final": "10:30",
-            "dia": "Dimarts"
-        },
-        {
-            "titol": "Conceptos Científicos Fundamentales",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 2,
-            "especialitat": "Ciencias",
+            "contingut": "Classes particulars de Ciències Naturals per a alumnes que necessiten reforçar conceptes clau del temari.",
+            "data_publicacio": "2024-01-17",
             "hora_inici": "10:00",
-            "hora_final": "11:30",
-            "dia": "Dimecres"
+            "hora_final": "12:00"
         },
         {
-            "titol": "Ciencias para Curiosos",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 2,
-            "especialitat": "Ciencias",
+            "id_usuari": 11,
+            "titol": "Biologia per a estudiants",
+            "especialitat": "Biologia",
+            "contingut": "Explicació detallada dels conceptes més importants de Biologia, amb enfocament pràctic.",
+            "data_publicacio": "2024-01-18",
+            "hora_inici": "13:00",
+            "hora_final": "15:00"
+        },
+        {
+            "id_usuari": 18,
+            "titol": "Introducció a la Programació",
+            "especialitat": "Pogramacio",
+            "contingut": "Aprèn els conceptes bàsics de programació amb classes pràctiques per a alumnes de grau mitjà.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "15:00",
+            "hora_final": "17:00"
+        },
+        {
+            "id_usuari": 6,
+            "titol": "Descobreix la Geografia Mundial",
+            "especialitat": "Geografia",
+            "contingut": "Classes interactives per comprendre els aspectes geogràfics més rellevants.",
+            "data_publicacio": "2024-01-15",
             "hora_inici": "11:00",
-            "hora_final": "12:30",
-            "dia": "Dijous"
+            "hora_final": "13:00"
         },
         {
-            "titol": "Taller de Experimentación",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 3,
-            "especialitat": "Ciencias",
-            "hora_inici": "12:00",
-            "hora_final": "13:30",
-            "dia": "Divendres"
+            "id_usuari": 12,
+            "titol": "Tecnologia Aplicada",
+            "especialitat": "Tecnologia",
+            "contingut": "Explora conceptes de tecnologia amb classes pràctiques i adaptades.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "09:00",
+            "hora_final": "10:30"
         },
         {
-            "titol": "Ciencias Prácticas",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 4,
-            "especialitat": "Ciencias",
-            "hora_inici": "08:30",
-            "hora_final": "10:00",
-            "dia": "Dilluns"
+            "id_usuari": 9,
+            "titol": "Química per a Principiants",
+            "especialitat": "Quimica",
+            "contingut": "Introducció als conceptes fonamentals de la Química, amb experiments inclusos.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "16:00",
+            "hora_final": "18:00"
         },
         {
-            "titol": "Introducción Científica",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 7,
+            "id_usuari": 2,
+            "titol": "Matemàtiques Avançades",
+            "especialitat": "Matemáticas",
+            "contingut": "Aprofundiment en conceptes matemàtics per a estudiants amb nivell intermedi.",
+            "data_publicacio": "2024-01-18",
+            "hora_inici": "14:00",
+            "hora_final": "16:00"
+        },
+        {
+            "id_usuari": 16,
+            "titol": "Anglès Conversa",
+            "especialitat": "Inglés",
+            "contingut": "Millora la teva fluïdesa en anglès amb sessions de conversa dinàmiques.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "18:00",
+            "hora_final": "19:30"
+        },
+        {
+            "id_usuari": 5,
+            "titol": "Ciències Experimentals",
             "especialitat": "Ciencias",
+            "contingut": "Descobreix el fascinant món de les ciències a través d'experiments pràctics.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "11:00",
+            "hora_final": "13:00"
+        },
+        {
+            "id_usuari": 20,
+            "titol": "Laboratori de Biologia",
+            "especialitat": "Biologia",
+            "contingut": "Sessions pràctiques per comprendre els processos biològics de manera visual.",
+            "data_publicacio": "2024-01-17",
             "hora_inici": "09:30",
-            "hora_final": "11:00",
-            "dia": "Dimarts"
+            "hora_final": "11:30"
         },
         {
-            "titol": "Ciencias Aplicadas",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 8,
-            "especialitat": "Ciencias",
-            "hora_inici": "10:30",
-            "hora_final": "12:00",
-            "dia": "Dimecres"
-        },
-        {
-            "titol": "Método Científico",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
-            "id_usuari": 4,
-            "especialitat": "Ciencias",
-            "hora_inici": "11:30",
-            "hora_final": "13:00",
-            "dia": "Dijous"
-        },
-        {
-            "titol": "Descubriendo las Ciencias",
-            "contingut": "Descobreix Ciencias de manera pràctica i dinàmica. Sessions adaptades per a tots els nivells.",
             "id_usuari": 1,
+            "titol": "Programació per a Joves",
+            "especialitat": "Pogramacio",
+            "contingut": "Introducció al coding amb llenguatges moderns i projectes interessants.",
+            "data_publicacio": "2024-01-18",
+            "hora_inici": "15:00",
+            "hora_final": "17:00"
+        },
+        {
+            "id_usuari": 13,
+            "titol": "Geografia Humana",
+            "especialitat": "Geografia",
+            "contingut": "Explora les relacions entre humans i els espais geogràfics.",
+            "data_publicacio": "2024-01-15",
+            "hora_inici": "12:00",
+            "hora_final": "14:00"
+        },
+        {
+            "id_usuari": 8,
+            "titol": "Tecnologia i Innovació",
+            "especialitat": "Tecnologia",
+            "contingut": "Descobreix les últimes tendències tecnològiques i les seves aplicacions.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "10:00",
+            "hora_final": "12:00"
+        },
+        {
+            "id_usuari": 17,
+            "titol": "Química Pràctica",
+            "especialitat": "Quimica",
+            "contingut": "Comprèn la química a través d'experiments segurs i didàctics.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "11:30",
+            "hora_final": "13:30"
+        },
+        {
+            "id_usuari": 4,
+            "titol": "Matemàtiques Creatives",
+            "especialitat": "Matemáticas",
+            "contingut": "Aprèn matemàtiques de manera divertida i visual.",
+            "data_publicacio": "2024-01-15",
+            "hora_inici": "09:00",
+            "hora_final": "11:00"
+        },
+        {
+            "id_usuari": 14,
+            "titol": "Anglès per a Professionals",
+            "especialitat": "Inglés",
+            "contingut": "Millora el teu anglès amb enfocament en vocabulari professional.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "16:00",
+            "hora_final": "18:00"
+        },
+        {
+            "id_usuari": 10,
+            "titol": "Ciències de la Terra",
             "especialitat": "Ciencias",
-            "hora_inici": "12:30",
-            "hora_final": "13:30",
-            "dia": "Divendres"
+            "contingut": "Explora els processos naturals del nostre planeta de manera didàctica.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "14:00",
+            "hora_final": "16:00"
+        },
+        {
+            "id_usuari": 19,
+            "titol": "Biologia Molecular",
+            "especialitat": "Biologia",
+            "contingut": "Introducció als conceptes avançats de la biologia molecular.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "15:30",
+            "hora_final": "17:30"
         }
     ]
 }

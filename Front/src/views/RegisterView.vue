@@ -24,7 +24,7 @@
         <div class="flex">
           <label>
             <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement"
-              placeholder="Data Naixement" required />
+              placeholder="Data Naixement" required /> 
           </label>
 
           <label>
