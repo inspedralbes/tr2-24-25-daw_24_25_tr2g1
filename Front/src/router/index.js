@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '../stores/authStore'
+
 import ForumPage from '../views/ForumView.vue'
 import DetallesPage from '../views/DetallesView.vue'
 import AuthPage from '../views/AuthView.vue'
@@ -39,7 +41,8 @@ const routes = [
   {
     path: '/publish',
     name: 'publish',
-    component: PublisOfferView 
+    component: PublisOfferView,
+    meta: { requiresAuth: true }, // Només accessible per usuaris autenticats
   },
   {
     path: '/aboutUs',
@@ -67,5 +70,17 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+
+// Guard per comprovar si l'usuari està autenticat
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    alert('Per accedir a aquesta pàgina, has de iniciar sessió.');
+    next('/login'); // Redirigeix a login si no està autenticat
+  } else {
+    next();
+  }
+});
 
 export default router
