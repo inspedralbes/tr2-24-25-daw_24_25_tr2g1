@@ -5,6 +5,9 @@
 - php artisan make:model Nom --migrations: Crear nou model amb migració.
 - php artisan make:seeder Nom: Crear un nou seeder
 
+## Instalar API en Laravel
+- php artisan install:api :Instalar API en Laravel
+
 ## Seeders
 - php artisan make:seeder UsuarisTableSeeder: Crear seeder específic.
 - php artisan db:seed: Executar tots els seeders
