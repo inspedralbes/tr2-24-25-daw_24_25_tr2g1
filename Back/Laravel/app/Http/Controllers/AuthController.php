@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\SendMail;
+use App\Models\Alumne;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use App\Models\Alumne;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -77,15 +82,24 @@ class AuthController extends Controller
                 'telefon' => $request['telefon'],
                 'major' => $request['major'],
             ]);
+
+
+            // Enviar correo electrónico
+            try {
+                Mail::to($usuari->correu)->send(new SendMail($usuari->nom));
+            } catch (\Exception $mailError) {
+                Log::error('Mail sending failed: ' . $mailError->getMessage());
+                Log::error('Mail sending trace: ' . $mailError->getTraceAsString());
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Usuari creat correctament!',
+                'usuari' => $usuari
+            ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Usuari creat correctament!',
-        ], 200);
     }
 
 

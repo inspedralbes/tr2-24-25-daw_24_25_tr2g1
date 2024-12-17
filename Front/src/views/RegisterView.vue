@@ -24,7 +24,7 @@
         <div class="flex">
           <label>
             <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement"
-              placeholder="Data Naixement" required /> 
+              placeholder="Data Naixement" required />
           </label>
 
           <label>
@@ -256,12 +256,15 @@ async function registrarUsuari() {
       body: JSON.stringify(dadesUsuari),
     })
 
+
+
     if (!response.ok) {
       const errorData = await response.json()
       throw new Error(errorData.message || 'Error al registrar usuari')
     }
 
     const respostaData = await response.json()
+    
     console.log('Usuari registrat:', respostaData)
     alert('Usuari registrat correctament')
     router.push('/forum')
