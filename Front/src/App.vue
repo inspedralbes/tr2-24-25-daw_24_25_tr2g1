@@ -28,12 +28,13 @@ const handleLogout = () => {
     <div class="logo" @click="(router.push('/'), (isNavBarClicked = false))">AlumNet</div>
     <div>
       <template v-if="isAuthenticated">
-        <button @click="handleLogout">Sortir</button>
+        <button @click="handleLogout"><img src="/src/assets/icons/out.svg" alt="LogOut" width="25px"></button>
       </template>
       <template v-else>
         <RouterLink to="/login" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Login"
             width="25px" /></RouterLink>
-        <RouterLink to="/register" @click="isNavBarClicked = true">Registra't</RouterLink>
+        <!-- <RouterLink to="/register" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Register"
+            width="25px" /></RouterLink> -->
       </template>
     </div>
   </nav>

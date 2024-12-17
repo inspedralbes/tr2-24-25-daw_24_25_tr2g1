@@ -131,7 +131,7 @@ async function login() {
     // Guarda el token al localStorage (opcional)
     localStorage.setItem('token', resposta.data.token)
 
-    alert('Login correcte')
+    //alert('Login correcte')
     authStore.checkAuth()
     router.push('/forum') // Redirigeix a una pàgina després de fer login
   } catch (error) {
