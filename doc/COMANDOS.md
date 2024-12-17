@@ -1,42 +1,27 @@
-# Para crear de nuevo las tablas de la base de datos es
-
-    php artisan migrate:fresh
-
-# Para crear un nuevo model con la migration
-
-    php artisan make:model Nombre --migrations
-
-# Parar crear un nuevo controlador
-
-    php artisan make:controller Nombre
-
-# Para crear un Seeder es el comando
-
-    php artisan make:seeder Nombre
-
-# Para ejecutar el seeder y lo hago
-
-    php artisan db:seed --class=NombreDeLaClase
-
-# Para crear el seeder
-
-    php artisan make:seeder UsuarisTableSeeder
-
-# Para ejecutar todos los seeder de golpe seria con el comando
-
-    php artisan db:seed
-
-# Para generar una clave de aplicación
-
-    php artisan key:generate
-
-# Para insertar datos en la base de datos
-
-    php artisan import:users
 
 
+# Comandos útiles de Laravel Artisan
 
-php artisan cache:clear
-php artisan route:clear
-php artisan config:clear
-php artisan view:clear
+## Bases de Datos y Migraciones
+- `php artisan migrate:fresh`: Recrear todas las tablas de la base de datos
+- `php artisan make:model Nombre --migrations`: Crear nuevo modelo con migración
+- `php artisan make:seeder Nombre`: Crear un nuevo seeder
+
+## Seeders
+- `php artisan make:seeder UsuarisTableSeeder`: Crear seeder específico
+- `php artisan db:seed`: Ejecutar todos los seeders
+- `php artisan db:seed --class=NombreDeLaClase`: Ejecutar un seeder específico
+
+## Generación de Claves
+- `php artisan key:generate`: Generar clave de aplicación
+
+## Importación y Datos
+- `php artisan import:users`: Importar usuarios
+
+## Limpieza de Caché
+- `php artisan cache:clear`: Limpiar caché
+- `php artisan route:clear`: Limpiar rutas
+- `php artisan config:clear`: Limpiar configuración
+- `php artisan view:clear`: Limpiar vistas
+
+Este formato es más legible, organizado por categorías y con descripciones breves de cada comando.
