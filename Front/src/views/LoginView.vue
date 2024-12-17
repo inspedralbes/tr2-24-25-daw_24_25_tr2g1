@@ -86,11 +86,13 @@
 import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore';
 
 let showLogin = ref(true)
 let forgotPassword = ref(false)
 let canviarContrasenya = ref(false)
 const router = useRouter()
+const authStore = useAuthStore();
 
 let nom = ref('')
 let cognom1 = ref('')
@@ -129,7 +131,8 @@ async function login() {
     // Guarda el token al localStorage (opcional)
     localStorage.setItem('token', resposta.data.token)
 
-    alert('Login correcte')
+    //alert('Login correcte')
+    authStore.checkAuth()
     router.push('/forum') // Redirigeix a una pàgina després de fer login
   } catch (error) {
     if (error.response) {
