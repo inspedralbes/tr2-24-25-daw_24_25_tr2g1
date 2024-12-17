@@ -49,38 +49,21 @@ class AuthController extends Controller
     {
         // Validación de los datos del formulario
         $validated = $request->validate([
-            // 'nom' => 'required|string|max:100',
-            // 'cognom1' => 'required|string|max:100',
-            // 'cognom2' => 'required|string|max:100',
             'password' => 'required|string|min:6',
-            //'data_naixement' => 'required|date',
-            //'rol' => 'required|in:alumne,mentor,professor',
             'correu' => 'required|email|unique:usuaris,correu',
             'correualternatiu' => 'required|email|unique:usuaris,correualternatiu',
-            // 'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
-            // 'resposta_secreta' => 'nullable|string',
             'pregunta_secreta' => 'nullable|string',
             'resposta_secreta' => 'nullable|string',
-            //'telefon' => 'required|string|max:9',
-            //'major' => 'required|in:si,no',
-            // 'curs' => 'nullable|string',
         ]);
 
         // Crear el usuario en la base de datos
         try {
             $usuari = Usuari::create([
-                // 'nom' => $request['nom'],
-                // 'cognom1' => $request['cognom1'],
-                // 'cognom2' => $request['cognom2'],
                 'password' => bcrypt($request['password']),
-                // 'data_naixement' => $request['data_naixement'],
-                // 'rol' => $request['rol'],
                 'correu' => $request['correu'],
                 'correualternatiu' => $request['correualternatiu'],
                 'pregunta_secreta' => $request['pregunta_secreta'] ?? null,
                 'resposta_secreta' =>  $request['resposta_secreta'] ?? null,
-                // 'telefon' => $request['telefon'],
-                // 'major' => $request['major'],
             ]);
 
 
