@@ -3,7 +3,56 @@
     <p class="title">REGISTRAR-SE</p>
     <form class="form">
       <div class="input-group">
-        <h2>Correu electrònic</h2>
+        <h3>Dades personals</h3>
+        <br />
+        <div class="flex">
+          <label>
+            <input class="input" type="text" placeholder="Nom" name="nom" id="nom" v-model="nom" />
+          </label>
+
+          <label>
+            <input class="input" type="text" placeholder="Primer Cognom" id="cognom1" name="cognom1"
+              v-model="cognom1" />
+          </label>
+
+          <label>
+            <input class="input" type="text" placeholder="Segon Cognom" id="cognom2" name="cognom2" v-model="cognom2" />
+          </label>
+        </div>
+
+        <div class="flex">
+          <label>
+            <input type="date" name="data_naixement" id="data_naixement" v-model="data_naixement"
+              placeholder="Data Naixement" required /> 
+          </label>
+
+          <label>
+            <select name="major" id="major" v-model="major" required>
+              <option value="" disabled selected>Major d'edat?</option>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+          <label>
+            <select name="rol-select" id="rol-select" v-model="rol" required>
+              <option value="" disabled selected>Rol</option>
+              <option value="alumne">Alumne</option>
+              <option value="mentor">Mentor</option>
+              <option value="professor">Professor</option>
+            </select>
+          </label>
+
+          <div class="input-group" v-if="rol === 'alumne'">
+            <input type="text" v-model="curs" placeholder="Curs" required />
+          </div>
+          <div class="input-group" v-if="rol === 'mentor'">
+            <input type="text" v-model="especialitat" placeholder="Especialitat" required />
+          </div>
+          <div class="input-group" v-if="rol === 'professor'">
+            <input type="text" v-model="departament" placeholder="Departament" required />
+          </div>
+        </div>
+        <h3>Correu electrònic i telèfon</h3>
         <br />
 
         <div class="flex">
@@ -137,12 +186,15 @@ async function registrarUsuari() {
       body: JSON.stringify(dadesUsuari),
     })
 
+
+
     if (!response.ok) {
       const errorData = await response.json()
       throw new Error(errorData.message || 'Error al registrar usuari')
     }
 
     const respostaData = await response.json()
+    
     console.log('Usuari registrat:', respostaData)
     alert('Usuari registrat correctament')
     router.push('/forum')
