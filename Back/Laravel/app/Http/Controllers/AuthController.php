@@ -11,6 +11,7 @@ use App\Models\Alumne;
 
 class AuthController extends Controller
 {
+    // AuthController.php
     public function login(Request $request)
     {
         // Validar les dades d'inici de sessió
@@ -38,8 +39,10 @@ class AuthController extends Controller
             'message' => 'Inici de sessió correcte',
             'token' => $token,
             'usuari' => $usuari,
+            'rol' => $usuari->rol, // enviar el rol també
         ]);
     }
+
     public function store(Request $request)
     {
         // Validación de los datos del formulario

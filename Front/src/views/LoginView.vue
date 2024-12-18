@@ -83,7 +83,6 @@
 </template>
 
 <script setup>
-import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore';
@@ -122,27 +121,40 @@ async function login() {
     const correu = document.querySelector('#correu').value
     const password = document.querySelector('#contrasenya').value
 
-    // Enviem la sol·licitud al servidor
-    const resposta = await axios.post('http://localhost:8000/api/login', {
-      correu, // Aquí és "correu" en lloc de "email"
-      password,
+    // Enviem la sol·licitud al servidor amb fetch
+    const resposta = await fetch('http://localhost:8000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        correu, // Aquí és "correu" en lloc de "email"
+        password,
+      }),
     })
 
-    // Guarda el token al localStorage (opcional)
-    localStorage.setItem('token', resposta.data.token)
-
-    //alert('Login correcte')
-    authStore.checkAuth()
-    router.push('/forum') // Redirigeix a una pàgina després de fer login
-  } catch (error) {
-    if (error.response) {
-      alert(`Error: ${error.response.data.message}`)
-    } else {
-      alert('Error de connexió')
+    // Comprovem si la resposta és correcta
+    if (!resposta.ok) {
+      throw new Error('Error al fer login')
     }
+
+    const data = await resposta.json()
+
+    // Guarda el token al localStorage (opcional)
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('rol', data.rol); // Al fer login, guardar el rol
+
+    // Actualitzem el store per verificar l'autenticació
+    authStore.checkAuth()
+
+    // Redirigeix a una pàgina després de fer login
+    router.push('/forum')
+  } catch (error) {
+    alert(`Error: ${error.message}`)
   }
 }
 </script>
+
 
 <style>
 .form-container {

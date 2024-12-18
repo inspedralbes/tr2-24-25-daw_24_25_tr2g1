@@ -1,23 +1,31 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    isAuthenticated: false, // Estat inicial: l'usuari no està autenticat
+    isAuthenticated: false,
+    token: null,
+    rol: null, // Afegir el rol
   }),
   actions: {
-    login(token) {
-      this.isAuthenticated = true
-      localStorage.setItem('token', 'token') // Canvia l'estat quan l'usuari inicia sessió
+    login(token, rol) {
+      this.isAuthenticated = true;
+      this.token = token;
+      this.rol = rol; // guardar el rol
+      localStorage.setItem('token', token); 
+      localStorage.setItem('rol', rol); // guardar el rol també
     },
     logout() {
-      this.isAuthenticated = false // Torna a fals quan l'usuari tanca sessió
-      localStorage.removeItem('token') // Elimina el token de sessió
+      this.isAuthenticated = false;
+      this.token = null;
+      this.rol = null;
+      localStorage.removeItem('token');
+      localStorage.removeItem('rol'); // eliminar el rol
     },
     checkAuth() {
-      const token = localStorage.getItem('token')
-      console.log('Token trobat:', token) // Comprova si el token existeix
-      this.isAuthenticated = !!token
-      console.log('isAuthenticated després del checkAuth:', this.isAuthenticated)
+      const token = localStorage.getItem('token');
+      const rol = localStorage.getItem('rol'); // obtenir el rol
+      this.isAuthenticated = !!token;
+      this.rol = rol; // carregar el rol
     },
   },
-})
+});
