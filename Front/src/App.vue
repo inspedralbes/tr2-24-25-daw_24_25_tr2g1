@@ -59,11 +59,8 @@ const handleLogout = () => {
   <div class="landing-nav">
     <RouterLink to="/forum" @click="isNavBarClicked = true" class="button">FORO</RouterLink>
     <RouterLink to="/profiles" @click="isNavBarClicked = true" class="button">MENTORS</RouterLink>
-    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>
-    
-    <!-- Condicional para mostrar el botón solo si el rol es mentor o profesor -->
+    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>    
     <RouterLink v-if="canPublishOffer" to="/publish" @click="isNavBarClicked = true" class="button">PUBLICAR OFERTA</RouterLink>
-
     <RouterLink to="/aboutUs" @click="isNavBarClicked = true" class="button">SOBRE NOSALTRES</RouterLink>
     <RouterLink to="/contact" @click="isNavBarClicked = true" class="button">CONTACTE</RouterLink>
   </div>
