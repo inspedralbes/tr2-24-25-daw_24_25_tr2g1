@@ -129,11 +129,6 @@ footer {
     width: 100%;
 }
 
-footer p:hover {
-    color: #ff6347;
-    cursor: pointer;
-}
-
 .search-input {
     padding: 10px;
     border: 1px solid #ccc;
