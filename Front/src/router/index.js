@@ -85,7 +85,7 @@ router.beforeEach((to, from, next) => {
   // Comprovem si la ruta té un rol requerit i si l'usuari té el rol adequat
   else if (to.meta.requiredRole && to.meta.requiredRole !== userRole) {
     alert('No tens permís per accedir a aquesta pàgina.');
-    next('/'); // Redirigeix a la pàgina d'inici o a una altra pàgina d'error
+    next('/forum'); // Redirigeix a la pàgina d'inici o a una altra pàgina d'error
   } 
   else {
     next(); // Permet l'accés si tot està bé

@@ -28,4 +28,5 @@ export const useAuthStore = defineStore('auth', {
       this.rol = rol; // carregar el rol
     },
   },
+  persist:true,
 });
