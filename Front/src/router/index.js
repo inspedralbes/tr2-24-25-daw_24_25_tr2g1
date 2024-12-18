@@ -42,7 +42,7 @@ const routes = [
     path: '/publish',
     name: 'publish',
     component: PublisOfferView,
-    meta: { requiresAuth: true, requiredRole: 'mentor' }, // Només accessible per mentors
+    meta: { requiresAuth: true, requiredRole: ['mentor', 'professor'] }
   },
   {
     path: '/aboutUs',
@@ -73,6 +73,7 @@ const router = createRouter({
 
 
 // Guard per comprovar si l'usuari està autenticat i té el rol correcte
+
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
   const userRole = localStorage.getItem('rol'); // Obtenim el rol de l'usuari des de localStorage
@@ -83,7 +84,7 @@ router.beforeEach((to, from, next) => {
     next('/login'); // Redirigeix a login si no està autenticat
   } 
   // Comprovem si la ruta té un rol requerit i si l'usuari té el rol adequat
-  else if (to.meta.requiredRole && to.meta.requiredRole !== userRole) {
+  else if (to.meta.requiredRole && !to.meta.requiredRole.includes(userRole)) {
     alert('No tens permís per accedir a aquesta pàgina.');
     next('/forum'); // Redirigeix a la pàgina d'inici o a una altra pàgina d'error
   } 
@@ -91,5 +92,6 @@ router.beforeEach((to, from, next) => {
     next(); // Permet l'accés si tot està bé
   }
 });
+
 
 export default router
