@@ -8,6 +8,7 @@
     use App\Http\Controllers\MentorController;
     use App\Http\Controllers\ProfessorController;
     use App\Http\Controllers\PublicacioController;
+    use App\Http\Controllers\RestablerContraseñaController;
 
 
     //ruta guardar segons el rol
@@ -56,3 +57,7 @@
     // Oferta
     Route::post('/createOffer', [PublicacioController::class, 'createOffer']);
 
+    // routes per reset de password
+    Route::post('/password/send-reset-code', [RestablerContraseñaController::class, 'enviarCodigo']);
+    Route::post('/password/verify-code', [RestablerContraseñaController::class, 'verifyResetCode']);
+    Route::post('/password/reset', [RestablerContraseñaController::class, 'resetPassword']);
