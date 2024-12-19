@@ -6,12 +6,9 @@
     <p>Mentor: {{ adDetails.mentor }}</p>
     <p>Dia: {{ adDetails.data_publicacio }}</p>
     <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
-
-    <!-- Botó d'inscripció visible només si l'usuari està autenticat -->
     <div v-if="isAuthenticated">
       <button @click="signUp">Inscriure'm</button>
     </div>
-    <!-- Missatge que indica que l'usuari ha d'iniciar sessió -->
     <div v-else>
       <p>Per inscriure't a aquesta classe, has de <router-link to="/login">iniciar sessió</router-link>.</p>
     </div>
