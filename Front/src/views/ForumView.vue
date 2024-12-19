@@ -5,6 +5,7 @@
 
     <!-- Llista d'anuncis dinàmica -->
     <div class="ads-list">
+      <div v-if="displayedAds.length === 0" class="no-results">No s'ha trobat cap resultat amb aquesta cerca.</div>
       <div v-for="ad in displayedAds" :key="ad.id" class="ad-item">
         <h3 class="ad-title">{{ ad.titol }}</h3>
         <p class="ad-description">{{ ad.contingut }}</p>
@@ -31,6 +32,29 @@ const searchQuery = ref('')
 const ads = ref([])
 const pageSize = ref(9) // Nombre d'anuncis a mostrar inicialment i en cada càrrega
 const currentPage = ref(1)
+
+// Comprovar si el dispositiu es móbil
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+function handleMediaQueryChange(event) {
+  if (event.matches) {
+    // Si la media query se cumple
+    pageSize.value = 4;
+    // document.getElementById("message").textContent = "Tamaño de pantalla: Pequeño";
+  } else {
+    // Si la media query NO se cumple
+    pageSize.value = 9;
+    // document.getElementById("message").textContent = "Tamaño de pantalla: Normal";
+  }
+
+  console.log("Variable actualizada:", pageSize.value);
+}
+
+// Escuchar cambios en la media query
+mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+// Ejecutar la función al cargar la página para comprobar el estado inicial
+handleMediaQueryChange(mediaQuery);
 
 // Funció per obtenir publicacions
 const fetchPublicaciones = async () => {

@@ -1,5 +1,5 @@
 <template>
-    <div class="publish-container">
+    <div class="publish-container" >
     <h2>Publicar oferta</h2>
     <form>
       <div class="form-group">
@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <label for="contingut">Contingut de la classe</label>
-        <textarea name="Contingut" id="contingut" placeholder="Descripció del contingut" rows="4" v-model="contingut" required></textarea>
+        <textarea style="resize: vertical;" name="Contingut" id="contingut" placeholder="Descripció del contingut" rows="4" v-model="contingut" required></textarea>
       </div>
 
       <div class="form-group">
@@ -130,47 +130,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.publish-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input, textarea, select, button {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-</style>

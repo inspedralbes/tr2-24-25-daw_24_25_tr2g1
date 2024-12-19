@@ -178,74 +178,48 @@ footer p:hover {
   color: #ff6347;
   cursor: pointer;
 }
-
-.filters {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 40px;
-}
-
+/* Estilo para el publicar oferta */
 .publish-container {
-  padding: 2rem;
+  width: 130vh;
   margin: 0 auto;
-  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-  color: #333;
+  margin-bottom: 5vh;
 }
 
 .publish-container h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
   text-align: center;
-  color: #000;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  margin-bottom: 20px;
 }
 
-.publish-container p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  color: #555;
-  text-align: justify;
+.publish-container .form-group {
+  margin-bottom: 15px;
 }
 
-.publish-container p span {
+.publish-container label {
+  display: block;
   font-weight: bold;
-  color: #000;
+  margin-bottom: 5px;
 }
 
-.publish-container ul {
-  margin: 1rem 0;
-  padding-left: 1.5rem;
-  list-style-type: disc;
+.publish-container input, textarea, select, button {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.publish-container li {
-  font-size: 1.1rem;
-  margin-bottom: 0.8rem;
+.publish-container button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.publish-container a {
-  color: #0095ff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.publish-container a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
-
-.publish-container .highlight {
-  font-weight: bold;
-  color: #000;
+.publish-container button:hover {
+  background-color: #45a049;
 }
 
 .contenidoBody {
@@ -257,11 +231,13 @@ footer p:hover {
 /* CODI DEL FORUM VIEW */
 
 .forum-container {
-  max-width: 1200px;
+  width: 130vh;
+  min-height: 50vh;
   margin: 0 auto;
   padding: 20px;
   background-color: lightgrey;
-  border-radius: 2%;
+  border-radius: 20px;
+  margin-bottom: 5vh;
 }
 
 .search-input {
@@ -287,7 +263,7 @@ footer p:hover {
 }
 
 .ad-item {
-  height: 80%;
+  height: 25vh;
   width: 90%;
   background-color: white;
   border-radius: 10px;
@@ -358,6 +334,191 @@ footer p:hover {
   color: black;
 }
 
+/* Estilos para los filtros (SearchOffer) */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filters label {
+  font-size: 16px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.filters select {
+  width: 15vh;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.filters select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: lightgray;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Estilos para los filtros mobiles */
+.filters-mobile {
+  display: grid;  
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vh;
+  background-color: #f8f9fa;
+  padding: 10px;  
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filters-mobile select {
+  border: 1px solid #ddd;
+  padding: 1vh;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Estilo para el texto quan no n'hi ha resultats */
+.no-results {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Estilo para el contact view */
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
+  width: 100%;
+}
+
+.container-contacte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1vh;
+  height: 50vh;
+  margin-bottom: 5vh;
+  padding: 2vh;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+
+.title-contacte {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2vh;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.inputMail {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.inputMessage {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.buttonContacte {
+  position: relative;
+  width: 30%;
+  height: 10%;
+  padding: 5px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: auto;
+  margin-left: auto;
+}
+
+.dadesContacte {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 5vh;
+  height: 50vh;
+  margin-bottom: 5vh;
+  padding: 2vh;  
+  border: 3px solid black;
+  background-color: rgb(184, 184, 184);
+  border-radius: 20px;
+}
+
+.imgContacte {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContacte {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1vh;
+  max-width: 90%;
+  background-color: rgb(227, 227, 227);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.contacteDetals {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* MEDIA QUERIES */
 
 /* Mobile View */
@@ -398,6 +559,28 @@ footer p:hover {
     width: 100%;
     height: 25vh;
   }
+  .filters {
+    display: none;
+  }
+  .contact {
+    flex-direction: column;
+    gap: 0;
+  }
+  .container-contacte {
+    width: 100%;
+  }
+  .dadesContacte {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+  }
+  .imgContacte {
+    width: 50%;
+  }
+  .logoContacte {
+    width: 100%;
+  }
 }
 
 /* Desktop View */
@@ -406,7 +589,11 @@ footer p:hover {
     display: none;
   }
 
-  ∑ .description .scroll-container-mobile {
+  ∑.description .scroll-container-mobile {
+    display: none;
+  }
+
+  .filters-mobile {
     display: none;
   }
 }
