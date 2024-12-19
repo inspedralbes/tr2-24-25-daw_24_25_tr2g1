@@ -18,7 +18,8 @@
 **AlumNet**
 
 ### **LOGO**
-![aprender-en-linea](https://github.com/user-attachments/assets/d73fecbd-a5f9-4e6d-97f7-7073c9c8aaa9)
+<img src="https://github.com/user-attachments/assets/d73fecbd-a5f9-4e6d-97f7-7073c9c8aaa9" width="200" height="200">
+
 
 
 ### **Descripció breu**  
