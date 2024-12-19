@@ -8,23 +8,51 @@
 
         <div class="flex">
           <label>
-            <input type="mail" name="correu" id="correu" v-model="correu" placeholder="Correu"
-              :class="{ 'input-error': isEmailInvalid }" @input="validateEmail" required />
+            <input
+              type="mail"
+              name="correu"
+              id="correu"
+              v-model="correu"
+              placeholder="Correu"
+              :class="{ 'input-error': isEmailInvalid }"
+              @input="validateEmail"
+              required
+            />
           </label>
           <label>
-            <input type="mail" name="correualternatiu" id="correualternatiu" placeholder="Correu Alternatiu"
-              v-model="correualternatiu" required />
+            <input
+              type="mail"
+              name="correualternatiu"
+              id="correualternatiu"
+              placeholder="Correu Alternatiu"
+              v-model="correualternatiu"
+              required
+            />
           </label>
         </div>
 
-        <p v-if="isEmailInvalid" class="error-message">{{ emailErrorMessage }}</p><br>
+        <p v-if="isEmailInvalid" class="error-message">{{ emailErrorMessage }}</p>
+        <br />
 
         <h2>Contrasenyes</h2>
-        <br>
+        <br />
         <div class="flex">
-          <input type="password" name="password" id="password" v-model="password" placeholder="Contrasenya" required />
-          <input type="password" name="password2" id="password2" v-model="password2" placeholder="Confirmar Contrasenya"
-            required />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            v-model="password"
+            placeholder="Contrasenya"
+            required
+          />
+          <input
+            type="password"
+            name="password2"
+            id="password2"
+            v-model="password2"
+            placeholder="Confirmar Contrasenya"
+            required
+          />
         </div>
 
         <div class="input-group">
@@ -40,8 +68,13 @@
             <option value="On ESO?">On vas fer la ESO?</option>
             <option value="Cotxe preferit?">Quin és el teu cotxe preferit?</option>
           </select>
-          <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="Resposta"
-            v-model="resposta_secreta" />
+          <input
+            type="text"
+            name="resposta_secreta"
+            id="resposta_secreta"
+            placeholder="Resposta"
+            v-model="resposta_secreta"
+          />
         </div>
       </div>
 
@@ -64,9 +97,9 @@
     </div>
 
     <p class="signup">
-      Tens un compte?
-      <a @click="showLogin = !showLogin">Login</a>
-    </p>
+        Tens un compte?
+        <a @click="router.push('/login')">Inicia sessió</a>
+      </p>
   </div>
 </template>
 
@@ -92,16 +125,16 @@ const emailPatterns = {
 
 const isEmailInvalid = computed(() => {
   if (!correu.value) {
-    return false;
+    return false
   }
-  const validEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return !validEmailPattern.test(correu.value);
-});
+  const validEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return !validEmailPattern.test(correu.value)
+})
 
 // Email validation message
 const emailErrorMessage = computed(() => {
-  return isEmailInvalid.value ? 'El correu introduït no és vàlid.' : '';
-});
+  return isEmailInvalid.value ? 'El correu introduït no és vàlid.' : ''
+})
 
 async function registrarUsuari() {
   // Password match check
@@ -153,7 +186,6 @@ async function registrarUsuari() {
 }
 </script>
 
-
 <style>
 .signup-container {
   width: 100%;
@@ -181,7 +213,7 @@ async function registrarUsuari() {
   background-color: rgba(255, 0, 0, 0.1);
 }
 
-.input-group input[type="mail"].input-error {
+.input-group input[type='mail'].input-error {
   border: 2px solid red !important;
   background-color: rgba(255, 0, 0, 0.1);
 }

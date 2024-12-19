@@ -6,33 +6,54 @@
     <p>Mentor: {{ adDetails.mentor }}</p>
     <p>Dia: {{ adDetails.dia }}</p>
     <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
-    <button @click="signUp">Inscriure'm</button>
+
+    <!-- Botó d'inscripció visible només si l'usuari està autenticat -->
+    <div v-if="isAuthenticated">
+      <button @click="signUp">Inscriure'm</button>
+    </div>
+    <!-- Missatge que indica que l'usuari ha d'iniciar sessió -->
+    <div v-else>
+      <p>Per inscriure't a aquesta classe, has de <router-link to="/login">iniciar sessió</router-link>.</p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAdDetails } from '../services/communicationManager.js'
+import { useAuthStore } from '../stores/authStore' // Importa el teu store d'autenticació
 
 const route = useRoute()
 const router = useRouter()
 const adDetails = ref({})
 
+// Obtenir les dades de l'oferta
 onMounted(async () => {
   const adId = route.params.id; // Obtiene el ID de la URL
   adDetails.value = await getAdDetails(adId)
 })
 
+// Comprovem si l'usuari està autenticat
+const authStore = useAuthStore()
+const isAuthenticated = computed(() => authStore.isAuthenticated)
+
+// Funció d'inscripció
 const signUp = () => {
-  router.push('/login')
+  if (isAuthenticated.value) {
+    alert('T\'has inscrit a la classe!')
+    // Aquí pots afegir la lògica real per inscriure's a la classe (API, etc.)
+  } else {
+    router.push('/login') // Redirigir a login si no està autenticat
+  }
 }
+
 </script>
+
 <style scoped>
 .ad-details {
   width: 800px;
   height: 450px;
-  /* max-width: 600px; */
   margin: 30px auto;
   padding: 25px;
   background-color: #f9f9fa;

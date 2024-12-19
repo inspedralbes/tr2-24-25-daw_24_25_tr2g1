@@ -1,26 +1,34 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { useRouter } from 'vue-router'
-import { ref, onMounted,computed } from 'vue'
-import { useAuthStore } from './stores/authStore'
+import { RouterLink, RouterView } from 'vue-router';
+import { useRouter } from 'vue-router';
+import { ref, onMounted, computed } from 'vue';
+import { useAuthStore } from './stores/authStore';
 
-let isNavBarClicked = ref(false)
-const router = useRouter()
-const authStore = useAuthStore()
+let isNavBarClicked = ref(false);
+const router = useRouter();
+const authStore = useAuthStore();
 
 // Comprova si l'usuari està autenticat en carregar l'aplicació
 onMounted(() => {
-  authStore.checkAuth()
-})
+  authStore.checkAuth();  // Esto carga el estado desde el store automáticamente
+});
 
 // Comprova si l'usuari està autenticat
-const isAuthenticated = computed(() => authStore.isAuthenticated)
+const isAuthenticated = computed(() => authStore.isAuthenticated);
+
+// Verificar el rol de l'usuari de manera reactiva
+const userRole = computed(() => authStore.rol);
+
+// Función para verificar si el usuario puede publicar una oferta
+const canPublishOffer = computed(() => {
+  return userRole.value === 'mentor' || userRole.value === 'professor';
+});
 
 // Funció per gestionar el logout
 const handleLogout = () => {
-  authStore.logout()
-  router.push('/')
-}
+  authStore.logout();
+  router.push('/');
+};
 </script>
 
 <template>
@@ -28,13 +36,12 @@ const handleLogout = () => {
     <div class="logo" @click="(router.push('/'), (isNavBarClicked = false))">AlumNet</div>
     <div>
       <template v-if="isAuthenticated">
+        <span> {{ userRole }}</span>
         <button @click="handleLogout"><img src="/src/assets/icons/out.svg" alt="LogOut" width="25px"></button>
       </template>
       <template v-else>
         <RouterLink to="/login" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Login"
             width="25px" /></RouterLink>
-        <!-- <RouterLink to="/register" @click="isNavBarClicked = true"><img src="/src/assets/icons/user.svg" alt="Register"
-            width="25px" /></RouterLink> -->
       </template>
     </div>
   </nav>
@@ -52,8 +59,8 @@ const handleLogout = () => {
   <div class="landing-nav">
     <RouterLink to="/forum" @click="isNavBarClicked = true" class="button">FORO</RouterLink>
     <RouterLink to="/profiles" @click="isNavBarClicked = true" class="button">MENTORS</RouterLink>
-    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>
-    <RouterLink to="/publish" @click="isNavBarClicked = true" class="button">PUBLICAR OFERTA</RouterLink>
+    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>    
+    <RouterLink v-if="canPublishOffer" to="/publish" @click="isNavBarClicked = true" class="button">PUBLICAR OFERTA</RouterLink>
     <RouterLink to="/aboutUs" @click="isNavBarClicked = true" class="button">SOBRE NOSALTRES</RouterLink>
     <RouterLink to="/contact" @click="isNavBarClicked = true" class="button">CONTACTE</RouterLink>
   </div>
@@ -61,6 +68,7 @@ const handleLogout = () => {
   <div class="container">
     <RouterView />
   </div>
+
   <div>
     <footer>
       <p>© 2024 AlumNet. Tots els drets reservats.</p>
