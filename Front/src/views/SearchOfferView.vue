@@ -1,15 +1,10 @@
 <template>
   <div class="forum-container">
-    <!-- Entrada de cerca -->
     <div class="filters">
       <label for="especialitat">Especialitat:</label>
       <select id="especialitat" v-model="selectedEspecialitat">
         <option value="">Totes</option>
-        <option
-          v-for="especialitat in uniqueEspecialitats"
-          :key="especialitat"
-          :value="especialitat"
-        >
+        <option v-for="especialitat in uniqueEspecialitats" :key="especialitat" :value="especialitat">
           {{ especialitat }}
         </option>
       </select>
@@ -36,10 +31,6 @@
         <h3 class="ad-title">{{ ad.titol }}</h3>
         <p class="ad-description">{{ ad.contingut }}</p>
         <p class="ad-details">
-          <!-- <span>Especialitat: {{ ad.especialitat }}</span>
-          <span>Hora Inici: {{ ad.hora_inici }}</span>
-          <span>Hora Final: {{ ad.hora_final }}</span>
-          <span>Dia: {{ ad.dia }}</span> -->
         </p>
         <button class="button" @click="viewAdDetails(ad.id)">Veure més</button>
       </div>
@@ -136,11 +127,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 .no-results {
   font-size: 16px;
   color: #666;
 }
+
 .forum-container {
   max-width: 1200px;
   margin: 0 auto;

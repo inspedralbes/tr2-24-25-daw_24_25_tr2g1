@@ -4,7 +4,7 @@
     <p>{{ adDetails.contingut }}</p>
     <p>Especialitat: {{ adDetails.especialitat }}</p>
     <p>Mentor: {{ adDetails.mentor }}</p>
-    <p>Dia: {{ adDetails.dia }}</p>
+    <p>Dia: {{ adDetails.data_publicacio }}</p>
     <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
 
     <!-- Botó d'inscripció visible només si l'usuari està autenticat -->
@@ -22,7 +22,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAdDetails } from '../services/communicationManager.js'
-import { useAuthStore } from '../stores/authStore' // Importa el teu store d'autenticació
+import { useAuthStore } from '../stores/authStore.js' // Importa el teu store d'autenticació
 
 const route = useRoute()
 const router = useRouter()
