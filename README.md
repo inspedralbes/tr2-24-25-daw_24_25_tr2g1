@@ -45,7 +45,7 @@ Plataforma per a la gestió de mentoria d'alumnes. Inclou una borsa d'ajuda per 
 
 - **Estat actual:**
   - [x] Prototip completat.  
-  - [ ] Implementació de la borsa de classes.  
+  - [x] Implementació de la borsa de classes.  
   - [ ] Integració de la funcionalitat de comunicació en temps real.  
   - [ ] Proves finals i desplegament en entorn de producció.  
 
