@@ -17,6 +17,10 @@
 ### **Nom del projecte**  
 **AlumNet**
 
+### **LOGO**
+![aprender-en-linea](https://github.com/user-attachments/assets/d73fecbd-a5f9-4e6d-97f7-7073c9c8aaa9)
+
+
 ### **Descripció breu**  
 Plataforma per a la **gestió de mentoria d'alumnes**. Inclou una **borsa d'ajuda** per a alumnes nous al centre, facilitant l'assignació de mentors i la cerca de classes particulars. També integra **comunicació en temps real** per millorar l'experiència d'interacció entre mentors i alumnes.
 
