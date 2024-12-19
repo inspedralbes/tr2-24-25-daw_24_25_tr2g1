@@ -7,7 +7,7 @@ npm-debug.log*
 yarn-error.log*
 
 # Archivos de entorno
-.env
+
 
 # Cachés y archivos temporales
 .phpunit.cache
