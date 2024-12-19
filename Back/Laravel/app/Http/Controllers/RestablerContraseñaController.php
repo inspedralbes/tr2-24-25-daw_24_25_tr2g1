@@ -49,7 +49,7 @@ class RestablerContraseñaController extends Controller
             }
             // Enviar correo electronico
             Mail::send('emails.reset_code', ['code' => $resetCode], function ($message) use ($request) {
-                $message->to($request->correualternatiu)->subject('Código de recuperacion de Contraaseña');
+                $message->to($request->correualternatiu)->subject('Código de recuperacion de Contraseña');
             });
 
             return response()->json(['message' => 'codigo enviado correctamente']);
