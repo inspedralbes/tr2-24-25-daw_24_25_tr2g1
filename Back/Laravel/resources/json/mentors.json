@@ -1,0 +1,143 @@
+{
+    "mentors":[
+    {
+        "nom": "Anna",
+        "cognom": "Garcia",
+        "correu": "anna.garcia@example.com",
+        "especialitat": "Matemàtiques",
+        "curs": "1r de Batxillerat"
+    },
+    {
+        "nom": "Pere",
+        "cognom": "Lopez",
+        "correu": "pere.lopez@example.com",
+        "especialitat": "Física",
+        "curs": "2n d'ESO"
+    },
+    {
+        "nom": "Marta",
+        "cognom": "Roca",
+        "correu": "marta.roca@example.com",
+        "especialitat": "Química",
+        "curs": "3r de Batxillerat"
+    },
+    {
+        "nom": "Joan",
+        "cognom": "Martí",
+        "correu": "joan.marti@example.com",
+        "especialitat": "Història",
+        "curs": "4t d'ESO"
+    },
+    {
+        "nom": "Laura",
+        "cognom": "Soler",
+        "correu": "laura.soler@example.com",
+        "especialitat": "Llengua i Literatura",
+        "curs": "1r d'ESO"
+    },
+    {
+        "nom": "Marc",
+        "cognom": "Costa",
+        "correu": "marc.costa@example.com",
+        "especialitat": "Biologia",
+        "curs": "2n de Batxillerat"
+    },
+    {
+        "nom": "Júlia",
+        "cognom": "Fernandez",
+        "correu": "julia.fernandez@example.com",
+        "especialitat": "Geografia",
+        "curs": "3r d'ESO"
+    },
+    {
+        "nom": "Oriol",
+        "cognom": "Serra",
+        "correu": "oriol.serra@example.com",
+        "especialitat": "Educació Física",
+        "curs": "1r de Batxillerat"
+    },
+    {
+        "nom": "Clara",
+        "cognom": "Puig",
+        "correu": "clara.puig@example.com",
+        "especialitat": "Filosofia",
+        "curs": "4t d'ESO"
+    },
+    {
+        "nom": "David",
+        "cognom": "Torres",
+        "correu": "david.torres@example.com",
+        "especialitat": "Anglès",
+        "curs": "2n d'ESO"
+    },
+    {
+        "nom": "Núria",
+        "cognom": "Font",
+        "correu": "nuria.font@example.com",
+        "especialitat": "Tecnologia",
+        "curs": "3r de Batxillerat"
+    },
+    {
+        "nom": "Arnau",
+        "cognom": "Vila",
+        "correu": "arnau.vila@example.com",
+        "especialitat": "Informàtica",
+        "curs": "1r d'ESO"
+    },
+    {
+        "nom": "Rosa",
+        "cognom": "Molina",
+        "correu": "rosa.molina@example.com",
+        "especialitat": "Economia",
+        "curs": "2n de Batxillerat"
+    },
+    {
+        "nom": "Gerard",
+        "cognom": "Ferrer",
+        "correu": "gerard.ferrer@example.com",
+        "especialitat": "Música",
+        "curs": "4t d'ESO"
+    },
+    {
+        "nom": "Teresa",
+        "cognom": "Coll",
+        "correu": "teresa.coll@example.com",
+        "especialitat": "Plàstica",
+        "curs": "1r de Batxillerat"
+    },
+    {
+        "nom": "Pau",
+        "cognom": "Moreno",
+        "correu": "pau.moreno@example.com",
+        "especialitat": "Francès",
+        "curs": "3r d'ESO"
+    },
+    {
+        "nom": "Carla",
+        "cognom": "Navarro",
+        "correu": "carla.navarro@example.com",
+        "especialitat": "Ciències Socials",
+        "curs": "2n d'ESO"
+    },
+    {
+        "nom": "Alex",
+        "cognom": "Reyes",
+        "correu": "alex.reyes@example.com",
+        "especialitat": "Religió",
+        "curs": "4t d'ESO"
+    },
+    {
+        "nom": "Sílvia",
+        "cognom": "Camps",
+        "correu": "silvia.camps@example.com",
+        "especialitat": "Castellà",
+        "curs": "1r d'ESO"
+    },
+    {
+        "nom": "Enric",
+        "cognom": "Domingo",
+        "correu": "enric.domingo@example.com",
+        "especialitat": "Ciències de la Terra",
+        "curs": "2n de Batxillerat"
+    }
+]}

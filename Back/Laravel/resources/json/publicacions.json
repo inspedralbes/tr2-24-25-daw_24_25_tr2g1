@@ -1,0 +1,184 @@
+{
+    "publicacions": [
+        {
+            "id_usuari": 7,
+            "titol": "Classes de reforç per a Matemàtiques",
+            "especialitat": "Matemáticas",
+            "contingut": "Ofereixo classes particulars de reforç en Matemàtiques per a alumnes de grau mitjà. Sessions personalitzades per superar dificultats.",
+            "data_publicacio": "2024-01-15",
+            "hora_inici": "09:00",
+            "hora_final": "11:00"
+        },
+        {
+            "id_usuari": 15,
+            "titol": "Anglès per a alumnes de grau mitjà",
+            "especialitat": "Inglés",
+            "contingut": "Professor amb experiència ofereix classes d'anglès per millorar la comprensió oral i escrita.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "14:00",
+            "hora_final": "16:00"
+        },
+        {
+            "id_usuari": 3,
+            "titol": "Reforç en Ciències Naturals",
+            "especialitat": "Ciencias",
+            "contingut": "Classes particulars de Ciències Naturals per a alumnes que necessiten reforçar conceptes clau del temari.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "10:00",
+            "hora_final": "12:00"
+        },
+        {
+            "id_usuari": 11,
+            "titol": "Biologia per a estudiants",
+            "especialitat": "Biologia",
+            "contingut": "Explicació detallada dels conceptes més importants de Biologia, amb enfocament pràctic.",
+            "data_publicacio": "2024-01-18",
+            "hora_inici": "13:00",
+            "hora_final": "15:00"
+        },
+        {
+            "id_usuari": 18,
+            "titol": "Introducció a la Programació",
+            "especialitat": "Pogramacio",
+            "contingut": "Aprèn els conceptes bàsics de programació amb classes pràctiques per a alumnes de grau mitjà.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "15:00",
+            "hora_final": "17:00"
+        },
+        {
+            "id_usuari": 6,
+            "titol": "Descobreix la Geografia Mundial",
+            "especialitat": "Geografia",
+            "contingut": "Classes interactives per comprendre els aspectes geogràfics més rellevants.",
+            "data_publicacio": "2024-01-15",
+            "hora_inici": "11:00",
+            "hora_final": "13:00"
+        },
+        {
+            "id_usuari": 12,
+            "titol": "Tecnologia Aplicada",
+            "especialitat": "Tecnologia",
+            "contingut": "Explora conceptes de tecnologia amb classes pràctiques i adaptades.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "09:00",
+            "hora_final": "10:30"
+        },
+        {
+            "id_usuari": 9,
+            "titol": "Química per a Principiants",
+            "especialitat": "Quimica",
+            "contingut": "Introducció als conceptes fonamentals de la Química, amb experiments inclusos.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "16:00",
+            "hora_final": "18:00"
+        },
+        {
+            "id_usuari": 2,
+            "titol": "Matemàtiques Avançades",
+            "especialitat": "Matemáticas",
+            "contingut": "Aprofundiment en conceptes matemàtics per a estudiants amb nivell intermedi.",
+            "data_publicacio": "2024-01-18",
+            "hora_inici": "14:00",
+            "hora_final": "16:00"
+        },
+        {
+            "id_usuari": 16,
+            "titol": "Anglès Conversa",
+            "especialitat": "Inglés",
+            "contingut": "Millora la teva fluïdesa en anglès amb sessions de conversa dinàmiques.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "18:00",
+            "hora_final": "19:30"
+        },
+        {
+            "id_usuari": 5,
+            "titol": "Ciències Experimentals",
+            "especialitat": "Ciencias",
+            "contingut": "Descobreix el fascinant món de les ciències a través d'experiments pràctics.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "11:00",
+            "hora_final": "13:00"
+        },
+        {
+            "id_usuari": 20,
+            "titol": "Laboratori de Biologia",
+            "especialitat": "Biologia",
+            "contingut": "Sessions pràctiques per comprendre els processos biològics de manera visual.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "09:30",
+            "hora_final": "11:30"
+        },
+        {
+            "id_usuari": 1,
+            "titol": "Programació per a Joves",
+            "especialitat": "Pogramacio",
+            "contingut": "Introducció al coding amb llenguatges moderns i projectes interessants.",
+            "data_publicacio": "2024-01-18",
+            "hora_inici": "15:00",
+            "hora_final": "17:00"
+        },
+        {
+            "id_usuari": 13,
+            "titol": "Geografia Humana",
+            "especialitat": "Geografia",
+            "contingut": "Explora les relacions entre humans i els espais geogràfics.",
+            "data_publicacio": "2024-01-15",
+            "hora_inici": "12:00",
+            "hora_final": "14:00"
+        },
+        {
+            "id_usuari": 8,
+            "titol": "Tecnologia i Innovació",
+            "especialitat": "Tecnologia",
+            "contingut": "Descobreix les últimes tendències tecnològiques i les seves aplicacions.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "10:00",
+            "hora_final": "12:00"
+        },
+        {
+            "id_usuari": 17,
+            "titol": "Química Pràctica",
+            "especialitat": "Quimica",
+            "contingut": "Comprèn la química a través d'experiments segurs i didàctics.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "11:30",
+            "hora_final": "13:30"
+        },
+        {
+            "id_usuari": 4,
+            "titol": "Matemàtiques Creatives",
+            "especialitat": "Matemáticas",
+            "contingut": "Aprèn matemàtiques de manera divertida i visual.",
+            "data_publicacio": "2024-01-15",
+            "hora_inici": "09:00",
+            "hora_final": "11:00"
+        },
+        {
+            "id_usuari": 14,
+            "titol": "Anglès per a Professionals",
+            "especialitat": "Inglés",
+            "contingut": "Millora el teu anglès amb enfocament en vocabulari professional.",
+            "data_publicacio": "2024-01-17",
+            "hora_inici": "16:00",
+            "hora_final": "18:00"
+        },
+        {
+            "id_usuari": 10,
+            "titol": "Ciències de la Terra",
+            "especialitat": "Ciencias",
+            "contingut": "Explora els processos naturals del nostre planeta de manera didàctica.",
+            "data_publicacio": "2024-01-16",
+            "hora_inici": "14:00",
+            "hora_final": "16:00"
+        },
+        {
+            "id_usuari": 19,
+            "titol": "Biologia Molecular",
+            "especialitat": "Biologia",
+            "contingut": "Introducció als conceptes avançats de la biologia molecular.",
+            "data_publicacio": "2024-01-19",
+            "hora_inici": "15:30",
+            "hora_final": "17:30"
+        }
+    ]
+}
