@@ -1,4 +1,3 @@
-// Función para crear una publicación
 export async function createPublicacion(oferta) {
   // Envia els dades a la API
   try {
@@ -16,7 +15,7 @@ export async function createPublicacion(oferta) {
     const data = await resposta.json()
     return data
   } catch (error) {
-    console.error('Error al enviar la oferta:', error)
+    console.error('Error al enviar la pulicació de la oferta de la classe:', error)
   }
 }
 
@@ -33,13 +32,13 @@ export const getPublicaciones = async () => {
     if (response.ok) {
       const data = await response.json()
       if (data.status === 'success') {
-        console.log('Datos recibidos para publicaciones:', data.data)
+        console.log('Dades rebudes per a les publicacions:', data.data)
         return data.data // Devuelve los datos de las publicaciones
       }
     }
 
-    console.log('publicacions rebudes')
-    throw new Error('No se pudo obtener las publicaciones')
+    console.log('Publicacions Rebudes')
+    throw new Error('No es poden o btenir les publicacions')
   } catch (error) {
     console.error('Error al obtener publicaciones:', error)
     return []
@@ -57,14 +56,14 @@ export const getMentors = async () => {
     if (response.ok) {
       const data = await response.json()
       if (data.status === 'success') {
-        console.log('Datos recibidos para mentors:', data.data)
+        console.log('Dades rebudes dels mentors:', data.data)
         return data.data
       }
     }
-    console.log('mentors rebudes')
-    throw new Error('No se pudo obtener los mentors')
+    console.log('Mentors rebuts')
+    throw new Error('No es poden obtenir els mentors')
   } catch (error) {
-    console.error('Error al obtener mentors:', error)
+    console.error('Error al obtenir mentors:', error)
     return []
   }
 }
@@ -85,9 +84,9 @@ export const getAdDetails = async (id) => {
         if (ad) return ad
       }
     }
-    throw new Error('No se pudo obtener los detalles del anuncio')
+    throw new Error('No es poden obtenir els detalls de la oferta')
   } catch (error) {
-    console.error('Error al obtener detalles del anuncio:', error)
+    console.error('Error al obtenir els detalls dels anuncis:', error)
     return []
   }
 }

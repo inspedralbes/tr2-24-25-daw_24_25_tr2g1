@@ -71,22 +71,19 @@ const router = createRouter({
   routes
 })
 
-
 // Guard per comprovar si l'usuari està autenticat i té el rol correcte
-
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
-  const userRole = localStorage.getItem('rol'); // Obtenim el rol de l'usuari des de localStorage
+  const userRole = localStorage.getItem('rol'); 
 
-  // Comprovem si la ruta necessita autenticació
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     alert('Per accedir a aquesta pàgina, has de iniciar sessió.');
     next('/login'); // Redirigeix a login si no està autenticat
   } 
-  // Comprovem si la ruta té un rol requerit i si l'usuari té el rol adequat
+  
   else if (to.meta.requiredRole && !to.meta.requiredRole.includes(userRole)) {
     alert('No tens permís per accedir a aquesta pàgina.');
-    next('/forum'); // Redirigeix a la pàgina d'inici o a una altra pàgina d'error
+    next('/forum'); // Redirigeix a la pàgina del forum
   } 
   else {
     next(); // Permet l'accés si tot està bé

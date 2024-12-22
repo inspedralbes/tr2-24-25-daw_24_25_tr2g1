@@ -57,7 +57,7 @@ const handleLogout = () => {
   </div>
 
   <div class="landing-nav">
-    <RouterLink to="/forum" @click="isNavBarClicked = true" class="button">FORO</RouterLink>
+    <RouterLink to="/forum" @click="isNavBarClicked = true" class="button">FÒRUM</RouterLink>
     <RouterLink to="/profiles" @click="isNavBarClicked = true" class="button">MENTORS</RouterLink>
     <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>    
     <RouterLink v-if="canPublishOffer" to="/publish" @click="isNavBarClicked = true" class="button">PUBLICAR OFERTA</RouterLink>
