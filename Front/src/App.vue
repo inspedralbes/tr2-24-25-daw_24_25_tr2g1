@@ -24,10 +24,6 @@ const canPublishOffer = computed(() => {
   return userRole.value === 'mentor' || userRole.value === 'professor';
 });
 
-// // En el script setup
-// watch(() => authStore.$state, (newState) => {
-//   console.log('Auth Store State:', JSON.stringify(newState, null, 2));
-// }, { deep: true });
 
 // Funció per gestionar el logout
 const handleLogout = () => {
