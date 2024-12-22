@@ -7,7 +7,7 @@ import { useAuthStore } from './stores/authStore';
 let isNavBarClicked = ref(false);
 const router = useRouter();
 const authStore = useAuthStore();
-
+const userId = computed(() => authStore.userId);
 // Comprova si l'usuari està autenticat en carregar l'aplicació
 onMounted(() => {
   authStore.checkAuth();  // Esto carga el estado desde el store automáticamente
@@ -23,6 +23,11 @@ const userRole = computed(() => authStore.rol);
 const canPublishOffer = computed(() => {
   return userRole.value === 'mentor' || userRole.value === 'professor';
 });
+
+// // En el script setup
+// watch(() => authStore.$state, (newState) => {
+//   console.log('Auth Store State:', JSON.stringify(newState, null, 2));
+// }, { deep: true });
 
 // Funció per gestionar el logout
 const handleLogout = () => {
@@ -59,7 +64,7 @@ const handleLogout = () => {
   <div class="landing-nav">
     <RouterLink to="/forum" @click="isNavBarClicked = true" class="button">FÒRUM</RouterLink>
     <RouterLink to="/profiles" @click="isNavBarClicked = true" class="button">MENTORS</RouterLink>
-    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>    
+    <RouterLink to="/jobs" @click="isNavBarClicked = true" class="button">BUSCAR OFERTES</RouterLink>
     <RouterLink v-if="canPublishOffer" to="/publish" @click="isNavBarClicked = true" class="button">PUBLICAR OFERTA</RouterLink>
     <RouterLink to="/aboutUs" @click="isNavBarClicked = true" class="button">SOBRE NOSALTRES</RouterLink>
     <RouterLink to="/contact" @click="isNavBarClicked = true" class="button">CONTACTE</RouterLink>
