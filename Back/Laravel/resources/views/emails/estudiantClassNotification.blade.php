@@ -8,11 +8,10 @@
 <body>
     <div>
         <h2>Confirmació de reserva de classe</h2>
-        <p>Hola {{ $nomEstudiants }},</p>
+        <p>Hola</p>
         <p>La teva reserva de classe ha estat confirmada:</p>
         <ul>
             <li>Classe: {{ $classDetalles->titol }}</li>
-            {{-- <li>Mentor: {{ $mentorNom }}</li> --}}
             <li>Data: {{ $classDetalles->data_publicacio }}</li>
             <li>Horari: {{ $classDetalles->hora_inici }}h - {{ $classDetalles->hora_final }}h</li>
         </ul>

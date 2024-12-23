@@ -8,10 +8,9 @@
 <body>
     <div>
         <h2>Nova Inscripció a la Teva Classe</h2>
-        <p>Hola {{ $mentorNom }},</p>
+        <p>Hola</p>
         <p>Tens una nova inscripció a la teva classe:</p>
         <ul>
-            <li>Alumne: {{ $nomEstudiants }}</li>
             <li>Classe: {{ $classDetalles->titol }}</li>
             <li>Data: {{ $classDetalles->data_publicacio }}</li>
             <li>Horari: {{ $classDetalles->hora_inici }}h - {{ $classDetalles->hora_final }}h</li>

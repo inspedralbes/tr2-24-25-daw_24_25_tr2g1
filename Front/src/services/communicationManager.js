@@ -92,26 +92,53 @@ export const getAdDetails = async (id) => {
 }
 
 
+// export const registerForClass = async (classId, userId) => {
+//   try {
+//     const response = await fetch('http://127.0.0.1:8000/api/register-class', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({ classId, userId }),
+//     });
+
+//     if (response.ok) {
+//       const data = await response.json();
+//       if (data.success) {
+//         return data.message;
+//       }
+//     }
+
+//     throw new Error('No es poden registrar a la classe');
+//   } catch (error) {
+//     console.error('Error al registrar a la classe:', error);
+//     return null;
+//   }
+// }
+
 export const registerForClass = async (classId, userId) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/register`, {
+    const response = await fetch('http://127.0.0.1:8000/api/register-class', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ classId, userId }),
-    })
-    if (response.ok) {
-      const data = await response.json()
-      if (data.status === 'success') {
-        return data.message
-      }
+      body: JSON.stringify({
+        classId: classId,
+        studentId: userId,
+        mentorId: classId // Add this line - assuming classId is the publication ID
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'No es poden registrar a la classe');
     }
-    throw new Error('No es poden registrar a la classe')
+
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error('Error al registrar a la classe:', error)
-    return null
+    console.error('Error al registrar a la classe:', error);
+    throw error;
   }
 }
-
-

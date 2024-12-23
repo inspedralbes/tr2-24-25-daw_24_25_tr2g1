@@ -29,7 +29,6 @@
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -63,23 +62,21 @@ const showSignUpDialog = () => {
 // Confirmar inscripció
 const confirmSignUp = async () => {
   try {
-    const response = await registerForClass({
-      classId: route.params.id,
-      studentId: authStore.userId,
-      mentorId: adDetails.value.mentor_id // Make sure this matches your data structure
-    })
+    const response = await registerForClass(
+      route.params.id,
+      authStore.userId
+    );
 
     if (response.success) {
-      alert('T\'has inscrit correctament a la classe! Rebràs un correu de confirmació.')
+      alert('T\'has inscrit correctament a la classe! Rebràs un correu de confirmació.');
+      showConfirmDialog.value = false;
     } else {
-      alert('Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.')
+      alert(response.message || 'Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
     }
   } catch (error) {
-    console.error('Error en la inscripció:', error)
-    alert('Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.')
+    console.error('Error en la inscripció:', error);
+    alert('Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
   }
-
-  showConfirmDialog.value = false
 }
 </script>
 

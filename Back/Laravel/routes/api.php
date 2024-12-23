@@ -58,13 +58,11 @@
     // Oferta
     Route::post('/createOffer', [PublicacioController::class, 'createOffer']);
 
+    // ruta para inscribirse a una clase
+    Route::post('/register-class', [ClassController::class, 'register']);
+
     // routes per reset de password
     Route::post('/password/send-reset-code', [RestablerContraseñaController::class, 'enviarCodigo']);
     Route::post('/password/verify-code', [RestablerContraseñaController::class, 'verifyResetCode']);
     Route::post('/password/reset', [RestablerContraseñaController::class, 'resetPassword']);
 
-
-    Route::post('/class/register', [ClassController::class, 'register']);
-
-    // ruta para inscribirse a una clase
-    Route::post('/register-class', [ClassController::class, 'register']);
