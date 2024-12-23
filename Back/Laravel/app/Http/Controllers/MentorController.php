@@ -13,10 +13,10 @@ class MentorController extends Controller
         $validated = $request->validate([
             'usuari_id' => 'required|exists:usuaris,id',
             'especialitat' => 'required|string|max:255',
-            'nom'=> 'required|string|max:255',
-            'cognom'=> 'required|string|max:255',
-            'correu'=> 'required|string',
-            'curs'=> 'required|string|max:255',
+            'nom' => 'required|string|max:255',
+            'cognom' => 'required|string|max:255',
+            'correu' => 'required|string',
+            'curs' => 'required|string|max:255',
 
         ]);
 
@@ -26,8 +26,9 @@ class MentorController extends Controller
         // Redirigir a una pàgina d'èxit o al panell d'usuari
         return redirect()->route('home')->with('success', 'Les dades del mentor s\'han guardat correctament!');
     }
-    public function sendDataMentors(){
 
+    public function sendDataMentors()
+    {
         $mentor = Mentor::all();
         return response()->json(['status' => 'success', 'data' => $mentor]);
     }

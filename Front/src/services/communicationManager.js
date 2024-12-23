@@ -90,3 +90,28 @@ export const getAdDetails = async (id) => {
     return []
   }
 }
+
+
+export const registerForClass = async (classId, userId) => {
+  try {
+    const response = await fetch(`http://localhost:8000/api/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ classId, userId }),
+    })
+    if (response.ok) {
+      const data = await response.json()
+      if (data.status === 'success') {
+        return data.message
+      }
+    }
+    throw new Error('No es poden registrar a la classe')
+  } catch (error) {
+    console.error('Error al registrar a la classe:', error)
+    return null
+  }
+}
+
+
