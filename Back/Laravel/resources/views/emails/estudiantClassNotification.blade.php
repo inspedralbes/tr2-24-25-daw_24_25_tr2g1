@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmació de Classe</title>
 </head>
 <body>
+    <h2>Confirmació de Classe</h2>
+
     <div>
-        <h2>Confirmació de reserva de classe</h2>
-        <p>Hola</p>
-        <p>La teva reserva de classe ha estat confirmada:</p>
-        <ul>
-            <li>Classe: {{ $classDetalles->titol }}</li>
-            <li>Data: {{ $classDetalles->data_publicacio }}</li>
-            <li>Horari: {{ $classDetalles->hora_inici }}h - {{ $classDetalles->hora_final }}h</li>
-        </ul>
-        <p>Gràcies per utilitzar AlumNet!</p>
+        <p><strong>Títol de la classe:</strong> {{ $classDetalles['titol'] }}</p>
+        <p><strong>Data:</strong> {{ $classDetalles['data_publicacio'] }}</p>
+        <p><strong>Hora inici:</strong> {{ $classDetalles['hora_inici'] }}</p>
+        <p><strong>Hora final:</strong> {{ $classDetalles['hora_final'] }}</p>
+        <p><strong>Mentor:</strong> {{ $classDetalles['mentor_name'] }}</p>
+        <p><strong>Estudiant:</strong> {{ $classDetalles['student_name'] }}</p>
     </div>
+
+    <p>Gràcies per registrar-te a la classe!</p>
 </body>
 </html>

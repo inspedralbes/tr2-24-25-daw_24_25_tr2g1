@@ -3,56 +3,25 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class ClassConfirmationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $classDetalles;
+    public $detallesClase;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct($classDetalles)
+    public function __construct($detallesClase)
     {
-        $this->classDetalles = $classDetalles;
+        $this->detallesClase = $detallesClase;
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: 'Confirmació de Classe'
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.estudiantClassNotification',
-            with: [
-                'detallesClase' => $this->classDetalles,
-            ]
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
+        return $this->subject('Confirmació de Classe')
+                    ->view('emails.estudiantClassNotification', [
+                        'classDetalles' => $this->detallesClase
+                    ]);
     }
 }

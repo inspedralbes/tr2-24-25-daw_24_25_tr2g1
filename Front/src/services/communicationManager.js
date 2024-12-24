@@ -116,7 +116,7 @@ export const getAdDetails = async (id) => {
 //   }
 // }
 
-export const registerForClass = async (classId, userId) => {
+export const registerForClass = async (classId, studentId, mentorId) => {
   try {
     const response = await fetch('http://127.0.0.1:8000/api/register-class', {
       method: 'POST',
@@ -125,8 +125,8 @@ export const registerForClass = async (classId, userId) => {
       },
       body: JSON.stringify({
         classId: classId,
-        studentId: userId,
-        mentorId: classId // Add this line - assuming classId is the publication ID
+        studentId: studentId,
+        mentorId: mentorId
       }),
     });
 
@@ -141,4 +141,4 @@ export const registerForClass = async (classId, userId) => {
     console.error('Error al registrar a la classe:', error);
     throw error;
   }
-}
+};

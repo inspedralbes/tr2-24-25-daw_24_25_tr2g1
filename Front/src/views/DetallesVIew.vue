@@ -63,8 +63,9 @@ const showSignUpDialog = () => {
 const confirmSignUp = async () => {
   try {
     const response = await registerForClass(
-      route.params.id,
-      authStore.userId
+      adDetails.value.id, // The publication/class ID
+      authStore.userId,   // The student ID (logged in user)
+      adDetails.value.id_usuari // The mentor ID (from publication)
     );
 
     if (response.success) {
@@ -77,7 +78,7 @@ const confirmSignUp = async () => {
     console.error('Error en la inscripció:', error);
     alert('Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
   }
-}
+};
 </script>
 
 <style scoped>
