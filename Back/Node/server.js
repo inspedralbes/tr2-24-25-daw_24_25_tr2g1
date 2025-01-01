@@ -5,26 +5,29 @@ const { Server } = require("socket.io");
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
+// const io = new Server(server);
 
-app.get("/", (req, res) => {
-  res.sendFile(join(__dirname, "/public/index.html"));
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {
-  socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
-    console.log("ID: " + socket.id + "message: " + msg);
+  console.log("Un usuario se ha conectado amb id:", socket.id);
+
+  // Escuchar mensajes del cliente
+  socket.on("send-message", (message) => {
+    console.log("Mensaje enviado de:", message);
+    io.emit("receive-message", message, socket.id); // Emitir el mensaje a todos los clientes
   });
-});
 
-io.on("connection", (socket) => {
-  console.log("Un usuari s'ha conectat amb l'id:p", socket.id);
   socket.on("disconnect", () => {
-    console.log("Un usuari s'ha desconectat amb l'id:", socket.id);
+    console.log("El usuario", socket.id, "se ha desconectado");
   });
 });
 
 server.listen(3000, () => {
-  console.log("server running at http://localhost:3000");
+  console.log("Servidor escuchando en puerto 3000");
 });
