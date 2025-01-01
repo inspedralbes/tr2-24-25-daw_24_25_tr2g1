@@ -130,7 +130,12 @@ function sendMessage() {
       </div>
       <div class="chat-body">
         <ul id="messages">
-          <li v-for="(message, index) in messages" :key="index" :class="{'my-message': message.autor === userSocketId, 'other-message': message.autor !== userSocketId}">{{ message.mensaje }}</li>
+          <p class="chat-subtitle">AlumNet</p>
+          <li v-for="(message, index) in messages" :key="index" :class="{'my-message': message.autor === userSocketId, 'other-message': message.autor !== userSocketId}">
+            <!-- {{ message.mensaje }} -->
+            <p class="message-autor" v-if="message.autor !== userSocketId">{{ message.autor }}</p>
+            <p class="message-text">{{ message.mensaje }}</p>
+          </li>
         </ul>
       </div>
       <form @submit.prevent="sendMessage" class="message-form">
@@ -194,6 +199,13 @@ function sendMessage() {
   padding: 1vh;
 }
 
+.chat-subtitle {
+  font-weight: bold;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.245);
+  border-bottom: 1px solid #ccc;
+}
+
 .close-button {
   position: absolute;
   right: 0;
@@ -230,8 +242,7 @@ function sendMessage() {
   background-color: white;
   font-size: 16px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
 }
 
 #messages {
@@ -246,8 +257,6 @@ function sendMessage() {
 
 #messages > li {
   max-width: 80%;
-  padding: 1vh;
-  border-radius: 4vh;
   color: #333;
   word-wrap: break-word;
 }
@@ -255,12 +264,31 @@ function sendMessage() {
 .my-message {
   margin-left: auto;
   text-align: right;
+}
+
+.my-message .message-text {
   background-color: #4faaff;
+}
+
+.message-autor {
+  font-weight: bold;
+  font-size: .75rem;
+}
+
+.message-text {
+  display: inline-block;
+  max-width: 100%;
+  border-radius: 4vw;
+  padding: 1.2vh;
+  font-size: small;
 }
 
 .other-message {
   margin-right: auto;
   text-align: left;
+}
+
+.other-message .message-text {
   background-color: #989898;
 }
 </style>
