@@ -8,26 +8,12 @@
 
         <div class="flex">
           <label>
-            <input
-              type="mail"
-              name="correu"
-              id="correu"
-              v-model="correu"
-              placeholder="Correu"
-              :class="{ 'input-error': isEmailInvalid }"
-              @input="validateEmail"
-              required
-            />
+            <input type="mail" name="correu" id="correu" v-model="correu" placeholder="Correu"
+              :class="{ 'input-error': isEmailInvalid }" @input="validateEmail" required />
           </label>
           <label>
-            <input
-              type="mail"
-              name="correualternatiu"
-              id="correualternatiu"
-              placeholder="Correu Alternatiu"
-              v-model="correualternatiu"
-              required
-            />
+            <input type="mail" name="correualternatiu" id="correualternatiu" placeholder="Correu Alternatiu"
+              v-model="correualternatiu" required />
           </label>
         </div>
 
@@ -37,22 +23,9 @@
         <h2>Contrasenyes</h2>
         <br />
         <div class="flex">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            v-model="password"
-            placeholder="Contrasenya"
-            required
-          />
-          <input
-            type="password"
-            name="password2"
-            id="password2"
-            v-model="password2"
-            placeholder="Confirmar Contrasenya"
-            required
-          />
+          <input type="password" name="password" id="password" v-model="password" placeholder="Contrasenya" required />
+          <input type="password" name="password2" id="password2" v-model="password2" placeholder="Confirmar Contrasenya"
+            required />
         </div>
 
         <div class="input-group">
@@ -68,13 +41,8 @@
             <option value="On ESO?">On vas fer la ESO?</option>
             <option value="Cotxe preferit?">Quin és el teu cotxe preferit?</option>
           </select>
-          <input
-            type="text"
-            name="resposta_secreta"
-            id="resposta_secreta"
-            placeholder="Resposta"
-            v-model="resposta_secreta"
-          />
+          <input type="text" name="resposta_secreta" id="resposta_secreta" placeholder="Resposta"
+            v-model="resposta_secreta" />
         </div>
       </div>
 
@@ -97,15 +65,16 @@
     </div>
 
     <p class="signup">
-        Tens un compte?
-        <a @click="router.push('/login')">Inicia sessió</a>
-      </p>
+      Tens un compte?
+      <a @click="router.push('/login')">Inicia sessió</a>
+    </p>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import Swal from 'sweetalert2'
 
 let password = ref('')
 let password2 = ref('')
@@ -177,10 +146,22 @@ async function registrarUsuari() {
 
     const respostaData = await response.json()
     console.log('Usuari registrat:', respostaData)
-    alert('Usuari registrat correctament')
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Usuari registrat correctament!',
+      showConfirmButton: false,
+      timer: 2500,
+    })    
     router.push('/forum')
   } catch (error) {
-    console.error('Error al registrar usuari:', error)
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Usuari registrat incorrectament!',
+      showConfirmButton: false,
+      timer: 2500,
+    })
     alert(`Error: ${error.message}`)
   }
 }
