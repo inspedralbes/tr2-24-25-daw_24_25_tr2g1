@@ -103,9 +103,12 @@ const handleLogout = () => {
   color: black;
 }
 .nav-icon {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   margin: 0 10px;
+  border: 2px black solid;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 </style>

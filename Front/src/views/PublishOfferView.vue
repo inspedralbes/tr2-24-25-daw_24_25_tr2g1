@@ -72,6 +72,8 @@
 import { ref } from "vue";
 import * as com from "@/services/communicationManager.js";
 import { useAuthStore } from '../stores/authStore.js';
+import Swal from "sweetalert2";
+import router from "@/router/index.js";
 
 export default {
   setup() {
@@ -108,7 +110,16 @@ export default {
       console.log("Vue",data);
 
       console.log("Oferta enviada:", oferta);
-      alert("Oferta publicada correctament!");
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Oferta publicada correctament',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      router.push('/forum ');
+
 
       // Reinicia els camps
       titol.value = "";
