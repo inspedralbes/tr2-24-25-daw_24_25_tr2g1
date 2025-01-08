@@ -11,8 +11,6 @@
         <p><strong>Data:</strong> {{ $classDetalles['data_publicacio'] }}</p>
         <p><strong>Hora inici:</strong> {{ $classDetalles['hora_inici'] }}</p>
         <p><strong>Hora final:</strong> {{ $classDetalles['hora_final'] }}</p>
-        <p><strong>Mentor:</strong> {{ $classDetalles['mentor_name'] }}</p>
-        <p><strong>Estudiant:</strong> {{ $classDetalles['student_name'] }}</p>
     </div>
 
     <p>Gràcies per registrar-te a la classe!</p>
