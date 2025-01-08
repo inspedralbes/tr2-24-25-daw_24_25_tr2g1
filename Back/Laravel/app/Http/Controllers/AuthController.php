@@ -43,7 +43,11 @@ class AuthController extends Controller
             'status' => 'success',
             'message' => 'Inici de sessió correcte',
             'token' => $token,
-            'usuari' => $usuari,
+            'usuari' => [
+            'id' => $usuari->id,           
+            'rol' => $usuari->rol,
+            'correu' => $usuari->correu
+        ],
             'rol' => $usuari->rol, // enviar el rol també
         ]);
     }

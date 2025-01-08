@@ -6,28 +6,43 @@
     <p>Mentor: {{ adDetails.mentor }}</p>
     <p>Dia: {{ adDetails.data_publicacio }}</p>
     <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
+
+    <!-- Dialog de confirmació -->
+    <div v-if="showConfirmDialog" class="confirmation-dialog">
+      <div class="dialog-content">
+        <h3>Confirmar Reserva de clase</h3>
+        <p>vols reservar aquesta classe amb {{ adDetails.mentor }}?</p>
+        <p>Data: {{ adDetails.data_publicacio }}</p>
+        <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
+        <div class="dialog-buttons">
+          <button @click="confirmSignUp">Confirmar</button>
+          <button @click="showConfirmDialog = false">Cancel·lar</button>
+        </div>
+      </div>
+    </div>
+
     <div v-if="isAuthenticated">
-      <button @click="signUp">Inscriure'm</button>
+      <button @click="showSignUpDialog">Inscriure'm</button>
     </div>
     <div v-else>
       <p>Per inscriure't a aquesta classe, has de <router-link to="/login">iniciar sessió</router-link>.</p>
     </div>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getAdDetails } from '../services/communicationManager.js'
-import { useAuthStore } from '../stores/authStore.js' // Importa el teu store d'autenticació
+import { getAdDetails, registerForClass } from '../services/communicationManager.js'
+import { useAuthStore } from '../stores/authStore.js'
 
 const route = useRoute()
 const router = useRouter()
 const adDetails = ref({})
+const showConfirmDialog = ref(false)
 
 // Obtenir les dades de l'oferta
 onMounted(async () => {
-  const adId = route.params.id; // Obtiene el ID de la URL
+  const adId = route.params.id
   adDetails.value = await getAdDetails(adId)
 })
 
@@ -35,16 +50,35 @@ onMounted(async () => {
 const authStore = useAuthStore()
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 
-// Funció d'inscripció
-const signUp = () => {
+// Mostrar diàleg de confirmació
+const showSignUpDialog = () => {
   if (isAuthenticated.value) {
-    alert('T\'has inscrit a la classe!')
-    // Aquí pots afegir la lògica real per inscriure's a la classe (API, etc.)
+    showConfirmDialog.value = true
   } else {
-    router.push('/login') // Redirigir a login si no està autenticat
+    router.push('/login')
   }
 }
 
+// Confirmar inscripció
+const confirmSignUp = async () => {
+  try {
+    const response = await registerForClass(
+      adDetails.value.id, // The publication/class ID
+      authStore.userId,   // The student ID (logged in user)
+      adDetails.value.id_usuari // The mentor ID (from publication)
+    );
+
+    if (response.success) {
+      alert('T\'has inscrit correctament a la classe! Rebràs un correu de confirmació.');
+      showConfirmDialog.value = false;
+    } else {
+      alert(response.message || 'Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
+    }
+  } catch (error) {
+    console.error('Error en la inscripció:', error);
+    alert('Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
+  }
+};
 </script>
 
 <style scoped>
@@ -87,5 +121,37 @@ button {
 button:hover {
   background-color: lightgrey;
   color: black;
+}
+
+
+.confirmation-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>

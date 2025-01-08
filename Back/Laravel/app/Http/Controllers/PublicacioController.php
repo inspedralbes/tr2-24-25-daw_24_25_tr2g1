@@ -49,8 +49,10 @@ class PublicacioController extends Controller
     public function sendData()
     {
         $publicacio = Publicacio::all();
-
-        return response()->json(['status' => 'success', 'data' => $publicacio]);
+        return response()->json([
+            'status' => 'success',
+            'data' => $publicacio
+        ]);
     }
 
     // Mostrar una publicació específica
@@ -111,7 +113,8 @@ class PublicacioController extends Controller
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha eliminat correctament!');
     }
 
-    public function createOffer(Request $request) {
+    public function createOffer(Request $request)
+    {
 
         //dd($request->all()); // Esto detendrá la ejecución y mostrará los datos enviados
 
