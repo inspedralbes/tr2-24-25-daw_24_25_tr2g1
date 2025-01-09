@@ -9,8 +9,8 @@
     <!-- Dialog de confirmació -->
     <div v-if="showConfirmDialog" class="confirmation-dialog">
       <div class="dialog-content">
-        <h3>Confirmar Reserva de clase</h3>
-        <p>vols reservar aquesta classe amb {{ adDetails.mentor }}?</p>
+        <h3>Confirmació de la reserva</h3>
+        <p>Especialitat: {{ adDetails.especialitat }}</p>
         <p>Data: {{ adDetails.data_publicacio }}</p>
         <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
         <div class="dialog-buttons">
