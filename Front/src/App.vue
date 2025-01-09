@@ -45,7 +45,9 @@ const openUsersManagement = () => {
 // Funció per gestionar el logout
 const handleLogout = () => {
   authStore.logout()
-  router.push('/')
+  router.push('/').then(() => {
+    window.location.reload()
+  })
 }
 
 let chatIsOpen = ref(false)

@@ -99,6 +99,7 @@ async function login() {
   }
 }
 </script>
+
 <template>
   <div class="form-container">
     <!-- Login -->
@@ -118,7 +119,8 @@ async function login() {
         </div>
         <button @click.prevent="login" class="sign">Iniciar sessió</button>
       </form>
-      <div class="social-message">
+
+      <!-- <div class="social-message">
         <div class="line"></div>
         <p class="message">Iniciar sessió amb</p>
         <div class="line"></div>
@@ -130,7 +132,8 @@ async function login() {
         <button aria-label="Log in with GitHub" class="icon">
           <img src="/src/assets/icons/github.svg" />
         </button>
-      </div>
+      </div> -->
+
       <p class="signup">
         No tens un compte?
         <a @click="router.push('/register')">Registrar-se</a>
