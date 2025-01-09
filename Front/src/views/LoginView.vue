@@ -113,7 +113,7 @@ async function login() {
         </div>
         <button @click.prevent="login" class="sign">Iniciar sessió</button>
       </form>
-      <div class="social-message">
+      <!-- <div class="social-message">
         <div class="line"></div>
         <p class="message">Iniciar sessió amb</p>
         <div class="line"></div>
@@ -125,7 +125,7 @@ async function login() {
         <button aria-label="Log in with GitHub" class="icon">
           <img src="/src/assets/icons/github.svg" />
         </button>
-      </div>
+      </div> -->
       <p class="signup">
         No tens un compte?
         <a @click="router.push('/register')">Registrar-se</a>
@@ -182,7 +182,7 @@ async function login() {
 .form-container {
   width: 320px;
   border-radius: 0.75rem;
-  background-color: rgba(17, 24, 39, 1);
+  background-color: rgb(0, 0, 0);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
 }
@@ -249,7 +249,7 @@ async function login() {
 .sign {
   display: block;
   width: 100%;
-  background-color: rgba(167, 139, 250, 1);
+  background-color: rgb(66, 14, 222);
   padding: 0.75rem;
   text-align: center;
   color: rgba(17, 24, 39, 1);
