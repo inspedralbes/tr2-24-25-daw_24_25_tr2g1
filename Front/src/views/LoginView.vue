@@ -3,12 +3,19 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore';
 import Swal from 'sweetalert2'
+import { passwordService } from '@/services/communicationManager';
 
 let showLogin = ref(true)
 let forgotPassword = ref(false)
-let canviarContrasenya = ref(false)
+// let canviarContrasenya = ref(false)
 const router = useRouter()
 const authStore = useAuthStore();
+
+const etapaFormulario = ref('email')
+const email = ref('')
+const codigo = ref('')
+const nuevaContrasenya = ref('')
+const confirmarContraseña = ref('')
 
 let nom = ref('')
 let cognom1 = ref('')
@@ -30,6 +37,7 @@ let major = ref('')
 function showForgotPassword() {
   forgotPassword.value = !forgotPassword.value
   showLogin.value = !showLogin.value
+  etapaFormulario.value = 'email'
 }
 
 async function login() {
@@ -71,7 +79,6 @@ async function login() {
     authStore.login(data.token, data.usuari.rol, data.usuari.id);
     console.log('User ID:', data.usuari.id);
 
-
     // Actualitzem el store per verificar l'autenticació
     authStore.checkAuth()
     Swal.fire({
@@ -93,6 +100,91 @@ async function login() {
     router.push('/login')
   }
 }
+
+// Función para enviar el correo y recibir el código
+async function enviarCodigoRecuperacion() {
+  try {
+    await passwordService.enviarCodigoRecuperacion(email.value)
+
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Codi enviat correctament',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+    etapaFormulario.value = 'codigo'
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Error al enviar el codi',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+  }
+}
+
+// Función para verificar el código
+async function verificarCodigo() {
+  try {
+    await passwordService.verificarCodigo(email.value, codigo.value)
+    etapaFormulario.value = 'nuevaContraseña'
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Codi incorrecte',
+      text: 'Por favor, verifique el código e intente nuevamente',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  }
+}
+
+// Función para restablecer la contraseña
+async function restablecerContraseña() {
+  try {
+    console.log('Password verification:', {
+      nueva: nuevaContrasenya.value,
+      confirmar: confirmarContraseña.value
+    });
+
+    if (nuevaContrasenya.value !== confirmarContraseña.value) {
+      Swal.fire({
+        position: 'top',
+        icon: 'error',
+        title: 'Las contraseñas no coincidenaaaaaaaa',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      return;
+    }
+
+    // Add trim() to remove any whitespace
+    const result = await passwordService.restablecerContraseña(email.value.trim(),nuevaContrasenya.value,codigo.value);
+
+    if (result.message === 'Contraseña actualizada correctamente') {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Contraseña restablecida correctamente',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      router.push('/login');
+    }
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: error.message || 'Error al restablecer la contraseña',
+      showConfirmButton: false,
+      timer: 2500,
+    });
+  }
+}
+
 </script>
 <template>
   <div class="form-container">
@@ -132,47 +224,48 @@ async function login() {
       </p>
     </div>
 
-    <!-- Forgot Password -->
-    <div class="forgotPassword-container" v-if="forgotPassword">
-      <p class="title">RECUPERAR CONTRASENYA</p>
+    <!-- Formulario de correo -->
+    <div v-if="etapaFormulario === 'email' && !showLogin">
+      <p class="title">RECUPERAR CONTRASEÑA</p>
       <form class="form">
         <div class="input-group">
-          <label for="correu">Correu</label>
-          <input type="text" name="correu" id="correu" placeholder="a24alumnet@inspedralbes.cat" />
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" v-model="email" placeholder="a23alumnet@inspedralbes.cat" required />
         </div>
-        <div class="input-group">
-          <label for="pregunta_secreta">Pregunta secreta</label>
-          <select name="pregunta_secreta" id="">
-            <option value="" disabled selected>---</option>
-            <option value="pregunta_secreta">Com es el nombre del teu primer amic?</option>
-            <option value="pregunta_secreta">On vas fer l'ESO?</option>
-            <option value="pregunta_secreta">El teu cotxe preferit?</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="resposta">Resposta</label>
-          <input type="text" name="resposta" id="resposta" placeholder="---" />
-          <div class="forgot"></div>
-        </div>
-        <button class="sign" @click="canviarContrasenya = !canviarContrasenya">
-          Recuperar compte
-        </button>
+        <button class="sign" @click.prevent="enviarCodigoRecuperacion">Enviar código</button>
       </form>
     </div>
-    <!-- Crear contrasenya -->
-    <div class="crear-contrasenya-container" v-if="canviarContrasenya">
-      <p class="title">CREAR CONTRASENYA</p>
+
+    <!-- Formulario de verificacion de codigo -->
+    <div v-if="etapaFormulario === 'codigo'">
+      <p class="title">VERIFICAR CÓDIGO</p>
       <form class="form">
         <div class="input-group">
-          <label for="novaContrasenya">Nova contrasenya</label>
-          <input type="password" name="novaContrasenya" id="novaContrasenya" placeholder="---" />
+          <label for="codigo">Código de verificación</label>
+          <input type="text" id="codigo" v-model="codigo" placeholder="Ingrese el código de 6 dígitos" maxlength="6"
+            pattern="\d{6}" required />
+        </div>
+        <button class="sign" @click.prevent="verificarCodigo">Verificar código</button>
+      </form>
+    </div>
+
+    <!-- Formulario de nueva contraseña -->
+    <div v-if="etapaFormulario === 'nuevaContraseña'">
+      <p class="title">NUEVA CONTRASEÑA</p>
+      <form class="form">
+        <div class="input-group">
+          <label for="nuevaContraseña">Nueva contraseña</label>
+          <input type="password" id="nuevaContraseña" v-model="nuevaContrasenya"
+            placeholder="Ingrese su nueva contraseña" required />
         </div>
         <div class="input-group">
-          <label for="novaContrasenya">Confirmar contrasenya</label>
-          <input type="password" name="novaContrasenya" id="novaContrasenya" placeholder="---" />
-          <div class="forgot"></div>
+          <label for="confirmarContraseña">Confirmar contraseña</label>
+          <input type="password" id="confirmarContraseña" v-model="confirmarContraseña"
+            placeholder="Confirme su nueva contraseña" required />
         </div>
-        <button class="sign">Guardar</button>
+        <button class="sign" @click.prevent="restablecerContraseña">
+          Restablecer contraseña
+        </button>
       </form>
     </div>
   </div>
