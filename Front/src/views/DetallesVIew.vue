@@ -2,16 +2,16 @@
   <div class="ad-details">
     <h2>{{ adDetails.titol }}</h2>
     <p>{{ adDetails.contingut }}</p>
+    <p>Mentor: Pendent d'assignar</p>
     <p>Especialitat: {{ adDetails.especialitat }}</p>
-    <p>Mentor: {{ adDetails.mentor }}</p>
     <p>Dia: {{ adDetails.data_publicacio }}</p>
     <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
 
     <!-- Dialog de confirmació -->
     <div v-if="showConfirmDialog" class="confirmation-dialog">
       <div class="dialog-content">
-        <h3>Confirmar Reserva de clase</h3>
-        <p>vols reservar aquesta classe amb {{ adDetails.mentor }}?</p>
+        <h3>Confirmació de la reserva</h3>
+        <p>Especialitat: {{ adDetails.especialitat }}</p>
         <p>Data: {{ adDetails.data_publicacio }}</p>
         <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
         <div class="dialog-buttons">
@@ -84,7 +84,7 @@ const confirmSignUp = async () => {
 <style scoped>
 .ad-details {
   width: 800px;
-  height: 450px;
+  height: 375px;
   margin: 30px auto;
   padding: 25px;
   background-color: #f9f9fa;
