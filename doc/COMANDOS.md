@@ -1,42 +1,31 @@
-# Para crear de nuevo las tablas de la base de datos es
+# Comandos útils de Laravel Artisan
 
-    php artisan migrate:fresh
+## Bases de Dades i Migracions
+- php artisan migrate:fresh: Recrear totes les taules de la base de dades.
+- php artisan make:model Nom --migrations: Crear nou model amb migració.
+- php artisan make:seeder Nom: Crear un nou seeder
 
-# Para crear un nuevo model con la migration
+## Instalar API en Laravel
+- php artisan install:api :Instalar API en Laravel
 
-    php artisan make:model Nombre --migrations
+## Seeders
+- php artisan make:seeder UsuarisTableSeeder: Crear seeder específic.
+- php artisan db:seed: Executar tots els seeders
+- php artisan db:seed --class=NomDeLaClasse: Executar un seeder específic.
 
-# Parar crear un nuevo controlador
+## Migracions i Seeders 
+- php artisan migrate:fresh --seed : Recrear totes les taules de la base de dades i executar els seeders.
 
-    php artisan make:controller Nombre
+## Generació de Claus
+- php artisan key:generate: Generar clau d'aplicació.
 
-# Para crear un Seeder es el comando
+## Importació i Dades
+- php artisan import:users: Importar usuaris.
 
-    php artisan make:seeder Nombre
-
-# Para ejecutar el seeder y lo hago
-
-    php artisan db:seed --class=NombreDeLaClase
-
-# Para crear el seeder
-
-    php artisan make:seeder UsuarisTableSeeder
-
-# Para ejecutar todos los seeder de golpe seria con el comando
-
-    php artisan db:seed
-
-# Para generar una clave de aplicación
-
-    php artisan key:generate
-
-# Para insertar datos en la base de datos
-
-    php artisan import:users
+## Neteja de Caché
+- php artisan cache:clear: Netejar caché
+- php artisan route:clear: Netejar rutes.
+- php artisan config:clear: Netejar configuració.
+- php artisan view:clear: Netejar vistes.
 
 
-
-php artisan cache:clear
-php artisan route:clear
-php artisan config:clear
-php artisan view:clear

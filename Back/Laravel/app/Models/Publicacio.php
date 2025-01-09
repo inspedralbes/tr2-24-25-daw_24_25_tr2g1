@@ -25,4 +25,8 @@ class Publicacio extends Model
     {
         return $this->belongsTo(Usuari::class, 'id_usuari');
     }
+    public function mentor()
+    {
+        return $this->belongsTo(User::class, 'mentor_id');
+    }
 }

@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\SendMail;
+use App\Models\Alumne;
 use App\Models\Usuari;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-use App\Models\Alumne;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
+    // AuthController.php
     public function login(Request $request)
     {
         // Validar les dades d'inici de sessió
@@ -37,55 +43,53 @@ class AuthController extends Controller
             'status' => 'success',
             'message' => 'Inici de sessió correcte',
             'token' => $token,
-            'usuari' => $usuari,
+            'usuari' => [
+            'id' => $usuari->id,           
+            'rol' => $usuari->rol,
+            'correu' => $usuari->correu
+        ],
+            'rol' => $usuari->rol, // enviar el rol també
         ]);
     }
+
     public function store(Request $request)
     {
         // Validación de los datos del formulario
         $validated = $request->validate([
-            'nom' => 'required|string|max:100',
-            'cognom1' => 'required|string|max:100',
-            'cognom2' => 'required|string|max:100',
             'password' => 'required|string|min:6',
-            'data_naixement' => 'required|date',
-            'rol' => 'required|in:alumne,mentor,professor',
             'correu' => 'required|email|unique:usuaris,correu',
             'correualternatiu' => 'required|email|unique:usuaris,correualternatiu',
-            // 'pregunta_secreta' => 'nullable|in:Com es el nombre del teu primer amic?,On vas fer la ESO?,El teu cotxe preferit?',
-            // 'resposta_secreta' => 'nullable|string',
             'pregunta_secreta' => 'nullable|string',
             'resposta_secreta' => 'nullable|string',
-            'telefon' => 'required|string|max:9',
-            'major' => 'required|in:si,no',
-            // 'curs' => 'nullable|string',
         ]);
 
         // Crear el usuario en la base de datos
         try {
             $usuari = Usuari::create([
-                'nom' => $request['nom'],
-                'cognom1' => $request['cognom1'],
-                'cognom2' => $request['cognom2'],
                 'password' => bcrypt($request['password']),
-                'data_naixement' => $request['data_naixement'],
-                'rol' => $request['rol'],
                 'correu' => $request['correu'],
                 'correualternatiu' => $request['correualternatiu'],
                 'pregunta_secreta' => $request['pregunta_secreta'] ?? null,
                 'resposta_secreta' =>  $request['resposta_secreta'] ?? null,
-                'telefon' => $request['telefon'],
-                'major' => $request['major'],
             ]);
+
+
+            // Enviar correo electrónico
+            try {
+                Mail::to($usuari->correu)->send(new SendMail($usuari->nom));
+            } catch (\Exception $mailError) {
+                Log::error('Mail sending failed: ' . $mailError->getMessage());
+                Log::error('Mail sending trace: ' . $mailError->getTraceAsString());
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Usuari creat correctament!',
+                'usuari' => $usuari
+            ], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        //  return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Usuari creat correctament!',
-        ], 200);
     }
 
 

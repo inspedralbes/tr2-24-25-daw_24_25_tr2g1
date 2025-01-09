@@ -10,12 +10,10 @@ import { io } from "socket.io-client";
 
 const socket = io("http://localhost:3000");
 
+const pinia = createPinia()
 const app = createApp(App)
 app.config.globalProperties.$socket = socket; // Sirve para acceder al socket desde cualquier componente
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
-
 app.mount('#app')
-
-

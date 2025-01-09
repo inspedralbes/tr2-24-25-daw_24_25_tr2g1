@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '../stores/authStore'
+
 import ForumPage from '../views/ForumView.vue'
 import DetallesPage from '../views/DetallesView.vue'
 import AuthPage from '../views/AuthView.vue'
@@ -39,7 +41,8 @@ const routes = [
   {
     path: '/publish',
     name: 'publish',
-    component: PublisOfferView 
+    component: PublisOfferView,
+    meta: { requiresAuth: true, requiredRole: ['mentor', 'professor'] }
   },
   {
     path: '/aboutUs',
@@ -67,5 +70,25 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+// Guard per comprovar si l'usuari està autenticat i té el rol correcte
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  const userRole = localStorage.getItem('rol'); 
+
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    alert('Per accedir a aquesta pàgina, has de iniciar sessió.');
+    next('/login'); // Redirigeix a login si no està autenticat
+  } 
+  
+  else if (to.meta.requiredRole && !to.meta.requiredRole.includes(userRole)) {
+    alert('No tens permís per accedir a aquesta pàgina.');
+    next('/forum'); // Redirigeix a la pàgina del forum
+  } 
+  else {
+    next(); // Permet l'accés si tot està bé
+  }
+});
+
 
 export default router

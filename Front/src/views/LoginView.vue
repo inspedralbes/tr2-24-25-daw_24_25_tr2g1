@@ -1,3 +1,99 @@
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore';
+import Swal from 'sweetalert2'
+
+let showLogin = ref(true)
+let forgotPassword = ref(false)
+let canviarContrasenya = ref(false)
+const router = useRouter()
+const authStore = useAuthStore();
+
+let nom = ref('')
+let cognom1 = ref('')
+let cognom2 = ref('')
+let password = ref('')
+let password2 = ref('')
+let data_naixement = ref('')
+let correu = ref('')
+let correualternatiu = ref('')
+let pregunta_secreta = ref('')
+let telefon = ref('')
+let resposta_secreta = ref('')
+let rol = ref('')
+let curs = ref('')
+let especialitat = ref('')
+let departament = ref('')
+let major = ref('')
+
+function showForgotPassword() {
+  forgotPassword.value = !forgotPassword.value
+  showLogin.value = !showLogin.value
+}
+
+async function login() {
+  try {
+    // Agafem els valors dels camps del formulari
+    const correu = document.querySelector('#correu').value
+    const password = document.querySelector('#contrasenya').value
+
+    // Enviem la sol·licitud al servidor amb fetch
+    const resposta = await fetch('http://localhost:8000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        correu, // Aquí és "correu" en lloc de "email"
+        password,
+      }),
+    })
+
+    // Comprovem si la resposta és correcta
+    if (!resposta.ok) {
+      throw new Error('Error al fer login')
+    }
+
+    const data = await resposta.json()
+    console.log('Resposta del servidor:', data);
+
+    if (!data.token || !data.usuari || !data.usuari.id) {
+      throw new Error('Faltan datos del usuari');
+    }
+
+
+    // Guarda el token al localStorage (opcional)
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('rol', data.usuari.rol); // Al fer login, guardar el rol
+    localStorage.setItem('userId', data.usuari.id.toString());
+
+    authStore.login(data.token, data.usuari.rol, data.usuari.id);
+    console.log('User ID:', data.usuari.id);
+
+
+    // Actualitzem el store per verificar l'autenticació
+    authStore.checkAuth()
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Has iniciat sessió correctament!',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+    router.push('/forum')
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Inici de sessió incorrecte! Torna-ho a provar.',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+    router.push('/login')
+  }
+}
+</script>
 <template>
   <div class="form-container">
     <!-- Login -->
@@ -81,65 +177,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import axios from 'axios'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-let showLogin = ref(true)
-let forgotPassword = ref(false)
-let canviarContrasenya = ref(false)
-const router = useRouter()
-
-let nom = ref('')
-let cognom1 = ref('')
-let cognom2 = ref('')
-let password = ref('')
-let password2 = ref('')
-let data_naixement = ref('')
-let correu = ref('')
-let correualternatiu = ref('')
-let pregunta_secreta = ref('')
-let telefon = ref('')
-let resposta_secreta = ref('')
-let rol = ref('')
-let curs = ref('')
-let especialitat = ref('')
-let departament = ref('')
-let major = ref('')
-
-function showForgotPassword() {
-  forgotPassword.value = !forgotPassword.value
-  showLogin.value = !showLogin.value
-}
-
-async function login() {
-  try {
-    // Agafem els valors dels camps del formulari
-    const correu = document.querySelector('#correu').value
-    const password = document.querySelector('#contrasenya').value
-
-    // Enviem la sol·licitud al servidor
-    const resposta = await axios.post('http://localhost:8000/api/login', {
-      correu, // Aquí és "correu" en lloc de "email"
-      password,
-    })
-
-    // Guarda el token al localStorage (opcional)
-    localStorage.setItem('token', resposta.data.token)
-
-    alert('Login correcte')
-    router.push('/forum') // Redirigeix a una pàgina després de fer login
-  } catch (error) {
-    if (error.response) {
-      alert(`Error: ${error.response.data.message}`)
-    } else {
-      alert('Error de connexió')
-    }
-  }
-}
-</script>
 
 <style>
 .form-container {

@@ -70,11 +70,13 @@
 
 <script>
 import { ref } from "vue";
-
-import * as com from "@/services/communicationManager.js"; 
+import * as com from "@/services/communicationManager.js";
+import { useAuthStore } from '../stores/authStore.js';
 
 export default {
   setup() {
+    const authStore = useAuthStore();
+
     // Definimos las variables reactivas con `ref`
     const titol = ref("");
     const especialitat = ref("");
@@ -93,7 +95,7 @@ export default {
 
       // Simula enviar els dades
       const oferta = {
-        id_usuari: 1, // Per defecte de moment es guarda l'id de l'usuari 1
+        id_usuari: authStore.userId,
         titol: titol.value,
         especialitat: especialitat.value,
         contingut: contingut.value,
@@ -104,7 +106,7 @@ export default {
 
       const data =  await com.createPublicacion(oferta);
       console.log("Vue",data);
-      
+
       console.log("Oferta enviada:", oferta);
       alert("Oferta publicada correctament!");
 
