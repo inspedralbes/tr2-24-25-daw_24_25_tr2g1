@@ -51,7 +51,7 @@ Crear una eina funcional per **facilitar la connexió i mentoria** entre alumnes
 ### **Estat actual:**
 - [x] **Prototip completat**  
 - [x] **Implementació de la borsa de classes**  
-- [ ] **Integració de la funcionalitat de comunicació en temps real**  
+- [x] **Integració de la funcionalitat de comunicació en temps real**  
 - [ ] **Proves finals i desplegament en entorn de producció**  
 
 ---
