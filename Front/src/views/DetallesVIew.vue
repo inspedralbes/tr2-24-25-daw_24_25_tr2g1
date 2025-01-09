@@ -3,7 +3,6 @@
     <h2>{{ adDetails.titol }}</h2>
     <p>{{ adDetails.contingut }}</p>
     <p>Especialitat: {{ adDetails.especialitat }}</p>
-    <p>Mentor: {{ adDetails.mentor }}</p>
     <p>Dia: {{ adDetails.data_publicacio }}</p>
     <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
 
@@ -84,7 +83,7 @@ const confirmSignUp = async () => {
 <style scoped>
 .ad-details {
   width: 800px;
-  height: 450px;
+  height: 375px;
   margin: 30px auto;
   padding: 25px;
   background-color: #f9f9fa;
