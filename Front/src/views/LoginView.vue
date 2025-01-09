@@ -62,14 +62,19 @@ async function login() {
       throw new Error('Faltan datos del usuari');
     }
 
-
+    
     // Guarda el token al localStorage (opcional)
+    let username = data.usuari.correu.split('@')[0];
     localStorage.setItem('token', data.token)
     localStorage.setItem('rol', data.usuari.rol); // Al fer login, guardar el rol
     localStorage.setItem('userId', data.usuari.id.toString());
+    localStorage.setItem('username', username);
+    localStorage.setItem('mail', data.usuari.correu);
 
-    authStore.login(data.token, data.usuari.rol, data.usuari.id);
+    authStore.login(data.token, data.usuari.rol, data.usuari.id, data.usuari.correu, username);
     console.log('User ID:', data.usuari.id);
+    console.log('Mail:', data.usuari.correu);
+    console.log('Username:', username);
 
 
     // Actualitzem el store per verificar l'autenticació

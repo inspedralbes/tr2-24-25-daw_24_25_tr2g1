@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-container" v-if="!showLogin && !forgotPassword">
+  <div class="signup-container">
     <p class="title">REGISTRAR-SE</p>
     <form class="form">
       <div class="input-group">

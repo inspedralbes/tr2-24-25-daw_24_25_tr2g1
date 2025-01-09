@@ -47,7 +47,7 @@ function handleMediaQueryChange(event) {
     // document.getElementById("message").textContent = "Tamaño de pantalla: Normal";
   }
 
-  console.log("Variable actualizada:", pageSize.value);
+  // console.log("Variable actualizada:", pageSize.value);
 }
 
 // Escuchar cambios en la media query

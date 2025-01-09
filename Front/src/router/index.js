@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/authStore'
 
 import ForumPage from '../views/ForumView.vue'
-import DetallesPage from '../views/DetallesView.vue'
+import DetallesPage from '../views/DetallesVIew.vue'
 import AuthPage from '../views/AuthView.vue'
 import MentorsPage from '../views/MentorsView.vue'
 import SearchOfferView from '../views/SearchOfferView.vue'

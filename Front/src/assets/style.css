@@ -519,6 +519,57 @@ footer p:hover {
   align-items: center;
 }
 
+/* Usuari > auth container */
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vh;
+}
+
+.nav-icon {
+  height: 5vh;
+  width: 5vh;
+  cursor: pointer;
+  border: none;
+  background-color: rgb(62, 255, 62);
+  border-radius: 10px;
+  padding: .8vh;
+}
+
+.nav-username {
+  font-size: .7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.nav-role {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff0004;
+  border: none;
+  height: 5vh;
+  width: 5vh;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.nav-button:hover {
+  background-color: #d9363e;
+  transform: scale(1.05);
+}
+
 /* MEDIA QUERIES */
 
 /* Mobile View */
