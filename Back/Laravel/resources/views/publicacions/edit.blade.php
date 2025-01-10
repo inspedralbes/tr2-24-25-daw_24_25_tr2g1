@@ -17,13 +17,13 @@
             <textarea class="form-control" name="contingut" id="contingut" required>{{ old('contingut', $publicacio->contingut) }}</textarea>
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="estat" class="form-label">Estat</label>
             <select class="form-select" name="estat" id="estat" required>
                 <option value="activa" {{ old('estat', $publicacio->estat) == 'activa' ? 'selected' : '' }}>Activa</option>
                 <option value="inactiva" {{ old('estat', $publicacio->estat) == 'inactiva' ? 'selected' : '' }}>Inactiva</option>
             </select>
-        </div>
+        </div> --}}
 
         <div class="mb-3">
             <label for="especialitat" class="form-label">Especialitat</label>
@@ -40,7 +40,7 @@
             </select>
         </div>
 
-        
+
 
 
         <button type="submit" class="btn btn-warning">Actualizar Publicació</button>

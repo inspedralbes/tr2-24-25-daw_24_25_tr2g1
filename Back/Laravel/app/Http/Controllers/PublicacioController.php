@@ -6,6 +6,7 @@ use App\Models\Publicacio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+
 class PublicacioController extends Controller
 {
     // Mostrar la llista de publicacions
@@ -23,22 +24,16 @@ class PublicacioController extends Controller
     }
 
     // Guardar una nova publicació
-
     public function store(Request $request)
     {
-        dd($request->all()); // Esto detendrá la ejecución y mostrará los datos enviados
-
         $validated = $request->validate([
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
             'id_usuari' => 'required|exists:usuaris,id',
-            'estat' => 'required|in:activa,inactiva',
             'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
-            'hora_inici' => 'required|string',
-            'hora_final' => 'required|string',
-            // 'hora_inici' => 'required|date_format:H:i',
-            // 'hora_fi' => 'required|date_format:H:i',
-            'dia' => 'required|in:Dilluns,Dimarts,Dimecres,Dijous,Divendres',
+            'hora_inici' => 'nullable|string',
+            'hora_final' => 'nullable|string',
+            'dia' => 'nullable|in:Dilluns,Dimarts,Dimecres,Dijous,Divendres',
         ]);
 
         Publicacio::create($validated);
@@ -75,7 +70,6 @@ class PublicacioController extends Controller
         $validated = $request->validate([
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            'estat' => 'required|in:activa,inactiva',
             'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
         ]);
 
