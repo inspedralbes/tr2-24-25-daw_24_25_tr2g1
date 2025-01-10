@@ -14,19 +14,12 @@ class Usuari extends Authenticatable
 
     // Camps que es poden emplenar mitjançant assignació massiva
     protected $fillable = [
-        'nom',
-        'cognom1',
-        'cognom2',
-        'password',
-        'data_naixement',
-        'rol',
         'correu',
         'correualternatiu',
+        'password',
+        'rol',
         'pregunta_secreta',
         'resposta_secreta',
-        'telefon',
-        'biografia',
-        'major',
     ];
 
     // Camps ocults per a arrays, útil per protegir dades sensibles

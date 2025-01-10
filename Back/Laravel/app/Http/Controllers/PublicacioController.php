@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Publicacio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PublicacioController extends Controller
 {
@@ -83,26 +84,6 @@ class PublicacioController extends Controller
 
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha actualitzat correctament!');
     }
-
-
-
-    // // Actualitzar una publicació existent
-    // public function update(Request $request, $id)
-    // {
-    //     $validated = $request->validate([
-    //         'usuari_id' => 'required|exists:usuaris,id',
-    //         'titol' => 'required|string|max:100',
-    //         'contingut' => 'required|string',
-    //         // 'imatge' => 'nullable|string',
-    //         'estat' => 'required|in:activa,inactiva',
-    //         'data_publicacio' => 'required|date',
-    //     ]);
-
-    //     $publicacio = Publicacio::findOrFail($id);
-    //     $publicacio->update($validated);
-
-    //     return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha actualitzat correctament!');
-    // }
 
     // Eliminar una publicació
     public function destroy($id)
