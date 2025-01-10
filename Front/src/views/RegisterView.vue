@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-container" v-if="!showLogin && !forgotPassword">
+  <div class="signup-container">
     <p class="title">REGISTRAR-SE</p>
     <form class="form">
       <div class="input-group">
@@ -49,7 +49,7 @@
       <button @click.prevent="registrarUsuari" class="sign">Registrar-se</button>
     </form>
 
-    <div class="social-message">
+    <!-- <div class="social-message">
       <div class="line"></div>
       <p class="message">Registrar-se amb</p>
       <div class="line"></div>
@@ -62,7 +62,7 @@
       <button aria-label="Log in with GitHub" class="icon">
         <img src="/src/assets/icons/github.svg" />
       </button>
-    </div>
+    </div> -->
 
     <p class="signup">
       Tens un compte?
