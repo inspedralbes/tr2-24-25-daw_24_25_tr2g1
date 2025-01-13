@@ -47,7 +47,7 @@ async function login() {
     const password = document.querySelector('#contrasenya').value
 
     // Enviem la sol·licitud al servidor amb fetch
-    const resposta = await fetch('http://127.0.0.1:8000/api/login', {
+    const resposta = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
