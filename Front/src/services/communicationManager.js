@@ -22,7 +22,7 @@ export async function createPublicacion(oferta) {
 // Función para obtener las publicaciones
 export const getPublicaciones = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/sendData', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/sendData', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const getPublicaciones = async () => {
 
 export const getMentors = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/sendDataMentors', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/sendDataMentors', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export const getMentors = async () => {
 
 export const getAdDetails = async (id) => {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/sendData`, {
+    const response = await fetch(`http://alumnet.daw.inspedralbes.cat/laravel/public/api/sendData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ export const getAdDetails = async (id) => {
 
 export const registerForClass = async (classId, studentId, mentorId) => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/register-class', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/register-class', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ export const registerForClass = async (classId, studentId, mentorId) => {
 
 export const getAllUsers = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/sendDataUsers', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/sendDataUsers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -144,7 +144,7 @@ export const getAllUsers = async () => {
 
 export const updateUserRole = async (userId, newRole) => {
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/rols/assign', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/rols/assign', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ export const updateUserRole = async (userId, newRole) => {
 // Fetch para cambiar la contraseña
 export const passwordService = {
   async enviarCodigoRecuperacion(email) {
-    const response = await fetch('http://127.0.0.1:8000/api/password/send-reset-code', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/password/send-reset-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ export const passwordService = {
   },
 
   async verificarCodigo(email, code) {
-    const response = await fetch('http://127.0.0.1:8000/api/password/verify-code', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/password/verify-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ export const passwordService = {
     return await response.json()
   },
   async restablecerContraseña(email, password, code) {
-    const response = await fetch('http://127.0.0.1:8000/api/password/reset', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/password/reset', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
