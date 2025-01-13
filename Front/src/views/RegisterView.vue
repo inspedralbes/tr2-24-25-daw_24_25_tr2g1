@@ -130,7 +130,7 @@ async function registrarUsuari() {
   console.log('Datos enviados al backend:', dadesUsuari)
 
   try {
-    const response = await fetch('http://localhost:8000/api/store', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/store', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
