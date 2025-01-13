@@ -7,7 +7,8 @@ import GestionUsuarios from './views/GestionUsuarios.vue'
 
 // Servidor Socket.IO
 import { io } from 'socket.io-client'
-const socket = io('http://localhost:3000')
+//const socket = io('http://localhost:3000')
+const socket = io('http://alumnet.daw.inspedralbes.cat:21333')
 let userSocketId
 
 let isNavBarClicked = ref(false)
