@@ -2,7 +2,7 @@ export async function createPublicacion(oferta) {
   // Envia els dades a la API
   try {
     // console.log(oferta) per comprovar les dades que rebem des de l'usuari
-    const resposta = await fetch('http://127.0.0.1:8000/api/createOffer', {
+    const resposta = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/createOffer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

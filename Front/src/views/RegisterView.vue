@@ -139,7 +139,7 @@ async function registrarUsuari() {
     resposta_secreta: resposta_secreta.value,
   }
 
-  console.log('Datos enviados al backend:', dadesUsuari)
+  console.log('Dades enviades al backend:', dadesUsuari)
 
   try {
     const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/store', {
