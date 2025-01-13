@@ -47,7 +47,7 @@ async function login() {
     const password = document.querySelector('#contrasenya').value
 
     // Enviem la sol·licitud al servidor amb fetch
-    const resposta = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/login', {
+    const resposta = await fetch('http://127.0.0.1:8000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ async function login() {
       throw new Error('Faltan datos del usuari');
     }
 
-    
+
     // Guarda el token al localStorage (opcional)
     let username = data.usuari.correu.split('@')[0];
     localStorage.setItem('token', data.token)
@@ -225,7 +225,7 @@ async function restablecerContraseña() {
           <img src="/src/assets/icons/github.svg" />
         </button>
       </div> -->
-      
+
       <p class="signup">
         No tens un compte?
         <a @click="router.push('/register')">Registrar-se</a>
