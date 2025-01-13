@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/authStore'
 
 import ForumPage from '../views/ForumView.vue'
-import DetallesPage from '../views/DetallesView.vue'
+import DetallesPage from '../views/DetallesVIew.vue'
 import AuthPage from '../views/AuthView.vue'
 import MentorsPage from '../views/MentorsView.vue'
 import SearchOfferView from '../views/SearchOfferView.vue'
@@ -16,22 +16,22 @@ const routes = [
   {
     path: '/forum',
     name: 'forum',
-    component: ForumPage
+    component: ForumPage,
   },
   {
     path: '/ad/:id',
     name: 'Detalles',
-    component: DetallesPage
+    component: DetallesPage,
   },
   {
     path: '/auth',
     name: 'auth',
-    component: AuthPage
+    component: AuthPage,
   },
   {
     path: '/profiles',
     name: 'profiles',
-    component: MentorsPage
+    component: MentorsPage,
   },
   {
     path: '/jobs',
@@ -47,12 +47,12 @@ const routes = [
   {
     path: '/aboutUs',
     name: 'aboutUs',
-    component: aboutUs 
+    component: aboutUs,
   },
   {
     path: '/contact',
     name: 'contact',
-    component: Contact 
+    component: Contact,
   },
   {
     path: '/login',
@@ -68,7 +68,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 // Guard per comprovar si l'usuari està autenticat i té el rol correcte

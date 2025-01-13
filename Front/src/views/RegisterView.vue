@@ -1,5 +1,5 @@
 <template>
-  <div class="signup-container" v-if="!showLogin && !forgotPassword">
+  <div class="signup-container">
     <p class="title">REGISTRAR-SE</p>
     <form class="form">
       <div class="input-group">
@@ -108,13 +108,25 @@ const emailErrorMessage = computed(() => {
 async function registrarUsuari() {
   // Password match check
   if (password.value !== password2.value) {
-    alert('Les contrasenyes no coincideixen!')
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Les contrasenyes no coincideixen!',
+        showConfirmButton: false,
+        timer: 2500,
+      })
     return
   }
 
   // Email validation
   if (isEmailInvalid.value) {
-    alert('El correu introduït no és vàlid.')
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'El correu introduït no és vàlid.',
+        showConfirmButton: false,
+        timer: 2500,
+      })
     return
   }
 
@@ -152,7 +164,7 @@ async function registrarUsuari() {
       title: 'Usuari registrat correctament!',
       showConfirmButton: false,
       timer: 2500,
-    })    
+    })
     router.push('/forum')
   } catch (error) {
     Swal.fire({
@@ -162,7 +174,6 @@ async function registrarUsuari() {
       showConfirmButton: false,
       timer: 2500,
     })
-    alert(`Error: ${error.message}`)
   }
 }
 </script>

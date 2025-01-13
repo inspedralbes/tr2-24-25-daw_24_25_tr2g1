@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Publicacio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class PublicacioController extends Controller
 {
@@ -22,22 +24,16 @@ class PublicacioController extends Controller
     }
 
     // Guardar una nova publicació
-
     public function store(Request $request)
     {
-        dd($request->all()); // Esto detendrá la ejecución y mostrará los datos enviados
-
         $validated = $request->validate([
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
             'id_usuari' => 'required|exists:usuaris,id',
-            'estat' => 'required|in:activa,inactiva',
             'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
-            'hora_inici' => 'required|string',
-            'hora_final' => 'required|string',
-            // 'hora_inici' => 'required|date_format:H:i',
-            // 'hora_fi' => 'required|date_format:H:i',
-            'dia' => 'required|in:Dilluns,Dimarts,Dimecres,Dijous,Divendres',
+            'hora_inici' => 'nullable|string',
+            'hora_final' => 'nullable|string',
+            'dia' => 'nullable|in:Dilluns,Dimarts,Dimecres,Dijous,Divendres',
         ]);
 
         Publicacio::create($validated);
@@ -74,7 +70,6 @@ class PublicacioController extends Controller
         $validated = $request->validate([
             'titol' => 'required|string|max:100',
             'contingut' => 'required|string',
-            'estat' => 'required|in:activa,inactiva',
             'especialitat' => 'required|in:Matemáticas,Inglés,Ciencias,Biologia,Pogramacio,Geografia,Tecnologia,Quimica',
         ]);
 
@@ -83,26 +78,6 @@ class PublicacioController extends Controller
 
         return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha actualitzat correctament!');
     }
-
-
-
-    // // Actualitzar una publicació existent
-    // public function update(Request $request, $id)
-    // {
-    //     $validated = $request->validate([
-    //         'usuari_id' => 'required|exists:usuaris,id',
-    //         'titol' => 'required|string|max:100',
-    //         'contingut' => 'required|string',
-    //         // 'imatge' => 'nullable|string',
-    //         'estat' => 'required|in:activa,inactiva',
-    //         'data_publicacio' => 'required|date',
-    //     ]);
-
-    //     $publicacio = Publicacio::findOrFail($id);
-    //     $publicacio->update($validated);
-
-    //     return redirect()->route('publicacions.index')->with('success', 'La publicació s\'ha actualitzat correctament!');
-    // }
 
     // Eliminar una publicació
     public function destroy($id)

@@ -1,10 +1,16 @@
 <template>
   <div class="forum-container">
+    <!-- Entrada de cerca -->
+
     <div class="filters">
       <label for="especialitat">Especialitat:</label>
       <select id="especialitat" v-model="selectedEspecialitat">
         <option value="">Totes</option>
-        <option v-for="especialitat in uniqueEspecialitats" :key="especialitat" :value="especialitat">
+        <option
+          v-for="especialitat in uniqueEspecialitats"
+          :key="especialitat"
+          :value="especialitat"
+        >
           {{ especialitat }}
         </option>
       </select>
@@ -20,8 +26,31 @@
         <option value="">Totes</option>
         <option v-for="day in uniqueDies" :key="day" :value="day">{{ day }}</option>
       </select>
+    </div>
 
-      <button class="search-button" @click="searchOffers">Buscar</button>
+    <!-- Filtro de cerca mobile -->
+
+    <div class="filters-mobile">
+      <select id="especialitat" v-model="selectedEspecialitat">
+        <option value="">Especialitat</option>
+        <option
+          v-for="especialitat in uniqueEspecialitats"
+          :key="especialitat"
+          :value="especialitat"
+        >
+          {{ especialitat }}
+        </option>
+      </select>
+
+      <select id="hora" v-model="selectedHoraInici">
+        <option value="">Hora</option>
+        <option v-for="hour in uniqueHoraInici" :key="hour" :value="hour">{{ hour }}</option>
+      </select>
+
+      <select id="dia" v-model="selectedDia">
+        <option value="">Dia</option>
+        <option v-for="day in uniqueDies" :key="day" :value="day">{{ day }}</option>
+      </select>
     </div>
 
     <!-- Llista d'anuncis dinàmica -->
@@ -31,8 +60,12 @@
         <h3 class="ad-title">{{ ad.titol }}</h3>
         <p class="ad-description">{{ ad.contingut }}</p>
         <p class="ad-details">
+          <!-- <span>Especialitat: {{ ad.especialitat }}</span>
+          <span>Hora Inici: {{ ad.hora_inici }}</span>
+          <span>Hora Final: {{ ad.hora_final }}</span>
+          <span>Dia: {{ ad.dia }}</span> -->
         </p>
-        <button class="button" @click="viewAdDetails(ad.id)">Veure més</button>
+        <button class="buttonDetails" @click="viewAdDetails(ad.id)">Veure més</button>
       </div>
     </div>
 
@@ -55,6 +88,29 @@ const uniqueHoraInici = ref([])
 const uniqueDies = ref([])
 const pageSize = ref(9) // Nombre d'anuncis a mostrar inicialment i en cada càrrega
 const currentPage = ref(1)
+
+// Comprovar si el dispositiu es móbil
+const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+function handleMediaQueryChange(event) {
+  if (event.matches) {
+    // Si la media query se cumple
+    pageSize.value = 4;
+    // document.getElementById("message").textContent = "Tamaño de pantalla: Pequeño";
+  } else {
+    // Si la media query NO se cumple
+    pageSize.value = 9;
+    // document.getElementById("message").textContent = "Tamaño de pantalla: Normal";
+  }
+
+  // console.log("Variable actualizada:", pageSize.value);
+}
+
+// Escuchar cambios en la media query
+mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+// Ejecutar la función al cargar la página para comprobar el estado inicial
+handleMediaQueryChange(mediaQuery);
 
 const selectedEspecialitat = ref('')
 const selectedHoraInici = ref('')
@@ -125,149 +181,3 @@ onMounted(() => {
   fetchPublicaciones()
 })
 </script>
-
-<style scoped>
-.no-results {
-  font-size: 16px;
-  color: #666;
-}
-
-.forum-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: lightgrey;
-  border-radius: 2%;
-}
-
-/* Estilo de los filtros */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  background-color: #f8f9fa;
-  padding: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.filters label {
-  font-size: 16px;
-  color: #333;
-  margin-right: 10px;
-}
-
-.filters select {
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background-color: #fff;
-  transition: border-color 0.3s ease;
-}
-
-.filters select:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.search-button {
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.search-button:hover {
-  background-color: lightgray;
-  color: black;
-  transform: scale(1.05);
-}
-
-/* Estilo de la lista de anuncios */
-.ads-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.ad-item {
-  height: 85%;
-  width: 90%;
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.ad-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px black;
-}
-
-.ad-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.ad-description {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 15px;
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.button {
-  align-self: center;
-  padding: 8px 15px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: rgb(169, 169, 169);
-  color: black;
-}
-
-.load-more-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.load-more-button {
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.load-more-button:hover {
-  background-color: rgb(169, 169, 169);
-  color: black;
-}
-</style>

@@ -101,22 +101,22 @@ export const registerForClass = async (classId, studentId, mentorId) => {
       body: JSON.stringify({
         classId: classId,
         studentId: studentId,
-        mentorId: mentorId
+        mentorId: mentorId,
       }),
-    });
+    })
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || 'No es poden registrar a la classe');
+      const errorData = await response.json()
+      throw new Error(errorData.message || 'No es poden registrar a la classe')
     }
 
-    const data = await response.json();
-    return data;
+    const data = await response.json()
+    return data
   } catch (error) {
-    console.error('Error al registrar a la classe:', error);
-    throw error;
+    console.error('Error al registrar a la classe:', error)
+    throw error
   }
-};
+}
 
 // Fetch para obtener todos los alumnos y mentores para cambiar el rol desde la cuenta de profe
 
@@ -126,21 +126,21 @@ export const getAllUsers = async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-      }
-    });
+      },
+    })
 
     if (response.ok) {
-      const data = await response.json();
+      const data = await response.json()
       if (data.status === 'success') {
-        return data.data;
+        return data.data
       }
     }
-    throw new Error('No es poden obtenir els usuaris');
+    throw new Error('No es poden obtenir els usuaris')
   } catch (error) {
-    console.error('Error al obtenir usuaris:', error);
-    return [];
+    console.error('Error al obtenir usuaris:', error)
+    return []
   }
-};
+}
 
 export const updateUserRole = async (userId, newRole) => {
   try {
@@ -151,17 +151,74 @@ export const updateUserRole = async (userId, newRole) => {
       },
       body: JSON.stringify({
         user_id: userId,
-        rol: newRole
-      })
-    });
+        rol: newRole,
+      }),
+    })
 
     if (!response.ok) {
-      throw new Error('Error al actualitzar el rol');
+      throw new Error('Error al actualitzar el rol')
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.error('Error:', error)
+    throw error
+  }
+}
+
+// Fetch para cambiar la contraseña
+export const passwordService = {
+  async enviarCodigoRecuperacion(email) {
+    const response = await fetch('http://localhost:8000/api/password/send-reset-code', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ correualternatiu: email }),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error('Error al enviar el código')
+    }
+
+    return await response.json()
+  },
+
+  async verificarCodigo(email, code) {
+    const response = await fetch('http://localhost:8000/api/password/verify-code', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ correualternatiu: email, code }),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error('Codigo incorrecto')
+    }
+    return await response.json()
+  },
+  async restablecerContraseña(email, password, code) {
+    const response = await fetch('http://localhost:8000/api/password/reset', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        correualternatiu: email,
+        password: password,
+        code: code
+      }),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Error al restablecer la contraseña');
     }
 
     return await response.json();
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
   }
-};
+
+}

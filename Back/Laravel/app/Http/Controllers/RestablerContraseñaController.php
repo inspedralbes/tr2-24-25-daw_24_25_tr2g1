@@ -95,35 +95,41 @@ class RestablerContraseñaController extends Controller
 
     public function resetPassword(Request $request)
     {
-        // validar los datos
-        $request->validate([
-            'correualternatiu' => 'required|email',
-            'password' => 'required|string|min:6',
-            'code' => 'required|size:6'
-        ]);
+        try {
+            // validar los datos
+            $request->validate([
+                'correualternatiu' => 'required|email',
+                'password' => 'required|string|min:6',
+                'code' => 'required|size:6'
+            ]);
 
-        // Verificar si el usuario existe
-        $usuari = Usuari::where('correualternatiu', $request->correualternatiu)->first();
+            // Verificar si el usuario existe
+            $usuari = Usuari::where('correualternatiu', $request->correualternatiu)->first();
 
-        if (!$usuari) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
+            if (!$usuari) {
+                return response()->json(['error' => 'Usuario no encontrado'], 404);
+            }
+
+            // Verificar el código
+            $resetRecord = PasswordReset::where('email', $request->correualternatiu)
+                ->where('token', $request->code)
+                ->first();
+
+            if (!$resetRecord) {
+                return response()->json(['error' => 'Código inválido'], 400);
+            }
+
+            // Actualizar contraseña
+            $usuari->password = bcrypt($request->password);
+            $usuari->save();
+
+            // Eliminar registro de reset
+            $resetRecord->delete();
+
+            return response()->json(['message' => 'Contraseña actualizada correctamente']);
+        } catch (\Exception $e) {
+            Log::error('Error en resetPassword: ' . $e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        $resetRecord = PasswordReset::where('email', $request->correualternatiu)
-            ->where('token', $request->code)
-            ->first();
-
-        if (!$resetRecord) {
-            return response()->json(['error' => 'Codigo invalido'], 400);
-        }
-
-        $usuari->password = bcrypt($request->password);
-        $usuari->save();
-
-        // Eliminar registro de reset
-        $resetRecord->delete();
-
-
-        return response()->json(['message' => 'Contraseña actualizada']);
     }
 }

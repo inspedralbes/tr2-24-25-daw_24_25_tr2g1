@@ -14,7 +14,6 @@
                     <th>Títol</th>
                     <th>Contingut</th>
                     <th>Id_usuari</th>
-                    <th>Estat</th>
                     <th>Especialitat</th>
                     <th>Accions</th>
                 </tr>
@@ -26,7 +25,6 @@
                     <td>{{ $publicacio->titol }}</td>
                     <td>{{ $publicacio->contingut }}</td>
                     <td>{{ $publicacio->id_usuari }}</td>
-                    <td>{{ $publicacio->estat }}</td>
                     <td>{{ $publicacio->especialitat }}</td>
                     <td>
                         <a href="{{ route('publicacions.edit', $publicacio->id) }}" class="btn btn-warning btn-sm">Editar</a>

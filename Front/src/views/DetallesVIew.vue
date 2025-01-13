@@ -34,6 +34,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getAdDetails, registerForClass } from '../services/communicationManager.js'
 import { useAuthStore } from '../stores/authStore.js'
+import Swal from 'sweetalert2'
 
 const route = useRoute()
 const router = useRouter()
@@ -69,14 +70,33 @@ const confirmSignUp = async () => {
     );
 
     if (response.success) {
-      alert('T\'has inscrit correctament a la classe! Rebràs un correu de confirmació.');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'T\'has inscrit correctament a la classe!, Rebràs un correu de confirmació.',
+        showConfirmButton: false,
+        timer: 2500,
+      })
       showConfirmDialog.value = false;
     } else {
-      alert(response.message || 'Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.',
+        showConfirmButton: false,
+        timer: 2500,
+      })
     }
   } catch (error) {
     console.error('Error en la inscripció:', error);
-    alert('Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.');
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Hi ha hagut un error en la inscripció. Torna-ho a provar més tard.',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+
   }
 };
 </script>
