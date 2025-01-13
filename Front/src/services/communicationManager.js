@@ -169,7 +169,7 @@ export const updateUserRole = async (userId, newRole) => {
 // Fetch para cambiar la contraseña
 export const passwordService = {
   async enviarCodigoRecuperacion(email) {
-    const response = await fetch('http://localhost:8000/api/password/send-reset-code', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/password/send-reset-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -186,7 +186,7 @@ export const passwordService = {
   },
 
   async verificarCodigo(email, code) {
-    const response = await fetch('http://localhost:8000/api/password/verify-code', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/password/verify-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ export const passwordService = {
     return await response.json()
   },
   async restablecerContraseña(email, password, code) {
-    const response = await fetch('http://localhost:8000/api/password/reset', {
+    const response = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/password/reset', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
