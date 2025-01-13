@@ -82,11 +82,8 @@ defineExpose({ togglePopup });
 <style scoped>
 .popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,52 +91,53 @@ defineExpose({ togglePopup });
 }
 
 .popup-content {
-  background-color: white;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 800px;
-  max-height: 80vh;
+  background-color: #fff;
+  border-radius: 6px;
+  width: 95%;
+  max-width: 600px;
+  max-height: 85vh;
   overflow-y: auto;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .popup-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.popup-header h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
 }
 
 .close-button {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
   color: #666;
 }
 
-.loading {
+.loading, .error {
   text-align: center;
-  padding: 20px;
-  color: #666;
-}
-
-.error {
-  color: #dc3545;
-  text-align: center;
-  padding: 20px;
+  font-size: 1rem;
+  color: #555;
+  margin: 20px 0;
 }
 
 .filters {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .search-input {
   width: 100%;
-  padding: 8px 12px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
@@ -157,18 +155,18 @@ defineExpose({ togglePopup });
   align-items: center;
   padding: 12px;
   border: 1px solid #eee;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  border-radius: 6px;
+  background-color: #fafafa;
 }
 
 .user-item:hover {
-  background-color: #f8f9fa;
+  background-color: #f1f1f1;
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .user-avatar {
@@ -184,23 +182,53 @@ defineExpose({ togglePopup });
 }
 
 .user-name {
+  font-size: 0.95rem;
   font-weight: 500;
+  color: #333;
 }
 
 .user-email {
-  font-size: 0.9em;
-  color: #666;
+  font-size: 0.85rem;
+  color: #555;
 }
 
 .role-select {
-  padding: 6px 12px;
+  padding: 6px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: white;
+  background-color: #fff;
+  font-size: 0.9rem;
+  color: #333;
   cursor: pointer;
 }
 
 .role-select:hover {
-  border-color: #999;
+  border-color: #aaa;
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 90%;
+    padding: 12px;
+  }
+
+  .popup-header h2 {
+    font-size: 1rem;
+  }
+
+  .user-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .user-item {
+    padding: 10px;
+  }
+
+  .role-select {
+    font-size: 0.85rem;
+  }
+}
+
 </style>

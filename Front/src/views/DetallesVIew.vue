@@ -64,9 +64,9 @@ const showSignUpDialog = () => {
 const confirmSignUp = async () => {
   try {
     const response = await registerForClass(
-      adDetails.value.id, // The publication/class ID
-      authStore.userId,   // The student ID (logged in user)
-      adDetails.value.id_usuari // The mentor ID (from publication)
+      adDetails.value.id, 
+      authStore.userId,
+      adDetails.value.id_usuari
     );
 
     if (response.success) {

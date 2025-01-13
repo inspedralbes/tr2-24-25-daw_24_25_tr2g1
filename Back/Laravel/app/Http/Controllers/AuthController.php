@@ -59,18 +59,17 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
             'correu' => 'required|email|unique:usuaris,correu',
             'correualternatiu' => 'required|email|unique:usuaris,correualternatiu',
-            'rol' => 'required|in:alumne,mentor,professor',
-            'pregunta_secreta' => 'nullable|string',
-            'resposta_secreta' => 'nullable|string',
+            'pregunta_secreta' => 'required|string',
+            'resposta_secreta' => 'required|string',
         ]);
 
+
         // Crear el usuario en la base de datos
-        try {
             $usuari = Usuari::create([
                 'password' => Hash::make($request->password),
                 'correu' => $request['correu'],
                 'correualternatiu' => $request['correualternatiu'],
-                'rol' => $request['rol'],
+                'rol' => $request['rol'] ?? 'alumne',
                 'pregunta_secreta' => $request['pregunta_secreta'],
                 'resposta_secreta' =>  $request['resposta_secreta'],
             ]);
@@ -83,11 +82,10 @@ class AuthController extends Controller
                 Log::error('Mail sending failed: ' . $mailError->getMessage());
                 Log::error('Mail sending trace: ' . $mailError->getTraceAsString());
             }
+            return response()->json(['success' => true], 200);
 
-            return redirect()->route('users.index')->with('success', 'Usuari creat correctament!');
-        } catch (\Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
+
+
     }
 
 
@@ -125,7 +123,7 @@ class AuthController extends Controller
     {
         $validated = $request->validate([
             'password' => 'nullable|string|min:6',
-            'rol' => 'required|in:alumne,mentor,professor',
+            'rol' => 'nullable|in:alumne,mentor,professor',
             'correu' => 'required|email|unique:usuaris,correu,'.$id,
             'correualternatiu' => 'required|email|unique:usuaris,correualternatiu,'.$id,
             'pregunta_secreta' => 'required|in:Quin és nom del teu primer amic?,On vas fer la ESO?,Quin és el teu cotxe preferit?',
