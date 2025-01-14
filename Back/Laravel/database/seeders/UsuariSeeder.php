@@ -33,19 +33,11 @@ class UsuariSeeder extends Seeder
         foreach ($data['users'] as $user) {
             Usuari::create([
                 'id' => $user['id'],
-                'nom' => $user['nom'],
-                'cognom1' => $user['cognom1'],
-                'cognom2' => $user['cognom2'],
                 'correu' => $user['correu'],
                 'correualternatiu' => $user['correualternatiu'],
                 'password' => $user['password'],
                 'pregunta_secreta' => $user['pregunta_secreta'],
                 'resposta_secreta' => $user['resposta_secreta'],
-                'rol' => $user['rol'],
-                'data_naixement' => $user['data_naixement'],
-                'telefon' => $user['telefon'],
-                'biografia' => $user['biografia'] ?? null,
-                'major' => $user['major'],
                 'created_at' => $user['created_at'],
                 'updated_at' => $user['updated_at']
             ]);

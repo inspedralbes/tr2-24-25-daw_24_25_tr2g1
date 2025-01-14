@@ -1,5 +1,5 @@
 <template>
-    <div class="publish-container">
+    <div class="publish-container" >
     <h2>Publicar oferta</h2>
     <form>
       <div class="form-group">
@@ -14,7 +14,7 @@
 
       <div class="form-group">
         <label for="contingut">Contingut de la classe</label>
-        <textarea name="Contingut" id="contingut" placeholder="Descripció del contingut" rows="4" v-model="contingut" required></textarea>
+        <textarea style="resize: vertical;" name="Contingut" id="contingut" placeholder="Descripció del contingut" rows="4" v-model="contingut" required></textarea>
       </div>
 
       <div class="form-group">
@@ -70,11 +70,15 @@
 
 <script>
 import { ref } from "vue";
-
-import * as com from "@/services/communicationManager.js"; 
+import * as com from "@/services/communicationManager.js";
+import { useAuthStore } from '../stores/authStore.js';
+import Swal from "sweetalert2";
+import router from "@/router/index.js";
 
 export default {
   setup() {
+    const authStore = useAuthStore();
+
     // Definimos las variables reactivas con `ref`
     const titol = ref("");
     const especialitat = ref("");
@@ -93,7 +97,7 @@ export default {
 
       // Simula enviar els dades
       const oferta = {
-        id_usuari: 1, // Per defecte de moment es guarda l'id de l'usuari 1
+        id_usuari: authStore.userId,
         titol: titol.value,
         especialitat: especialitat.value,
         contingut: contingut.value,
@@ -104,9 +108,18 @@ export default {
 
       const data =  await com.createPublicacion(oferta);
       console.log("Vue",data);
-      
+
       console.log("Oferta enviada:", oferta);
-      alert("Oferta publicada correctament!");
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Oferta publicada correctament',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      router.push('/forum ');
+
 
       // Reinicia els camps
       titol.value = "";
@@ -130,47 +143,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.publish-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-input, textarea, select, button {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-</style>

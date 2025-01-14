@@ -6,21 +6,14 @@
         <form action="{{ route('users.update', $usuari->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+
             <div class="mb-3">
-                <label for="nom" class="form-label">Nom:</label>
-                <input type="text" class="form-control" id="nom" name="nom" value="{{ $usuari->nom }}" >
+                <label for="correu" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="correu" name="correu" value="{{ $usuari->correu }}">
             </div>
             <div class="mb-3">
-                <label for="cognom1" class="form-label">Cognom1:</label>
-                <input type="text" class="form-control" id="cognom1" name="cognom1" value="{{ $usuari->cognom1 }}" >
-            </div>
-            <div class="mb-3">
-                <label for="cognom2" class="form-label">Cognom2:</label>
-                <input type="text" class="form-control" id="cognom2" name="cognom2" value="{{ $usuari->cognom2 }}" >
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ $usuari->email }}">
+                <label for="correualternatiu" class="form-label">Correo alternativo:</label>
+                <input type="email" class="form-control" id="correualternatiu" name="correualternatiu" value="{{ $usuari->correualternatiu }}">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password:</label>
@@ -41,21 +34,18 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="data_naixement" class="form-label">Data Naixement:</label>
-                <input type="date" class="form-control" id="data_naixement" name="data_naixement" value="{{ $usuari->data_naixement }}">
+                <label for="pregunta_secreta" class="form-label">Pregunta Secreta:</label>
+                <select class="form-control" id="pregunta_secreta" name="pregunta_secreta" required>
+                    <option value="Quin és nom del teu primer amic?" {{ $usuari->pregunta_secreta == 'Quin és nom del teu primer amic?' ? 'selected' : '' }}>Quin és nom del teu primer amic?</option>
+                    <option value="On vas fer la ESO?" {{ $usuari->pregunta_secreta == 'On vas fer la ESO?' ? 'selected' : '' }}>On vas fer la ESO?</option>
+                    <option value="Quin és el teu cotxe preferit?" {{ $usuari->pregunta_secreta == 'Quin és el teu cotxe preferit?' ? 'selected' : '' }}>Quin és el teu cotxe preferit?</option>
+                </select>
             </div>
             <div class="mb-3">
-                <label for="telefon" class="form-label">Telefon:</label>
-                <input type="text" class="form-control" id="telefon" name="telefon" value="{{ $usuari->telefon }}">
+                <label for="resposta_secreta" class="form-label">Resposta Secreta:</label>
+                <input type="text" class="form-control" id="resposta_secreta" name="resposta_secreta" value="{{ $usuari->resposta_secreta }}" required>
             </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Foto de perfil:</label>
-                <input type="file" class="form-control" id="image" name="image">
-            </div>
-            <div class="mb-3">
-                <label for="biografia" class="form-label">Biografia:</label>
-                <textarea class="form-control" id="biografia" name="biografia">{{ $usuari->biografia }}</textarea>
-            </div>
+
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
     </div>

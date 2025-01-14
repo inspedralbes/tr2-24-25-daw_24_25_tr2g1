@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '../stores/authStore'
+
 import ForumPage from '../views/ForumView.vue'
-import DetallesPage from '../views/DetallesView.vue'
+import DetallesPage from '../views/DetallesVIew.vue'
 import AuthPage from '../views/AuthView.vue'
 import MentorsPage from '../views/MentorsView.vue'
 import SearchOfferView from '../views/SearchOfferView.vue'
@@ -14,22 +16,22 @@ const routes = [
   {
     path: '/forum',
     name: 'forum',
-    component: ForumPage
+    component: ForumPage,
   },
   {
     path: '/ad/:id',
     name: 'Detalles',
-    component: DetallesPage
+    component: DetallesPage,
   },
   {
     path: '/auth',
     name: 'auth',
-    component: AuthPage
+    component: AuthPage,
   },
   {
     path: '/profiles',
     name: 'profiles',
-    component: MentorsPage
+    component: MentorsPage,
   },
   {
     path: '/jobs',
@@ -39,17 +41,18 @@ const routes = [
   {
     path: '/publish',
     name: 'publish',
-    component: PublisOfferView 
+    component: PublisOfferView,
+    meta: { requiresAuth: true, requiredRole: ['mentor', 'professor'] }
   },
   {
     path: '/aboutUs',
     name: 'aboutUs',
-    component: aboutUs 
+    component: aboutUs,
   },
   {
     path: '/contact',
     name: 'contact',
-    component: Contact 
+    component: Contact,
   },
   {
     path: '/login',
@@ -65,7 +68,27 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
+
+// Guard per comprovar si l'usuari està autenticat i té el rol correcte
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  const userRole = localStorage.getItem('rol'); 
+
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    alert('Per accedir a aquesta pàgina, has de iniciar sessió.');
+    next('/login'); // Redirigeix a login si no està autenticat
+  } 
+  
+  else if (to.meta.requiredRole && !to.meta.requiredRole.includes(userRole)) {
+    alert('No tens permís per accedir a aquesta pàgina.');
+    next('/forum'); // Redirigeix a la pàgina del forum
+  } 
+  else {
+    next(); // Permet l'accés si tot està bé
+  }
+});
+
 
 export default router

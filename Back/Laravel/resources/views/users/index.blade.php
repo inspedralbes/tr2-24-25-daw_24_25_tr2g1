@@ -77,17 +77,10 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nom</th>
-                        <th>Cognom1</th>
-                        <th>Cognom2</th>
                         <th>Email</th>
+                        <th>Correualternatiu</th>
                         {{-- <th>Password</th> --}}
                         <th>Rol</th>
-                        <th>Data Naixement</th>
-                        <th>Telèfon</th>
-                        <th>Foto Perfil</th>
-                        <th>Major</th>
-                        <th>Biografia</th>
                         <th>Accions</th>
                     </tr>
                 </thead>
@@ -95,20 +88,10 @@
                     @foreach ($usuaris as $usuari)
                         <tr>
                             <td>{{ $usuari->id }}</td>
-                            <td>{{ $usuari->nom }}</td>
-                            <td>{{ $usuari->cognom1 }}</td>
-                            <td>{{ $usuari->cognom2 }}</td>
-                            <td>{{ $usuari->email }}</td>
-                            {{-- <td>{{ $usuari->password }}</td> --}}
+                            <td>{{ $usuari->correu }}</td>
+                            <td>{{ $usuari->correualternatiu }}</td>
                             <td>{{ $usuari->rol }}</td>
-                            <td>{{ $usuari->data_naixement }}</td>
-                            <td>{{ $usuari->telefon }}</td>
-                            <td>
-                                <img src="{{ asset('/img/' . $usuari->image) }}" alt="{{ $usuari->title }}"
-                                    class="img-thumbnail" width="50">
-                            </td>
-                            <td>{{ $usuari->major }}</td>
-                            <td>{{ $usuari->biografia }}</td>
+                            {{-- <td>{{ $usuari->password }}</td> --}}
                             <td>
                                 <a href="{{ route('users.edit', $usuari->id) }}" class="btn btn-primary">Editar</a>
                                 <form action="{{ route('users.destroy', $usuari->id) }}" method="POST" class="d-inline">

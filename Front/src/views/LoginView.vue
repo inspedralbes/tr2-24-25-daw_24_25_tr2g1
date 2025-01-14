@@ -1,96 +1,21 @@
-<template>
-  <div class="form-container">
-    <!-- Login -->
-    <div class="login-container" v-if="showLogin">
-      <p class="title">INICIAR SESSIÓ</p>
-      <form class="form">
-        <div class="input-group">
-          <label for="correu">Correu</label>
-          <input type="text" name="correu" id="correu" placeholder="a24alumnet@inspedralbes.cat" />
-        </div>
-        <div class="input-group">
-          <label for="contrasenya">Contrasenya</label>
-          <input type="password" name="contrasenya" id="contrasenya" placeholder="---" />
-          <div class="forgot">
-            <a rel="noopener noreferrer" href="#" @click="showForgotPassword">Has oblidat la contrasenya?</a>
-          </div>
-        </div>
-        <button @click.prevent="login" class="sign">Iniciar sessió</button>
-      </form>
-      <div class="social-message">
-        <div class="line"></div>
-        <p class="message">Iniciar sessió amb</p>
-        <div class="line"></div>
-      </div>
-      <div class="social-icons">
-        <button aria-label="Log in with Google" class="icon">
-          <img src="/src/assets/icons/google-logo.svg" />
-        </button>
-        <button aria-label="Log in with GitHub" class="icon">
-          <img src="/src/assets/icons/github.svg" />
-        </button>
-      </div>
-      <p class="signup">
-        No tens un compte?
-        <a @click="router.push('/register')">Registrar-se</a>
-      </p>
-    </div>
-
-    <!-- Forgot Password -->
-    <div class="forgotPassword-container" v-if="forgotPassword">
-      <p class="title">RECUPERAR CONTRASENYA</p>
-      <form class="form">
-        <div class="input-group">
-          <label for="correu">Correu</label>
-          <input type="text" name="correu" id="correu" placeholder="a24alumnet@inspedralbes.cat" />
-        </div>
-        <div class="input-group">
-          <label for="pregunta_secreta">Pregunta secreta</label>
-          <select name="pregunta_secreta" id="">
-            <option value="" disabled selected>---</option>
-            <option value="pregunta_secreta">Com es el nombre del teu primer amic?</option>
-            <option value="pregunta_secreta">On vas fer l'ESO?</option>
-            <option value="pregunta_secreta">El teu cotxe preferit?</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="resposta">Resposta</label>
-          <input type="text" name="resposta" id="resposta" placeholder="---" />
-          <div class="forgot"></div>
-        </div>
-        <button class="sign" @click="canviarContrasenya = !canviarContrasenya">
-          Recuperar compte
-        </button>
-      </form>
-    </div>
-    <!-- Crear contrasenya -->
-    <div class="crear-contrasenya-container" v-if="canviarContrasenya">
-      <p class="title">CREAR CONTRASENYA</p>
-      <form class="form">
-        <div class="input-group">
-          <label for="novaContrasenya">Nova contrasenya</label>
-          <input type="password" name="novaContrasenya" id="novaContrasenya" placeholder="---" />
-        </div>
-        <div class="input-group">
-          <label for="novaContrasenya">Confirmar contrasenya</label>
-          <input type="password" name="novaContrasenya" id="novaContrasenya" placeholder="---" />
-          <div class="forgot"></div>
-        </div>
-        <button class="sign">Guardar</button>
-      </form>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore';
+import Swal from 'sweetalert2'
+import { passwordService } from '@/services/communicationManager';
 
 let showLogin = ref(true)
 let forgotPassword = ref(false)
-let canviarContrasenya = ref(false)
+// let canviarContrasenya = ref(false)
 const router = useRouter()
+const authStore = useAuthStore();
+
+const etapaFormulario = ref('email')
+const email = ref('')
+const codigo = ref('')
+const nuevaContrasenya = ref('')
+const confirmarContraseña = ref('')
 
 let nom = ref('')
 let cognom1 = ref('')
@@ -112,6 +37,7 @@ let major = ref('')
 function showForgotPassword() {
   forgotPassword.value = !forgotPassword.value
   showLogin.value = !showLogin.value
+  etapaFormulario.value = 'email'
 }
 
 async function login() {
@@ -120,32 +46,244 @@ async function login() {
     const correu = document.querySelector('#correu').value
     const password = document.querySelector('#contrasenya').value
 
-    // Enviem la sol·licitud al servidor
-    const resposta = await axios.post('http://localhost:8000/api/login', {
-      correu, // Aquí és "correu" en lloc de "email"
-      password,
+    // Enviem la sol·licitud al servidor amb fetch
+    const resposta = await fetch('http://alumnet.daw.inspedralbes.cat/laravel/public/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        correu, // Aquí és "correu" en lloc de "email"
+        password,
+      }),
     })
 
-    // Guarda el token al localStorage (opcional)
-    localStorage.setItem('token', resposta.data.token)
-
-    alert('Login correcte')
-    router.push('/forum') // Redirigeix a una pàgina després de fer login
-  } catch (error) {
-    if (error.response) {
-      alert(`Error: ${error.response.data.message}`)
-    } else {
-      alert('Error de connexió')
+    // Comprovem si la resposta és correcta
+    if (!resposta.ok) {
+      throw new Error('Error al fer login')
     }
+
+    const data = await resposta.json()
+    console.log('Resposta del servidor:', data);
+
+    if (!data.token || !data.usuari || !data.usuari.id) {
+      throw new Error('Faltan datos del usuari');
+    }
+
+
+    // Guarda el token al localStorage (opcional)
+    let username = data.usuari.correu.split('@')[0];
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('rol', data.usuari.rol); // Al fer login, guardar el rol
+    localStorage.setItem('userId', data.usuari.id.toString());
+    localStorage.setItem('username', username);
+    localStorage.setItem('mail', data.usuari.correu);
+
+    authStore.login(data.token, data.usuari.rol, data.usuari.id, data.usuari.correu, username);
+    console.log('User ID:', data.usuari.id);
+    console.log('Mail:', data.usuari.correu);
+    console.log('Username:', username);
+
+    // Actualitzem el store per verificar l'autenticació
+    authStore.checkAuth()
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Has iniciat sessió correctament!',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+    router.push('/forum')
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Inici de sessió incorrecte! Torna-ho a provar.',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+    router.push('/login')
   }
 }
+
+// Función para enviar el correo y recibir el código
+async function enviarCodigoRecuperacion() {
+  try {
+    await passwordService.enviarCodigoRecuperacion(email.value)
+
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Codi enviat correctament',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+    etapaFormulario.value = 'codigo'
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Error al enviar el codi',
+      showConfirmButton: false,
+      timer: 2500,
+    })
+  }
+}
+
+// Función para verificar el código
+async function verificarCodigo() {
+  try {
+    await passwordService.verificarCodigo(email.value, codigo.value)
+    etapaFormulario.value = 'nuevaContraseña'
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: 'Codi incorrecte',
+      text: 'Por favor, verifique el código e intente nuevamente',
+      showConfirmButton: false,
+      timer: 2500
+    })
+  }
+}
+
+// Función para restablecer la contraseña
+async function restablecerContraseña() {
+  try {
+    console.log('Password verification:', {
+      nueva: nuevaContrasenya.value,
+      confirmar: confirmarContraseña.value
+    });
+
+    if (nuevaContrasenya.value !== confirmarContraseña.value) {
+      Swal.fire({
+        position: 'top',
+        icon: 'error',
+        title: 'Las contraseñas no coincidenaaaaaaaa',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      return;
+    }
+
+    // Add trim() to remove any whitespace
+    const result = await passwordService.restablecerContraseña(email.value.trim(),nuevaContrasenya.value,codigo.value);
+
+    if (result.message === 'Contraseña actualizada correctamente') {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Contraseña restablecida correctamente',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      router.push('/login');
+    }
+  } catch (error) {
+    Swal.fire({
+      position: 'top',
+      icon: 'error',
+      title: error.message || 'Error al restablecer la contraseña',
+      showConfirmButton: false,
+      timer: 2500,
+    });
+  }
+}
+
 </script>
+
+<template>
+  <div class="form-container">
+    <!-- Login -->
+    <div class="login-container" v-if="showLogin">
+      <p class="title">INICIAR SESSIÓ</p>
+      <form class="form">
+        <div class="input-group">
+          <label for="correu">Correu</label>
+          <input type="text" name="correu" id="correu" placeholder="a24alumnet@inspedralbes.cat" />
+        </div>
+        <div class="input-group">
+          <label for="contrasenya">Contrasenya</label>
+          <input type="password" name="contrasenya" id="contrasenya" placeholder="---" />
+          <div class="forgot">
+            <a rel="noopener noreferrer" href="#" @click="showForgotPassword">Has oblidat la contrasenya?</a>
+          </div>
+        </div>
+        <button @click.prevent="login" class="sign">Iniciar sessió</button>
+      </form>
+
+      <!-- <div class="social-message">
+        <div class="line"></div>
+        <p class="message">Iniciar sessió amb</p>
+        <div class="line"></div>
+      </div>
+      <div class="social-icons">
+        <button aria-label="Log in with Google" class="icon">
+          <img src="/src/assets/icons/google-logo.svg" />
+        </button>
+        <button aria-label="Log in with GitHub" class="icon">
+          <img src="/src/assets/icons/github.svg" />
+        </button>
+      </div> -->
+
+      <p class="signup">
+        No tens un compte?
+        <a @click="router.push('/register')">Registrar-se</a>
+      </p>
+    </div>
+
+    <!-- Formulario de correo -->
+    <div v-if="etapaFormulario === 'email' && !showLogin">
+      <p class="title">RECUPERAR CONTRASEÑA</p>
+      <form class="form">
+        <div class="input-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" v-model="email" placeholder="a23alumnet@inspedralbes.cat" required />
+        </div>
+        <button class="sign" @click.prevent="enviarCodigoRecuperacion">Enviar código</button>
+      </form>
+    </div>
+
+    <!-- Formulario de verificacion de codigo -->
+    <div v-if="etapaFormulario === 'codigo'">
+      <p class="title">VERIFICAR CÓDIGO</p>
+      <form class="form">
+        <div class="input-group">
+          <label for="codigo">Código de verificación</label>
+          <input type="text" id="codigo" v-model="codigo" placeholder="Ingrese el código de 6 dígitos" maxlength="6"
+            pattern="\d{6}" required />
+        </div>
+        <button class="sign" @click.prevent="verificarCodigo">Verificar código</button>
+      </form>
+    </div>
+
+    <!-- Formulario de nueva contraseña -->
+    <div v-if="etapaFormulario === 'nuevaContraseña'">
+      <p class="title">NUEVA CONTRASEÑA</p>
+      <form class="form">
+        <div class="input-group">
+          <label for="nuevaContraseña">Nueva contraseña</label>
+          <input type="password" id="nuevaContraseña" v-model="nuevaContrasenya"
+            placeholder="Ingrese su nueva contraseña" required />
+        </div>
+        <div class="input-group">
+          <label for="confirmarContraseña">Confirmar contraseña</label>
+          <input type="password" id="confirmarContraseña" v-model="confirmarContraseña"
+            placeholder="Confirme su nueva contraseña" required />
+        </div>
+        <button class="sign" @click.prevent="restablecerContraseña">
+          Restablecer contraseña
+        </button>
+      </form>
+    </div>
+  </div>
+</template>
 
 <style>
 .form-container {
   width: 320px;
   border-radius: 0.75rem;
-  background-color: rgba(17, 24, 39, 1);
+  background-color: rgb(0, 0, 0);
   padding: 2rem;
   color: rgba(243, 244, 246, 1);
 }
@@ -158,7 +296,8 @@ async function login() {
 }
 
 .form {
-  margin-top: 1.5rem;
+    background-color: rgba(17, 24, 39, 1);
+    margin-top: 1.5rem;
 }
 
 .input-group {
@@ -212,7 +351,7 @@ async function login() {
 .sign {
   display: block;
   width: 100%;
-  background-color: rgba(167, 139, 250, 1);
+  background-color: rgb(66, 14, 222);
   padding: 0.75rem;
   text-align: center;
   color: rgba(17, 24, 39, 1);
