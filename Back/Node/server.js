@@ -2,6 +2,7 @@ const express = require("express");
 const { createServer } = require("node:http");
 const { join } = require("node:path");
 const { Server } = require("socket.io");
+const cors = require("cors");
 
 const app = express();
 const server = createServer(app);
@@ -16,7 +17,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://alumnet.daw.inspedralbes.cat:21333/",
+    origin: "http://alumnet.daw.inspedralbes.cat",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true
@@ -24,7 +25,7 @@ const io = new Server(server, {
 });
 
 app.use(cors({
-  origin: "http://alumnet.daw.inspedralbes.cat:21333/",
+  origin: "http://alumnet.daw.inspedralbes.cat",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
   credentials: true
