@@ -12,8 +12,8 @@
       </div>
       <div class="contacteDetals">
         <p>DADES DE CONTACTE</p>
-        <p>lorem@ipsum</p>
-        <p>+34 123456789</p>
+        <p>alumnetAAEP@gmail.com</p>
+        <p>+34xxxxxxxxx</p>
       </div>
     </div>
   </div>
