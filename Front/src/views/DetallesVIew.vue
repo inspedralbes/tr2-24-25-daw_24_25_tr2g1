@@ -40,6 +40,7 @@ const route = useRoute()
 const router = useRouter()
 const adDetails = ref({})
 const showConfirmDialog = ref(false)
+const userID = ref(localStorage.getItem('userId'));
 
 // Obtenir les dades de l'oferta
 onMounted(async () => {
@@ -62,10 +63,11 @@ const showSignUpDialog = () => {
 
 // Confirmar inscripció
 const confirmSignUp = async () => {
+  console.log('authStore.userId:', userID.value);
   try {
     const response = await registerForClass(
       adDetails.value.id,
-      authStore.userId,
+      userID.value,
       adDetails.value.id_usuari
     );
 
@@ -77,6 +79,11 @@ const confirmSignUp = async () => {
         showConfirmButton: false,
         timer: 2500,
       })
+
+      setTimeout(() => {
+        router.push('/forum');
+      }, 2500);
+
       showConfirmDialog.value = false;
     } else {
       Swal.fire({

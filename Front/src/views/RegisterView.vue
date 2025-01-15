@@ -166,7 +166,7 @@ async function registrarUsuari() {
       showConfirmButton: false,
       timer: 2500,
     })
-    router.push('/forum')
+    router.push('/login')
   } catch (error) {
     Swal.fire({
       position: 'top',

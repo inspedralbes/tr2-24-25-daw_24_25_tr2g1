@@ -784,6 +784,9 @@ footer p:hover {
   .detalles-description {
     font-size: 14px;
   }
+  .nav-role {
+    display: none;
+  }
 }
 
 /* Desktop View */

@@ -3,21 +3,18 @@
     <div class="popup-content">
       <div class="popup-header">
         <h2>Gestió d'Usuaris</h2>
-        <button @click="togglePopup" class="close-button">&times;</button>
+        <button @click="togglePopup" class="close-icon">&times;</button>
       </div>
 
       <div v-if="loading" class="loading">Carregant...</div>
       <div v-else-if="error" class="error">{{ error }}</div>
 
       <div v-else class="users-container">
-        <div class="filters">
-          <input type="text" placeholder="Cercar usuaris..." class="search-input" />
-        </div>
-
+        <input type="text" placeholder="Cercar usuaris..." class="search-input" />
         <div class="users-list">
           <div v-for="user in users" :key="user.id" class="user-item">
             <div class="user-info">
-              <img :src="user.foto_profile || '/src/assets/icons/user.svg'" alt="Perfil" class="user-avatar" />
+              <!-- <img :src="user.foto_profile || '/src/assets/icons/user.svg'" alt="Perfil" class="user-avatar" /> -->
               <div class="user-details">
                 <span class="user-name">{{ user.nom }} {{ user.cognom1 }}</span>
                 <span class="user-email">{{ user.correu }}</span>
@@ -116,12 +113,13 @@ defineExpose({ togglePopup });
   margin: 0;
 }
 
-.close-button {
+.close-icon {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: #666;
+  width: 30px;
 }
 
 .loading, .error {
@@ -167,6 +165,7 @@ defineExpose({ togglePopup });
   display: flex;
   align-items: center;
   gap: 10px;
+  max-width: 65%; /* Limitamos la longitud del contenido del usuario */
 }
 
 .user-avatar {
@@ -179,20 +178,21 @@ defineExpose({ togglePopup });
 .user-details {
   display: flex;
   flex-direction: column;
+  max-width: 100%; /* Ajuste responsivo */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.user-name {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #333;
-}
-
+.user-name,
 .user-email {
-  font-size: 0.85rem;
-  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .role-select {
+  width: 120px; /* Ancho fijo para todos los selectores */
   padding: 6px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -200,13 +200,17 @@ defineExpose({ togglePopup });
   font-size: 0.9rem;
   color: #333;
   cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  background-image: linear-gradient(to right, transparent 70%, rgba(255, 255, 255, 1) 90%);
 }
 
 .role-select:hover {
   border-color: #aaa;
 }
 
-/* Responsive adjustments */
+/* Ajustes responsivos */
 @media (max-width: 768px) {
   .popup-content {
     width: 90%;
@@ -223,12 +227,13 @@ defineExpose({ togglePopup });
   }
 
   .user-item {
-    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .role-select {
-    font-size: 0.85rem;
+    width: 100%; /* Selectores se expanden al 100% en pantallas pequeñas */
   }
 }
-
 </style>
