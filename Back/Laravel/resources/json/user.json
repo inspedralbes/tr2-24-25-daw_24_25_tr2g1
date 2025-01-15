@@ -1,0 +1,204 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "correu": "joan.garcia@example.com",
+            "correualternatiu": "joan.fernande78978z@example.com",
+            "password": "hashed_password_1",
+            "pregunta_secreta": "Quin és nom del teu primer amic?",
+            "resposta_secreta": "Joan123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 2,
+            "correu": "joan.fernandez@example.com",
+            "correualternatiu": "joan.fernande89789z@example.com",
+            "password": "hashed_password_2",
+            "pregunta_secreta": "On vas fer la ESO?",
+            "resposta_secreta": "Maria123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 3,
+            "correu": "maria.garcia@example.com",
+            "correualternatiu": "joan.fernand88888ez@example.com",
+            "password": "hashed_password_3",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Carlos123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 4,
+            "correu": "maria.fernandez@example.com",
+            "correualternatiu": "joa4555555n.fernandez@example.com",
+            "password": "hashed_password_4",
+            "pregunta_secreta": "Quin és nom del teu primer amic?",
+            "resposta_secreta": "Laura123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 5,
+            "correu": "carlos.garcia@example.com",
+            "correualternatiu": "jo454an.fernandez@example.com",
+            "password": "hashed_password_5",
+            "pregunta_secreta": "On vas fer la ESO?",
+            "resposta_secreta": "Andres123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 6,
+            "correu": "carlos.fernandez@example.com",
+            "correualternatiu": "jo7776an.fernandez@example.com",
+            "password": "hashed_password_6",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Sofia123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 7,
+            "correu": "laura.garcia@example.com",
+            "correualternatiu": "jo4545an.fernandez@example.com",
+            "password": "hashed_password_7",
+            "pregunta_secreta": "Quin és nom del teu primer amic?",
+            "resposta_secreta": "Lucas123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 8,
+            "correu": "laura.fernandez@example.com",
+            "correualternatiu": "joa35n.fernandez@example.com",
+            "password": "hashed_password_8",
+            "pregunta_secreta": "On vas fer la ESO?",
+            "resposta_secreta": "Ana123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 9,
+            "correu": "usuario9@example.com",
+            "correualternatiu": "joa4n.fernandez@example.com",
+            "password": "hashed_password_9",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario9123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 10,
+            "correu": "usuario10@example.com",
+            "correualternatiu": "joa3n.fernandez@example.com",
+            "password": "hashed_password_10",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario10123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 11,
+            "correu": "usuario11@example.com",
+            "correualternatiu": "joan.ferna1ndez@example.com",
+            "password": "hashed_password_11",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario11123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 12,
+            "correu": "usuario12@example.com",
+            "correualternatiu": "joan.fernaberhertberndez@example.com",
+            "password": "hashed_password_12",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario12123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 13,
+            "correu": "usuario13@example.com",
+            "correualternatiu": "joan.55hthgngghgh@example.com",
+            "password": "hashed_password_13",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario13123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 14,
+            "correu": "usuario14@example.com",
+            "correualternatiu": "joan.fernandhgghhf6ez@example.com",
+            "password": "hashed_password_14",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario14123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 15,
+            "correu": "usuario15@example.com",
+            "correualternatiu": "joan.fer66556nandez@example.com",
+            "password": "hashed_password_15",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario15123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 16,
+            "correu": "usuario16@example.com",
+            "correualternatiu": "joan.2234fernandez@example.com",
+            "password": "hashed_password_16",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario16123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 17,
+            "correu": "usuario17@example.com",
+            "correualternatiu": "joan.ferfggsdnandez@example.com",
+            "password": "hashed_password_17",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario17123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 18,
+            "correu": "usuario18@example.com",
+            "correualternatiu": "joan.ferna33ndez@example.com",
+            "password": "hashed_password_18",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario18123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 19,
+            "correu": "usuario19@example.com",
+            "correualternatiu": "joan.fernadasdndez@example.com",
+            "password": "hashed_password_19",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario19123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        },
+        {
+            "id": 20,
+            "correu": "usuario20@example.com",
+            "correualternatiu": "joan.ferndddandez@example.com",
+            "password": "hashed_password_20",
+            "pregunta_secreta": "Quin és el teu cotxe preferit?",
+            "resposta_secreta": "Usuario20123",
+            "created_at": "2024-12-03 10:48:31",
+            "updated_at": "2024-12-03 10:48:31"
+        }
+    ]
+}
