@@ -14,14 +14,14 @@ export const useAuthStore = defineStore('auth', {
       this.isAuthenticated = true;
       this.token = token;
       this.rol = rol; // guardar el rol
-      this.userId = userId ? parseInt(userId) : null;
+      this.userId = userId;
       this.username = username; // guardar el nom d'usuari
       this.userMail = userMail;
       localStorage.setItem('token', token);
       localStorage.setItem('rol', rol); // guardar el rol també
       localStorage.setItem('userId', userId);
       localStorage.setItem('username', username); // guarda el nom d'usuari
-      localStorage.setItem('userId', userMail); // guarda el correu
+      localStorage.setItem('userMail', userMail); // guarda el correu
     },
     logout() {
       this.isAuthenticated = false;

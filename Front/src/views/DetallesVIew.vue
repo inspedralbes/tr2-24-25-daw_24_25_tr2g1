@@ -1,19 +1,19 @@
 <template>
   <div class="ad-details">
-    <h2>{{ adDetails.titol }}</h2>
-    <p>{{ adDetails.contingut }}</p>
-    <p>Mentor: Pendent d'assignar</p>
-    <p>Especialitat: {{ adDetails.especialitat }}</p>
-    <p>Dia: {{ adDetails.data_publicacio }}</p>
-    <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
+    <h2 class="detalles-title">{{ adDetails.titol }}</h2>
+    <p class="detalles-description">{{ adDetails.contingut }}</p>
+    <p class="detalles-description"><strong>Mentor:</strong>  Pendent d'assignar</p>
+    <p class="detalles-description"><strong>Especialitat:</strong> {{ adDetails.especialitat }}</p>
+    <p class="detalles-description"><strong>Dia:</strong> {{ adDetails.data_publicacio }}</p>
+    <p class="detalles-description"><strong>Horari:</strong> {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
 
     <!-- Dialog de confirmació -->
     <div v-if="showConfirmDialog" class="confirmation-dialog">
       <div class="dialog-content">
         <h3>Confirmació de la reserva</h3>
-        <p>Especialitat: {{ adDetails.especialitat }}</p>
-        <p>Data: {{ adDetails.data_publicacio }}</p>
-        <p>Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
+        <p  class="detalles-description">Especialitat: {{ adDetails.especialitat }}</p>
+        <p  class="detalles-description">Data: {{ adDetails.data_publicacio }}</p>
+        <p  class="detalles-description">Horari: {{ adDetails.hora_inici }}h - {{ adDetails.hora_final }}h</p>
         <div class="dialog-buttons">
           <button @click="confirmSignUp">Confirmar</button>
           <button @click="showConfirmDialog = false">Cancel·lar</button>
@@ -40,6 +40,7 @@ const route = useRoute()
 const router = useRouter()
 const adDetails = ref({})
 const showConfirmDialog = ref(false)
+const userID = ref(localStorage.getItem('userId'));
 
 // Obtenir les dades de l'oferta
 onMounted(async () => {
@@ -62,10 +63,11 @@ const showSignUpDialog = () => {
 
 // Confirmar inscripció
 const confirmSignUp = async () => {
+  console.log('authStore.userId:', userID.value);
   try {
     const response = await registerForClass(
-      adDetails.value.id, 
-      authStore.userId,
+      adDetails.value.id,
+      userID.value,
       adDetails.value.id_usuari
     );
 
@@ -77,6 +79,11 @@ const confirmSignUp = async () => {
         showConfirmButton: false,
         timer: 2500,
       })
+
+      setTimeout(() => {
+        router.push('/forum');
+      }, 2500);
+
       showConfirmDialog.value = false;
     } else {
       Swal.fire({
@@ -103,16 +110,14 @@ const confirmSignUp = async () => {
 
 <style scoped>
 .ad-details {
-  width: 800px;
-  height: 375px;
-  margin: 30px auto;
+  margin: auto;
   padding: 25px;
   background-color: #f9f9fa;
   border-radius: 12px;
   border: 1px solid #e1e4e8;
 }
 
-h2 {
+.detalles-title {
   color: #000000;
   font-size: 22px;
   margin-bottom: 20px;
@@ -120,11 +125,11 @@ h2 {
   border-bottom: 2px solid #000000;
 }
 
-p {
+.detalles-description {
   color: #4a4a4a;
   font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 25px;
+  margin-bottom: 8px;
 }
 
 button {
@@ -142,7 +147,6 @@ button:hover {
   background-color: lightgrey;
   color: black;
 }
-
 
 .confirmation-dialog {
   position: fixed;
