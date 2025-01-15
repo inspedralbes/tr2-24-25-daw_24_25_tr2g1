@@ -40,6 +40,21 @@
                     <option value="Quimica">Quimica</option>
                 </select>
             </div>
+            {{-- fecha inicio y final  --}}
+            <div class="mb-3">
+                <label for="data_inici" class="form-label">Data d'inici</label>
+                <input type="date" class="form-control" name="data_publicacio" id="data_publicacio" required>
+            </div>
+
+            {{-- hora inicio y final  --}}
+            <div class="mb-3">
+                <label for="hora_inici" class="form-label">Hora d'inici</label>
+                <input type="time" class="form-control" name="hora_inici" id="hora_inici" required>
+            </div>
+            <div class="mb-3">
+                <label for="hora_final" class="form-label">Hora final</label>
+                <input type="time" class="form-control" name="hora_final" id="hora_final" required>
+            </div>
 
             <button type="submit" class="btn btn-success">Crear Publicació</button>
             <a href="{{ route('publicacions.index') }}" class="btn btn-secondary">Tornar a la llista de publicacions</a>
